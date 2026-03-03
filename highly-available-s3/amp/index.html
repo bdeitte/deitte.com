@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html ⚡>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <title>Highly-available S3</title>
+
+    <link rel="canonical" href="../index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    
+    <meta property="og:site_name" content="Deitte.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Highly-available S3" />
+    <meta property="og:description" content="It&#x27;s possible to raise the availability of S3 through a multi-region setup.  Below I&#x27;ll explain some of the work we&#x27;ve done at Brightcove on this, including a new Node.js library.  Nearly-highly-available S3 S3 is a fantastic service, and it has the reputation of being a very reliable object store." />
+    <meta property="og:url" content="https://deitte.com/highly-available-s3/" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1501623021299-5a9e5f95960b?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ" />
+    <meta property="article:published_time" content="2016-01-24T00:00:00.000Z" />
+    <meta property="article:modified_time" content="2020-10-14T03:08:06.000Z" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Highly-available S3" />
+    <meta name="twitter:description" content="It&#x27;s possible to raise the availability of S3 through a multi-region setup.  Below I&#x27;ll explain some of the work we&#x27;ve done at Brightcove on this, including a new Node.js library.  Nearly-highly-available S3 S3 is a fantastic service, and it has the reputation of being a very reliable object store." />
+    <meta name="twitter:url" content="https://deitte.com/highly-available-s3/" />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1501623021299-5a9e5f95960b?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Brian Deitte" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="1330" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Deitte.com",
+        "url": "https://deitte.com/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://deitte.com/content/images/2020/10/computer-3-10.23.00-PM--4-.png"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Brian Deitte",
+        "image": {
+            "@type": "ImageObject",
+            "url": "//www.gravatar.com/avatar/ac1c7f152ab59ed6b2f8c28eb39153a9?s=250&d=mm&r=x",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://deitte.com/author/brian/",
+        "sameAs": []
+    },
+    "headline": "Highly-available S3",
+    "url": "https://deitte.com/highly-available-s3/",
+    "datePublished": "2016-01-24T00:00:00.000Z",
+    "dateModified": "2020-10-14T03:08:06.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1501623021299-5a9e5f95960b?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=2000&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ",
+        "width": 2000,
+        "height": 1330
+    },
+    "description": "It&#x27;s possible to raise the availability of S3 through a multi-region setup.\nBelow I&#x27;ll explain some of the work we&#x27;ve done at Brightcove on this, including\na new Node.js library [https://github.com/brightcove/s3-s3].\n\nNearly-highly-available S3\nS3 is a fantastic service, and it has the reputation of being a very reliable\nobject store. Not only is the service well-regarded, Amazon touts a\n99.999999999% durability of objects over a given year.\n\nSo why is anything more needed here for reliability?\n",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://deitte.com/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 3.35" />
+    <link rel="alternate" type="application/rss+xml" title="Deitte.com" href="../../rss/index.html" />
+
+    <style amp-custom>
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        font-size: 62.5%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        color: #3a4145;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.7rem;
+        line-height: 1.55em;
+        font-weight: 400;
+        font-style: normal;
+        background: #fff;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    p,
+    ul,
+    ol,
+    li,
+    dl,
+    dd,
+    hr,
+    pre,
+    form,
+    table,
+    video,
+    figure,
+    figcaption,
+    blockquote {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul[class],
+    ol[class] {
+        padding: 0;
+        list-style: none;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        font: inherit;
+        -webkit-appearance: none;
+    }
+
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    label {
+        display: block;
+        font-size: 0.9em;
+        font-weight: 700;
+    }
+
+    hr {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid currentcolor;
+        opacity: 0.1;
+    }
+
+    ::selection {
+        text-shadow: none;
+        background: #cbeafb;
+    }
+
+    mark {
+        background-color: #fdffb6;
+    }
+
+    small {
+        font-size: 80%;
+    }
+
+    sub,
+    sup {
+        position: relative;
+        font-size: 75%;
+        line-height: 0;
+        vertical-align: baseline;
+    }
+    sup {
+        top: -0.5em;
+    }
+    sub {
+        bottom: -0.25em;
+    }
+
+    ul li + li {
+        margin-top: 0.6em;
+    }
+
+    a {
+        color: #1292EE;
+        text-decoration-skip-ink: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        font-weight: 700;
+        color: #121212;
+        line-height: 1.4em;
+    }
+
+    h1 {
+        font-size: 3.4rem;
+        line-height: 1.1em;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+        line-height: 1.2em;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    h4 {
+        font-size: 1.7rem;
+    }
+
+    h5 {
+        font-size: 1.6rem;
+    }
+
+    h6 {
+        font-size: 1.6rem;
+    }
+
+    amp-img {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    amp-img img {
+        object-fit: cover;
+    }
+
+    .page-header {
+        padding: 50px 5vmin 30px;
+        text-align: center;
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .page-header a {
+        color: #121212;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1.6rem;
+        letter-spacing: -0.1px;
+    }
+
+    .post {
+        max-width: 680px;
+        margin: 0 auto;
+    }
+
+    .post-header {
+        margin: 0 5vmin 5vmin;
+        text-align: center;
+    }
+
+    .post-meta {
+        margin: 1rem 0 0 0;
+        text-transform: uppercase;
+        color: #738a94;
+        font-weight: 500;
+        font-size: 1.3rem;
+    }
+
+    .post-image {
+        margin: 0 0 5vmin;
+    }
+
+    .post-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .post-content {
+        padding: 0 5vmin;
+    }
+
+    .post-content > * + * {
+        margin-top: 1.5em;
+    }
+
+    .post-content [id]:not(:first-child) {
+        margin: 2em 0 0;
+    }
+
+    .post-content > [id] + * {
+        margin-top: 1rem;
+    }
+
+    .post-content [id] + .kg-card,
+    .post-content blockquote + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content > ul,
+    .post-content > ol,
+    .post-content > dl {
+        padding-left: 1.9em;
+    }
+
+    .post-content hr {
+        margin-top: 40px;
+    }
+
+    .post .post-content hr + * {
+        margin-top: 40px;
+    }
+
+    .post-content amp-img {
+        background-color: #f8f8f8;
+    }
+
+    .post-content blockquote {
+        position: relative;
+        font-style: italic;
+    }
+
+    .post-content blockquote::before {
+        content: "";
+        position: absolute;
+        left: -1.5em;
+        top: 0;
+        bottom: 0;
+        width: 0.3rem;
+        background: #000;
+    }
+
+    .post-content :not(.kg-card):not([id]) + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content .kg-card + :not(.kg-card) {
+        margin-top: 40px;
+    }
+
+    .kg-card figcaption {
+        padding: 1.5rem 1.5rem 0;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.4em;
+        opacity: 0.6;
+    }
+
+    .kg-card figcaption strong {
+        color: rgba(0,0,0,0.8);
+    }
+
+    .post-content :not(pre) code {
+        vertical-align: middle;
+        padding: 0.15em 0.4em 0.15em;
+        border: #e1eaef 1px solid;
+        font-weight: 400;
+        font-size: 0.9em;
+        line-height: 1em;
+        color: #dc0050;
+        background: #f0f6f9;
+        border-radius: 0.25em;
+    }
+
+    .post-content > pre {
+        overflow: scroll;
+        padding: 16px 20px;
+        color: #fff;
+        background: #1F2428;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.4);
+    }
+
+    .kg-embed-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .kg-image-card img {
+        margin: auto;
+    }
+
+    .kg-gallery-card + .kg-gallery-card {
+        margin-top: 0.75em;
+    }
+
+    .kg-gallery-container {
+        position: relative;
+    }
+
+    .kg-gallery-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .kg-gallery-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .kg-gallery-row:not(:first-of-type) {
+        margin: 0.75em 0 0 0;
+    }
+
+    .kg-gallery-image:not(:first-of-type) {
+        margin: 0 0 0 0.75em;
+    }
+
+    .kg-bookmark-card,
+    .kg-bookmark-publisher {
+        position: relative;
+    }
+
+    .kg-bookmark-container,
+    .kg-bookmark-container:hover {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        color: currentColor;
+        background: rgba(255,255,255,0.6);
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        text-decoration: none;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+    }
+
+    .kg-bookmark-content {
+        flex-basis: 0;
+        flex-grow: 999;
+        padding: 20px;
+        order: 1;
+    }
+
+    .kg-bookmark-title {
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 1.3em;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        max-height: 45px;
+        margin: 0.5em 0 0 0;
+        font-size: 1.4rem;
+        line-height: 1.55em;
+        overflow: hidden;
+        opacity: 0.8;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .kg-bookmark-metadata {
+        margin-top: 20px;
+    }
+
+    .kg-bookmark-metadata {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.3em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-metadata amp-img {
+        width: 18px;
+        height: 18px;
+        max-width: 18px;
+        max-height: 18px;
+        margin-right: 10px;
+    }
+
+    .kg-bookmark-thumbnail {
+        display: flex;
+        flex-basis: 20rem;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+
+    .kg-bookmark-thumbnail amp-img {
+        max-height: 200px;
+    }
+
+    .kg-bookmark-author {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-publisher::before {
+        content: "•";
+        margin: 0 .5em;
+    }
+
+    .kg-width-full.kg-card-hascaption {
+        display: grid;
+        grid-template-columns: inherit;
+    }
+
+    .post-content table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .post-content th {
+        padding: 0.5em 0.8em;
+        text-align: left;
+        font-size: .75em;
+        text-transform: uppercase;
+    }
+
+    .post-content td {
+        padding: 0.4em 0.7em;
+    }
+
+    .post-content tbody tr:nth-child(2n + 1) {
+        background-color: rgba(0,0,0,0.1);
+        padding: 1px;
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td:last-child {
+        box-shadow:
+            inset 1px 0 rgba(0,0,0,0.1),
+            inset -1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td {
+        box-shadow: inset 1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:last-child {
+        border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+
+    .page-footer {
+        padding: 60px 5vmin;
+        margin: 60px auto 0;
+        text-align: center;
+        background-color: #f8f8f8;
+    }
+
+    .page-footer h3 {
+        margin: 0.5rem 0 0 0;
+    }
+
+    .page-footer p {
+        max-width: 500px;
+        margin: 1rem auto 1.5rem;
+        font-size: 1.7rem;
+        line-height: 1.5em;
+        color: rgba(0,0,0,0.6)
+    }
+
+    .powered {
+        display: inline-flex;
+        align-items: center;
+        margin: 30px 0 0;
+        padding: 6px 9px 6px 6px;
+        border: rgba(0,0,0,0.1) 1px solid;
+        font-size: 12px;
+        line-height: 12px;
+        letter-spacing: -0.2px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-weight: 500;
+        color: #222;
+        text-decoration: none;
+        background: #fff;
+        border-radius: 6px;
+    }
+
+    .powered svg {
+        height: 16px;
+        width: 16px;
+        margin: 0 6px 0 0;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            font-size: 1.6rem;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        h1 {
+            font-size: 2.6rem;
+            line-height: 1.15em;
+        }
+        h2 {
+            font-size: 2rem;
+            line-height: 1.2em;
+        }
+        h3 {
+            font-size: 1.7rem;
+        }
+    }
+    </style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    
+
+</head>
+
+<body class="amp-template">
+    <header class="page-header">
+        <a href="../../index.html">
+                Deitte.com
+        </a>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">Highly-available S3</h1>
+                <section class="post-meta">
+                    Brian Deitte -
+                    <time class="post-date" datetime="2016-01-24">24 Jan 2016</time>
+                </section>
+            </header>
+            <figure class="post-image">
+                <amp-img src="https://images.unsplash.com/photo-1501623021299-5a9e5f95960b?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ" width="600" height="340" layout="responsive"></amp-img>
+            </figure>
+            <section class="post-content">
+
+                <p>It's possible to raise the availability of S3 through a multi-region setup.  Below I'll explain some of the work we've done at Brightcove on this, including a new <a href="https://github.com/brightcove/s3-s3">Node.js library</a>.</p>
+<h3 id="nearlyhighlyavailables3">Nearly-highly-available S3</h3>
+<p>S3 is a fantastic service, and it has the reputation of being a very reliable object store. Not only is the service well-regarded, Amazon touts a 99.999999999% durability of objects over a given year.</p>
+<p>So why is anything more needed here for reliability?</p>
+<p>While the stated durability is incredibly high, the claims on availability are fairly standard.  It is available somewhere between 99.99% a year (from <a href="https://aws.amazon.com/s3/details/">a details page</a>) to 99.9% a month (from <a href="https://aws.amazon.com/s3/sla/">the SLA</a>).  At the lower end, that's 44 minutes of allowed downtime in a month.</p>
+<p>On the project I'm working on, the player services for the <a href="https://www.brightcove.com/en/perform">Brightcove player</a>, we have a lot of API calls to make.  Each API that has a 99.9% (or even 99.99% availability) makes it much harder for us to make our own SLA requirements.  Raising the availability rating on S3 ourselves makes life simpler.</p>
+<p>And no matter S3's reputation, all services can fail.  This was shown with S3 in the August outage in us-east.  We had downtime during this issue, as did <a href="https://news.ycombinator.com/item?id=10033172">many others</a>.</p>
+<h3 id="trytryagain">Try, try again</h3>
+<p>The main way we're making sure that S3 is available is through the usage of a second region with replicated S3 data.  But there's a simpler step to understand first.  If there are intermittent issues from one location, the retry mechanism built into the AWS SDK will help.  By default, each S3 call will be retried up to 3 times using <a href="http://docs.aws.amazon.com/general/latest/gr/api-retries.html">exponential backoff</a>.  If you want to try even more times, it's simple enough to do so:</p>
+<pre><code>  awsConfig.maxRetries = maxAttempts;
+</code></pre>
+<p>The retries happen on 5xx requests.  We've also seen some 400 requests, socket timeouts, that work on a retry.  If you want to have more retry attempts, or simply capture the information on retries, you can do this with the retry event:</p>
+<pre><code>  awsRequest.on('retry', function (response) {
+    // add an \"if\" statement here for the
+    // conditions you want to retry on
+    response.error.retryable = true;
+  });
+</code></pre>
+<h3 id="multiregions3">Multi-region S3</h3>
+<p>The best way to increase the availablity of S3, as I mentioned above, is to use a second region.</p>
+<p>The heavy lifting for using this feature is all done for you by Amazon with <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html">cross-region replication</a>.  By enabling cross-region replication in both directions between two buckets, you can always write to one of the buckets and have the other one as the backup.</p>
+<p>Before going forward with this plan, make sure to spend some time in the <a href="http://calculator.s3.amazonaws.com/index.html">AWS cost calculator</a>.  You will have twice the storage cost, twice the API calls, and an increase in intra-region data transfer.  Take this in account with the extra work to be done below and, most importantly, the extra ongoing complexity of adding this in.  You may find it's not worth it for your case, or that there's lower-hanging availability scares to tackle first.</p>
+<h3 id="settingupcrossregionreplication">Setting up cross-region replication</h3>
+<p>See <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/crr-how-setup.html">Amazon's guide for setup</a> of replication.  A few additional tips on setup:</p>
+<ul>
+<li>Don't forget to turn on versioning for both buckets</li>
+<li>Once you have gone through the replication steps in Amazon's guide, remember to go back to setting up the second bucket for replication as well</li>
+<li>If you are starting with one bucket that already has data, make sure to use the AWS SDK for an initial copy of files from one bucket to another.</li>
+</ul>
+<h3 id="usingafailoverbucket">Using a failover bucket</h3>
+<p>With a second bucket set up and cross-replication enable, it's time to start using your new setup.  There's two main ways you can use your new failover capabilities:</p>
+<ol>
+<li>Switching to the failover bucket for public users of S3 data</li>
+<li>Switching to the failover bucket for API calls</li>
+</ol>
+<p>For the case of public viewing, you will need something that is contacted before S3 to have this work properly.  Hopefully you are already using a CDN that is contacted before S3, in which case this work should be fairly simple.  Many CDNs have a way to switch over to a failover origin as needed.  In the case of CloudFront, I believe this needs to be done using Route 53 instead, but you'll need to read up on this yourself.</p>
+<p>For the case of API usage, you will want a way to automatically switch API calls to the failover bucket as needed.  We created an open source Node.js library just for this case, <a href="https://github.com/brightcove/s3-s3">s3-s3</a>.  Even if you aren't using Node.js, looking at the library should give you some ideas of how this could be done.</p>
+<h3 id="testingfailure">Testing failure</h3>
+<p>So you've set up your failover bucket and ensured its usage within your application.  Now what?  Sure you could deploy and call it done, but it's nice to know that things really work right before a disaster shows they don't.</p>
+<p>The AWS SDK does provide a way to route S3 calls differently so that you can put them through a proxy that will simulate failure.  You can do this by setting the endpoint property in the AWS config:</p>
+<pre><code>    endpoint = new aws.Endpoint(s3PrimaryProxy);
+    awsConfigPrimary.endpoint = endpoint;
+    awsConfigPrimary.s3BucketEndpoint = true;
+</code></pre>
+<p>Set s3PrimaryProxy to the full URL of the proxy of your choice.  I've seen good work done with <a href="https://github.com/h2non/toxy">toxy</a>.</p>
+<h3 id="monitoringfailure">Monitoring failure</h3>
+<p>If you've written and tested things well, you'll never even know things have gone badly.  Well, unless you read any tech news anywhere, as they will all report on an S3 apocalypse.  But it's nice to find out yourself.</p>
+<p>The <a href="https://github.com/brightcove/s3-s3">s3-s3</a> library has a failure event that you can use to send on metrics or alerts on a failure.  I have seen some of these go off already, interestingly enough.  The best guess is that these are just network blips, and it's a fairly tiny fraction of calls.</p>
+<p>Another way to find out about failures is to look at the <a href="http://docs.aws.amazon.com/AmazonS3/latest/UG/ManagingBucketLogging.html">S3 bucket logs</a>.  The logs can take awhile to fill in, so it won't be an instant notification, but it will tell you eventually, likely within an hour.  To read the logs, I've liked how <a href="https://www.sumologic.com/aws/s3/">Sumo Logic</a> shows things, although there's many other tools.  You may need multiple tools here to get exactly what you need.</p>
+<h3 id="movingon">Moving on</h3>
+<p>And finally, one less failure to worry about!</p>
+
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="page-footer">
+        <h3>Deitte.com</h3>
+        <p><a href="../../index.html">Read more posts →</a></p>
+        <a class="powered" href="https://ghost.org" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156 156"><g fill="none" fill-rule="evenodd"><rect fill="#15212B" width="156" height="156" rx="27"/><g transform="translate(36 36)" fill="#F6F8FA"><path d="M0 71.007A4.004 4.004 0 014 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0130 84H4a4 4 0 01-4-4.007v-8.986zM50 71.007A4.004 4.004 0 0154 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0180 84H54a4 4 0 01-4-4.007v-8.986z"/><rect y="34" width="84" height="17" rx="4"/><path d="M0 4.007A4.007 4.007 0 014.007 0h41.986A4.003 4.003 0 0150 4.007v8.986A4.007 4.007 0 0145.993 17H4.007A4.003 4.003 0 010 12.993V4.007z"/><rect x="67" width="17" height="17" rx="4"/></g></g></svg> Published with Ghost</a>
+    </footer>
+    
+</body>
+</html>

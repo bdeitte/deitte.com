@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Highly-available S3</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css%3Fv=5a11b1448c.css" />
+
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/index.html" />
+    
+    <meta property="og:site_name" content="Deitte.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Highly-available S3" />
+    <meta property="og:description" content="It&#x27;s possible to raise the availability of S3 through a multi-region setup.  Below I&#x27;ll explain some of the work we&#x27;ve done at Brightcove on this, including a new Node.js library.  Nearly-highly-available S3 S3 is a fantastic service, and it has the reputation of being a very reliable object store." />
+    <meta property="og:url" content="https://deitte.com/highly-available-s3/" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1501623021299-5a9e5f95960b?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ" />
+    <meta property="article:published_time" content="2016-01-24T00:00:00.000Z" />
+    <meta property="article:modified_time" content="2020-10-14T03:08:06.000Z" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Highly-available S3" />
+    <meta name="twitter:description" content="It&#x27;s possible to raise the availability of S3 through a multi-region setup.  Below I&#x27;ll explain some of the work we&#x27;ve done at Brightcove on this, including a new Node.js library.  Nearly-highly-available S3 S3 is a fantastic service, and it has the reputation of being a very reliable object store." />
+    <meta name="twitter:url" content="https://deitte.com/highly-available-s3/" />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1501623021299-5a9e5f95960b?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Brian Deitte" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="1330" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Deitte.com",
+        "url": "https://deitte.com/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://deitte.com/content/images/2020/10/computer-3-10.23.00-PM--4-.png"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Brian Deitte",
+        "image": {
+            "@type": "ImageObject",
+            "url": "//www.gravatar.com/avatar/ac1c7f152ab59ed6b2f8c28eb39153a9?s=250&d=mm&r=x",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://deitte.com/author/brian/",
+        "sameAs": []
+    },
+    "headline": "Highly-available S3",
+    "url": "https://deitte.com/highly-available-s3/",
+    "datePublished": "2016-01-24T00:00:00.000Z",
+    "dateModified": "2020-10-14T03:08:06.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1501623021299-5a9e5f95960b?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=2000&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ",
+        "width": 2000,
+        "height": 1330
+    },
+    "description": "It&#x27;s possible to raise the availability of S3 through a multi-region setup.\nBelow I&#x27;ll explain some of the work we&#x27;ve done at Brightcove on this, including\na new Node.js library [https://github.com/brightcove/s3-s3].\n\nNearly-highly-available S3\nS3 is a fantastic service, and it has the reputation of being a very reliable\nobject store. Not only is the service well-regarded, Amazon touts a\n99.999999999% durability of objects over a given year.\n\nSo why is anything more needed here for reliability?\n",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://deitte.com/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 3.35" />
+    <link rel="alternate" type="application/rss+xml" title="Deitte.com" href="../rss/index.html" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-7910585-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-7910585-1');
+</script>
+
+<style>
+ .site-logo {
+ 	max-height: 200px;
+ }
+    
+.site-header-content {
+    max-height: 200px;
+}
+   
+.site-nav-logo {
+    padding: 5px;
+}
+
+.site-nav-logo img {
+    height: 40px;
+}    
+
+.post-full-image img {
+    max-width: 640px;
+}
+
+.post-full-image {
+    background: white;
+}
+
+</style>
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+
+        
+
+<header class="site-header">
+    <div class="outer site-nav-main">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left-wrapper">
+        <div class="site-nav-left">
+                <a class="site-nav-logo" href="../index.html"><img src="../content/images/2020/10/computer-3-10.23.00-PM--4-.png" alt="Deitte.com" /></a>
+            <div class="site-nav-content">
+                    <span class="nav-post-title ">Highly-available S3</span>
+            </div>
+        </div>
+    </div>
+    <div class="site-nav-right">
+            <div class="social-links">
+            </div>
+                <a class="rss-button" href="https://feedly.com/i/subscription/feed/https://deitte.com/rss/" title="RSS" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="6.18" cy="17.82" r="2.18"/><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/></svg>
+</a>
+
+    </div>
+</nav>
+    </div>
+</div></header>
+
+
+<main id="site-main" class="site-main outer">
+    <div class="inner">
+
+        <article class="post-full post ">
+
+            <header class="post-full-header">
+
+
+                <h1 class="post-full-title">Highly-available S3</h1>
+
+
+                <div class="post-full-byline">
+
+                    <section class="post-full-byline-content">
+
+                        <ul class="author-list">
+                            <li class="author-list-item">
+
+                                <div class="author-card">
+                                    <img class="author-profile-image" src="https://www.gravatar.com/avatar/ac1c7f152ab59ed6b2f8c28eb39153a9?s=250&amp;d=mm&amp;r=x" alt="Brian Deitte" />
+                                    <div class="author-info">
+                                        <h2>Brian Deitte</h2>
+                                        <p>Read <a href="../author/brian/index.html">more posts</a> by this author.</p>
+                                    </div>
+                                </div>
+
+                                <a href="../author/brian/index.html" class="author-avatar">
+                                    <img class="author-profile-image" src="https://www.gravatar.com/avatar/ac1c7f152ab59ed6b2f8c28eb39153a9?s=250&amp;d=mm&amp;r=x" alt="Brian Deitte" />
+                                </a>
+
+                            </li>
+                        </ul>
+
+                        <section class="post-full-byline-meta">
+                            <h4 class="author-name"><a href="../author/brian/index.html">Brian Deitte</a></h4>
+                            <div class="byline-meta-content">
+                                <time class="byline-meta-date" datetime="2016-01-24">24 Jan 2016</time>
+                                <span class="byline-reading-time"><span class="bull">&bull;</span> 4 min read</span>
+                            </div>
+                        </section>
+
+                    </section>
+
+
+                </div>
+            </header>
+
+            <figure class="post-full-image">
+                <img
+                    srcset="https://images.unsplash.com/photo-1501623021299-5a9e5f95960b?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ 300w,
+                            https://images.unsplash.com/photo-1501623021299-5a9e5f95960b?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ 600w,
+                            https://images.unsplash.com/photo-1501623021299-5a9e5f95960b?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ 1000w,
+                            https://images.unsplash.com/photo-1501623021299-5a9e5f95960b?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ 2000w"
+                    sizes="(max-width: 800px) 400px,
+                        (max-width: 1170px) 1170px,
+                            2000px"
+                    src="https://images.unsplash.com/photo-1501623021299-5a9e5f95960b?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ"
+                    alt="Highly-available S3"
+                />
+            </figure>
+
+            <section class="post-full-content">
+                <div class="post-content">
+                    <!--kg-card-begin: markdown--><p>It's possible to raise the availability of S3 through a multi-region setup.  Below I'll explain some of the work we've done at Brightcove on this, including a new <a href="https://github.com/brightcove/s3-s3">Node.js library</a>.</p>
+<h3 id="nearlyhighlyavailables3">Nearly-highly-available S3</h3>
+<p>S3 is a fantastic service, and it has the reputation of being a very reliable object store. Not only is the service well-regarded, Amazon touts a 99.999999999% durability of objects over a given year.</p>
+<p>So why is anything more needed here for reliability?</p>
+<p>While the stated durability is incredibly high, the claims on availability are fairly standard.  It is available somewhere between 99.99% a year (from <a href="https://aws.amazon.com/s3/details/">a details page</a>) to 99.9% a month (from <a href="https://aws.amazon.com/s3/sla/">the SLA</a>).  At the lower end, that's 44 minutes of allowed downtime in a month.</p>
+<p>On the project I'm working on, the player services for the <a href="https://www.brightcove.com/en/perform">Brightcove player</a>, we have a lot of API calls to make.  Each API that has a 99.9% (or even 99.99% availability) makes it much harder for us to make our own SLA requirements.  Raising the availability rating on S3 ourselves makes life simpler.</p>
+<p>And no matter S3's reputation, all services can fail.  This was shown with S3 in the August outage in us-east.  We had downtime during this issue, as did <a href="https://news.ycombinator.com/item?id=10033172">many others</a>.</p>
+<h3 id="trytryagain">Try, try again</h3>
+<p>The main way we're making sure that S3 is available is through the usage of a second region with replicated S3 data.  But there's a simpler step to understand first.  If there are intermittent issues from one location, the retry mechanism built into the AWS SDK will help.  By default, each S3 call will be retried up to 3 times using <a href="http://docs.aws.amazon.com/general/latest/gr/api-retries.html">exponential backoff</a>.  If you want to try even more times, it's simple enough to do so:</p>
+<pre><code>  awsConfig.maxRetries = maxAttempts;
+</code></pre>
+<p>The retries happen on 5xx requests.  We've also seen some 400 requests, socket timeouts, that work on a retry.  If you want to have more retry attempts, or simply capture the information on retries, you can do this with the retry event:</p>
+<pre><code>  awsRequest.on('retry', function (response) {
+    // add an \&quot;if\&quot; statement here for the
+    // conditions you want to retry on
+    response.error.retryable = true;
+  });
+</code></pre>
+<h3 id="multiregions3">Multi-region S3</h3>
+<p>The best way to increase the availablity of S3, as I mentioned above, is to use a second region.</p>
+<p>The heavy lifting for using this feature is all done for you by Amazon with <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html">cross-region replication</a>.  By enabling cross-region replication in both directions between two buckets, you can always write to one of the buckets and have the other one as the backup.</p>
+<p>Before going forward with this plan, make sure to spend some time in the <a href="http://calculator.s3.amazonaws.com/index.html">AWS cost calculator</a>.  You will have twice the storage cost, twice the API calls, and an increase in intra-region data transfer.  Take this in account with the extra work to be done below and, most importantly, the extra ongoing complexity of adding this in.  You may find it's not worth it for your case, or that there's lower-hanging availability scares to tackle first.</p>
+<h3 id="settingupcrossregionreplication">Setting up cross-region replication</h3>
+<p>See <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/crr-how-setup.html">Amazon's guide for setup</a> of replication.  A few additional tips on setup:</p>
+<ul>
+<li>Don't forget to turn on versioning for both buckets</li>
+<li>Once you have gone through the replication steps in Amazon's guide, remember to go back to setting up the second bucket for replication as well</li>
+<li>If you are starting with one bucket that already has data, make sure to use the AWS SDK for an initial copy of files from one bucket to another.</li>
+</ul>
+<h3 id="usingafailoverbucket">Using a failover bucket</h3>
+<p>With a second bucket set up and cross-replication enable, it's time to start using your new setup.  There's two main ways you can use your new failover capabilities:</p>
+<ol>
+<li>Switching to the failover bucket for public users of S3 data</li>
+<li>Switching to the failover bucket for API calls</li>
+</ol>
+<p>For the case of public viewing, you will need something that is contacted before S3 to have this work properly.  Hopefully you are already using a CDN that is contacted before S3, in which case this work should be fairly simple.  Many CDNs have a way to switch over to a failover origin as needed.  In the case of CloudFront, I believe this needs to be done using Route 53 instead, but you'll need to read up on this yourself.</p>
+<p>For the case of API usage, you will want a way to automatically switch API calls to the failover bucket as needed.  We created an open source Node.js library just for this case, <a href="https://github.com/brightcove/s3-s3">s3-s3</a>.  Even if you aren't using Node.js, looking at the library should give you some ideas of how this could be done.</p>
+<h3 id="testingfailure">Testing failure</h3>
+<p>So you've set up your failover bucket and ensured its usage within your application.  Now what?  Sure you could deploy and call it done, but it's nice to know that things really work right before a disaster shows they don't.</p>
+<p>The AWS SDK does provide a way to route S3 calls differently so that you can put them through a proxy that will simulate failure.  You can do this by setting the endpoint property in the AWS config:</p>
+<pre><code>    endpoint = new aws.Endpoint(s3PrimaryProxy);
+    awsConfigPrimary.endpoint = endpoint;
+    awsConfigPrimary.s3BucketEndpoint = true;
+</code></pre>
+<p>Set s3PrimaryProxy to the full URL of the proxy of your choice.  I've seen good work done with <a href="https://github.com/h2non/toxy">toxy</a>.</p>
+<h3 id="monitoringfailure">Monitoring failure</h3>
+<p>If you've written and tested things well, you'll never even know things have gone badly.  Well, unless you read any tech news anywhere, as they will all report on an S3 apocalypse.  But it's nice to find out yourself.</p>
+<p>The <a href="https://github.com/brightcove/s3-s3">s3-s3</a> library has a failure event that you can use to send on metrics or alerts on a failure.  I have seen some of these go off already, interestingly enough.  The best guess is that these are just network blips, and it's a fairly tiny fraction of calls.</p>
+<p>Another way to find out about failures is to look at the <a href="http://docs.aws.amazon.com/AmazonS3/latest/UG/ManagingBucketLogging.html">S3 bucket logs</a>.  The logs can take awhile to fill in, so it won't be an instant notification, but it will tell you eventually, likely within an hour.  To read the logs, I've liked how <a href="https://www.sumologic.com/aws/s3/">Sumo Logic</a> shows things, although there's many other tools.  You may need multiple tools here to get exactly what you need.</p>
+<h3 id="movingon">Moving on</h3>
+<p>And finally, one less failure to worry about!</p>
+<!--kg-card-end: markdown-->
+                </div>
+            </section>
+
+
+
+        </article>
+
+    </div>
+</main>
+
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+
+                <article class="post-card post ">
+
+    <a class="post-card-image-link" href="../scheduled-ebs-sna/index.html">
+        <img class="post-card-image"
+            srcset="https://images.unsplash.com/photo-1541480601022-2308c0f02487?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ 300w,
+                    https://images.unsplash.com/photo-1541480601022-2308c0f02487?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ 600w,
+                    https://images.unsplash.com/photo-1541480601022-2308c0f02487?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ 1000w,
+                    https://images.unsplash.com/photo-1541480601022-2308c0f02487?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ 2000w"
+            sizes="(max-width: 1000px) 400px, 700px"
+            loading="lazy"
+            src="https://images.unsplash.com/photo-1541480601022-2308c0f02487?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ"
+            alt="Scheduled EBS snapshots"
+        />
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="../scheduled-ebs-sna/index.html">
+
+            <header class="post-card-header">
+                <h2 class="post-card-title">Scheduled EBS snapshots</h2>
+            </header>
+
+            <section class="post-card-excerpt">
+                    <p>As part of my Ghost setup on AWS, I wanted to make sure I had backups of EBS in case things go wrong (as they always do, eventually).  I couldn't</p>
+            </section>
+
+        </a>
+
+        <footer class="post-card-meta">
+            <ul class="author-list">
+                <li class="author-list-item">
+            
+                    <div class="author-name-tooltip">
+                        Brian Deitte
+                    </div>
+            
+                    <a href="../author/brian/index.html" class="static-avatar">
+                        <img class="author-profile-image" src="https://www.gravatar.com/avatar/ac1c7f152ab59ed6b2f8c28eb39153a9?s=250&amp;d=mm&amp;r=x" alt="Brian Deitte" />
+                    </a>
+                </li>
+            </ul>
+            <div class="post-card-byline-content">
+                <span><a href="../author/brian/index.html">Brian Deitte</a></span>
+                <span class="post-card-byline-date"><time datetime="2016-01-31">31 Jan 2016</time> <span class="bull">&bull;</span> 1 min read</span>
+            </div>
+        </footer>
+
+    </div>
+
+</article>
+
+                <article class="post-card post ">
+
+    <a class="post-card-image-link" href="../old-posts-new-again/index.html">
+        <img class="post-card-image"
+            srcset="https://images.unsplash.com/photo-1516085216930-c93a002a8b01?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ 300w,
+                    https://images.unsplash.com/photo-1516085216930-c93a002a8b01?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ 600w,
+                    https://images.unsplash.com/photo-1516085216930-c93a002a8b01?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ 1000w,
+                    https://images.unsplash.com/photo-1516085216930-c93a002a8b01?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ 2000w"
+            sizes="(max-width: 1000px) 400px, 700px"
+            loading="lazy"
+            src="https://images.unsplash.com/photo-1516085216930-c93a002a8b01?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ"
+            alt="Old posts, new again"
+        />
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="../old-posts-new-again/index.html">
+
+            <header class="post-card-header">
+                <h2 class="post-card-title">Old posts, new again</h2>
+            </header>
+
+            <section class="post-card-excerpt">
+                    <p>None of the posts below, from the old version of this site, are likely too interesting to you.  They are mostly about ancient history or dead technologies.  But I loved</p>
+            </section>
+
+        </a>
+
+        <footer class="post-card-meta">
+            <ul class="author-list">
+                <li class="author-list-item">
+            
+                    <div class="author-name-tooltip">
+                        Brian Deitte
+                    </div>
+            
+                    <a href="../author/brian/index.html" class="static-avatar">
+                        <img class="author-profile-image" src="https://www.gravatar.com/avatar/ac1c7f152ab59ed6b2f8c28eb39153a9?s=250&amp;d=mm&amp;r=x" alt="Brian Deitte" />
+                    </a>
+                </li>
+            </ul>
+            <div class="post-card-byline-content">
+                <span><a href="../author/brian/index.html">Brian Deitte</a></span>
+                <span class="post-card-byline-date"><time datetime="2016-01-18">18 Jan 2016</time> <span class="bull">&bull;</span> 1 min read</span>
+            </div>
+        </footer>
+
+    </div>
+
+</article>
+        </div>
+    </div>
+</aside>
+
+
+
+
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="../index.html">Deitte.com</a> &copy; 2026</section>
+                <nav class="site-footer-nav">
+                    <a href="../index.html">Latest Posts</a>
+                    
+                    
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous">
+    </script>
+    <script src="../assets/built/casper.js%3Fv=5a11b1448c"></script>
+
+    <script>
+        // Parse the URL parameter
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        // Give the parameter a variable name
+        var action = getParameterByName('action');
+
+        $(document).ready(function () {
+            if (action == 'subscribe') {
+                $('body').addClass("subscribe-success");
+            }
+
+            $('.subscribe-success-message .subscribe-close').click(function () {
+                $('.subscribe-success-message').addClass('close');
+            });
+
+            // Reset form on opening subscrion overlay
+            $('.subscribe-button').click(function() {
+                $('.subscribe-overlay form').removeClass();
+                $('.subscribe-email').val('');
+            });
+        });
+    </script>
+
+    <script>
+    $(document).ready(function () {
+        // FitVids - start
+        var $postContent = $(".post-full-content");
+        $postContent.fitVids();
+        // FitVids - end
+
+        // Replace nav with title on scroll - start
+        Casper.stickyNavTitle({
+            navSelector: '.site-nav-main',
+            titleSelector: '.post-full-title',
+            activeClass: 'nav-post-title-active'
+        });
+        // Replace nav with title on scroll - end
+
+        // Hover on avatar
+        var hoverTimeout;
+        $('.author-list-item').hover(function () {
+            var $this = $(this);
+
+            clearTimeout(hoverTimeout);
+
+            $('.author-card').removeClass('hovered');
+            $(this).children('.author-card').addClass('hovered');
+
+        }, function () {
+            var $this = $(this);
+
+            hoverTimeout = setTimeout(function () {
+                $this.children('.author-card').removeClass('hovered');
+            }, 800);
+        });
+    });
+</script>
+
+
+    
+
+</body>
+</html>

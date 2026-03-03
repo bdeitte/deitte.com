@@ -1,0 +1,600 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard">
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <meta name="generator" content="Movable Type Pro 4.31-en" />
+   <meta name="keywords" content="flex html in flex ">
+   <meta name="description" content="An update to this example for the final version of Flex 2 can be found here. I updated the files for Embedding HTML in a Flex application in AS3 in...">
+
+   <link rel="stylesheet" href="../../../old_home/styles-site.css" type="text/css" />
+   <link rel="alternate" type="application/atom+xml" title="Atom" href="../../../old_home/atom.xml" />
+   <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="https://deitte.com/old_home/index.xml" />
+
+   <title>Update to Embedding HTML in a Flex Application (Deitte.com)</title>
+
+   <link rel="start" href="../../../index.html" title="Home" />
+   <link rel="prev" href="../03/as3_documentati.htm" title="AS3 Documentation and Libraries" />
+   <link rel="next" href="a_sabbatical_ad.htm" title="A Sabbatical, Adobe, and Allaire" />
+
+   
+
+   
+   <script type="text/javascript" src="../../../old_home/mt-site.js"></script>
+</head>
+<body class="layout-two-column-right individual-entry-archive" onload="individualArchivesOnLoad(commenter_name)">
+   <div id="container">
+      <div id="container-inner" class="pkg">
+
+         <div id="banner">
+            <div id="banner-inner" class="pkg">
+               <h1 id="banner-header"><a href="../../../index.html" accesskey="1">Deitte.com</a></h1>
+               <h2 id="banner-description">A Mix of Flex and Brightcove</h2>
+            </div>
+         </div>
+
+         <div id="pagebody">
+            <div id="pagebody-inner" class="pkg">
+               <div id="alpha">
+                  <div id="alpha-inner" class="pkg">
+
+                     <p class="content-nav">
+                        <a href="../03/as3_documentati.htm">&laquo; AS3 Documentation and Libraries</a> |
+                        <a href="../../../index.html">Main</a>
+                        | <a href="a_sabbatical_ad.htm">A Sabbatical, Adobe, and Allaire &raquo;</a>
+                     </p>
+
+
+                     <h2 class="archive-title">Update to Embedding HTML in a Flex Application</h2>
+                     <div class="entry" id="entry-45">
+                        <div class="entry-content">
+                           
+                           <div class="entry-body">
+                              <p><b>An update to this example for the final version of Flex 2 can be found <A HREF="https://deitte.com/archives/2006/08/finally_updated.htm">here</A>. </b></p>
+
+<p>I updated the files for <A HREF="../02/embedding_html.htm">Embedding HTML in a Flex application in AS3</A> in <A HREF="https://deitte.com/IFrameDemo2">this directory</A>.  I didn't test the files with beta 2, but they should work with the upcoming beta 3.</p>
+
+<p>One important change is in the HTML wrapper, which was causing the HTML to sometimes disappear when using IE.  There needs to be a parm setting wmode to opaque.  I also updated the HTML wrapper to a newer version, and made a few other minor changes (which I would list, but it's been so long I've forgotten them...)</p>
+
+<p>The migration text I promised a long time ago doesn't look like it'll ever get completed, so I'm just going to copy the 80% done version below for those interested.</p>
+                           </div>
+                           
+                           
+                           <div id="more" class="entry-more">
+                              <p>When migrating Christophe's solution, <A HREF="../02/embedding_html.htm">Embedding HTML in a Flex application using an IFrame</A> to Flex 2, I kept detailed notes of what I was doing.  Below is the prettified version of these notes.</p>
+
+<p>The Easy Changes</p>
+
+<p>After writing this part of the migration explanation, I realized it wasn't really necessary, that it's easy for anybody to compile, see the errors, and look up in the help system any of the errors that come up.  This worked very well, and I was easily able to figure out most of the issues I came across.  But I kept writing things out, so here's the full migration info for those interested.</p>
+
+<p>I took the compile-fix-repeat method of fixing the issues.  A studying of a migration guides along with a more structured search and replace would make more sense for a large project, but I knew some of the issues already, and I'm only converting three files.</p>
+
+<p>The first thing I did, without thinking, was change the mxml namespace from "http://www.macromedia.com/2003/mxml" to "http://www.macromedia.com/2005/mxml".  The next change I made with my eyes closed was to add access modifiers to functions and type declarations variables.  So "function moveIFrame()" became "private function moveIFrame()".</p>
+
+<p>Adding a type declaration of Object to pt gave me the Error "Implicit coercion of a value with static type 'Object' to a possibly unrelated type 'flash.geom:Point'".  This made it obvious that I needed to change:</p>
+
+<p>var pt:Object={x:0, y:0};</p>
+
+<p>to:</p>
+
+<p>var pt:Point=new Point(0, 0);</p>
+
+<p>After that, I compile the add and got the error "Overriding function that is not marked for override" in IFrame.mxml, which extends Canvas, on this method:</p>
+
+<p>        public function set visible(visible: Boolean): Void {</p>
+
+<p>That's another thing I should done off the bat, which is add override to methods that override:</p>
+
+<p>        override public function set visible(visible: Boolean): Void {</p>
+
+<p>Next I'm told that getURL doesn't exist:</p>
+
+<p>getURL("javascript:hideIFrame()");</p>
+
+<p>I search the help and see that this line now needs to be:</p>
+
+<p> public var u:URLRequest = new URLRequest("javascript:hideIFrame()"); 	<br />
+ navigateToURL(u);</p>
+
+<p>And I add "import flash.net.navigateToURL;" to the top of the Script block.</p>
+
+<p>Next I saw "Type annotation is not a compile-time constant: Void", which means I needed to change Void to void everywhere I see it.  </p>
+
+<p>doLater() showed up as removed, so after searching the docs I changed this it to callLater, from:</p>
+
+<p>doLater(this, 'moveIFrame')</p>
+
+<p>to:</p>
+
+<p>callLater(moveIFrame)</p>
+
+<p></p>
+
+<p>Dealing with HTML and ExternalInterface</p>
+
+<p>At this point everything compiled fine.  I put index.htm into the directory where the SWF was (since I couldn't tell Flex Builder to use a custom html wrapper) and then clicked on the file to display... nothing.  Ah yes, the SWF name was different now, from IFrameDemo.mxml.swf to IFrameDemo.swf.  So I load it again and... nothing.  I load just the SWF and it displays.  I take the script out of the HTML page and see this error from Flash:</p>
+
+<p>SecurityError: Error #2051: Security sandbox violation: 'file:///C:/dev/flex/projects/iframe/IFrameDemo.swf' may not evaluate scripting URLs within 'file:///C:/dev/flex/projects/iframe/index2.htm'.</p>
+
+<p>I remembered that there was a new restriction in Player 8 (and 8.5) where local files and network files could not be accessed in the same movie.  I wondered if relative URLs were thought to be network files.  Sure enough, when I loaded the SWF through JRun, I didn't get the error anymore.  But the page within the page still didn't show up.  I figured out that unlike getURL(), navigateToURL() would not work allow any frame to be given as the second argument.  So I decided to go ahead and convert the navigateToURL() calls to ExternalInterface.</p>
+
+<p>This took awhile.  Converting the navigateToURL() calls was easy, as the ExternalInterface calls were very simple, like this:</p>
+
+<p>                ExternalInterface.call("loadIFrame", source);</p>
+
+<p>But still the html page was not showing up.  What was going on?</p>
+
+<p>At this point I conceived my my "debugging strategy" in Javascript, which consisted of looking at Firefox's Javascript console and throwing alerts up as debug statements.  Ug.  Is there a better way to do this?  After sifting through the methods, I figured out that only the first argument to moveIFrame had all of argument information in it.  So I changed:</p>
+
+<p>            ExternalInterface.call("moveIFrame", pt.x+","+pt.y+","+this.width+","+this.height);</p>
+
+<p>to:</p>
+
+<p>            ExternalInterface.call("moveIFrame", pt.x, pt.y, this.width, this.height);</p>
+
+<p>Once changed, the html finally showed up.  But the frame showed up in the upper left hand corner.  localToGlobal did not look to be working correctly.</p>
+
+<p>            var newPt = this.localToGlobal(pt);</p>
+
+<p>After this, everything finally worked!</p>
+
+<p><br />
+Making Things Better</p>
+
+<p>The one problem I had at first with the generated html in Flex Builder was that I didn't know there was a to interject Javascript into the page.  (html-template)<br />
+Add the Javascript functions (moveFrame, etc).  Added onMouseDown="document.body.focus();" to the embed, alhtough not sure if htat was needed.  Also added     + 'wmode="opaque"'<br />
+    + 'swLiveConnect="true"' to the embed.  Added the iframe named 'myFrame'.</p>
+
+<p>The Tree on the left still looked really odd.  Apparently the......</p>
+
+<p>Tried adding "rootVisible="false""</p>
+
+<p>Change the change attribute value in Tree from :</p>
+
+<p>iFrame.source=tree.selectedNode.attributes.path</p>
+
+<p>to </p>
+
+<p>iFrame.source=tree.selectedNode.path</p>
+
+<p>I made a few cleanup changes.  The VBScript and related Javascript method in index.htm were removed, since it was only needed for some commented-out fscommands.  In IFrame.mxml, I added a check for ExternalInterface via ExternalInterface.available, throwing an Error if it wasn't available.  In IFrameDemo.mxml, I added a third section of links for Flex sites.  </p>
+                           </div>
+                                    
+                           
+                           <div class="entry-tags">Tags: <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=flex&amp;limit=20" rel="tag">flex</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=html%20in%20flex&amp;limit=20" rel="tag">html in flex</a>
+                           </div>
+                           
+                        </div>
+                        <p class="entry-footer">
+                           <span class="post-footers">
+                               
+                                   Posted on May  2, 2006  1:54 AM
+                               
+                           </span> 
+                           <span class="separator">|</span> <a class="permalink" href="update_to_embed.htm">Permalink</a>
+<span class="separator">|</span> <A HREF="http://digg.com/submit?url=https://deitte.com/archives/2006/05/update_to_embed.htm&title=Update to Embedding HTML in a Flex Application">digg</A>
+                           <span class="separator">|</span> <A HREF="http://del.icio.us/post?url=https://deitte.com/archives/2006/05/update_to_embed.htm">del.icio.us</A>
+                        </p>
+                     </div>
+
+                     
+
+                     
+                     <div id="comments" class="comments">
+                        
+                           
+                              <div class="comments-content">
+                                 <h3 class="comments-header">Comments (13)</h3>
+                           
+                                 <a id="c000217"></a>
+                                 <div class="comment" id="comment-217">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          Darren:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>We found that (in Beta 1) by setting wmode=opaque inexplicably stops shift-tab from working (I suspect it is interfering with shift and ctrl keys from being detected by flash).</p>
+
+<p>Have you found the same thing? (we have logged a bug in the Flex forums about this0.</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          Darren  |
+                                          <a href="update_to_embed.htm#comment-217">May  2, 2006  4:57 AM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="update_to_embed.htm#comment-217" title="Permalink to this comment">May  2, 2006 04:57</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c000420"></a>
+                                 <div class="comment" id="comment-420">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          Daniel:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>Has anyone managed to get this to work in Flex 2 Final. It is creating a pop-up window on my system instead of a iFrame in IE6.</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          Daniel  |
+                                          <a href="update_to_embed.htm#comment-420">July 14, 2006  9:02 PM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="update_to_embed.htm#comment-420" title="Permalink to this comment">July 14, 2006 21:02</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c000489"></a>
+                                 <div class="comment" id="comment-489">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          Anthony:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p><br />
+Ditto - I can't get this to work in Flex 2 Final and I would be beyond grateful if you could pass along some hints as to what we might change.</p>
+
+<p>Cheers!<br />
+</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          Anthony  |
+                                          <a href="update_to_embed.htm#comment-489">July 23, 2006 11:40 PM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="update_to_embed.htm#comment-489" title="Permalink to this comment">July 23, 2006 23:40</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c000502"></a>
+                                 <div class="comment" id="comment-502">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          Brian:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>I haven't had the chance to look into it, although it's still on the short-list of things to do for Flex outside of work.  If anybody else has a working solution, please comment, or email me and I'd be happy to link to it.<br />
+</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          Brian  |
+                                          <a href="update_to_embed.htm#comment-502">July 24, 2006  4:03 PM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="update_to_embed.htm#comment-502" title="Permalink to this comment">July 24, 2006 16:03</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c000526"></a>
+                                 <div class="comment" id="comment-526">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          MySchizoBuddy:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>So this way I can embed Quicktime movies directly inside flex, or is there a better way to do that. </p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          MySchizoBuddy  |
+                                          <a href="update_to_embed.htm#comment-526">July 29, 2006  8:55 PM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="update_to_embed.htm#comment-526" title="Permalink to this comment">July 29, 2006 20:55</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c000531"></a>
+                                 <div class="comment" id="comment-531">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          Brian:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>This is probably the second-best way to embed Quicktime movies.  The best way, when possible, is to convert the Quicktime movie to FLV and use the FLV.</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          Brian  |
+                                          <a href="update_to_embed.htm#comment-531">July 30, 2006 12:37 PM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="update_to_embed.htm#comment-531" title="Permalink to this comment">July 30, 2006 12:37</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c000562"></a>
+                                 <div class="comment" id="comment-562">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          Steve:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>Any progress on getting this to work with the final version of Flex 2?  This is a HUGE enabler for lots of us using FLEX and immediately opens up all sorts of possibilities.  Any help / advice would be greatly appreciated.  Thanks.</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          Steve  |
+                                          <a href="update_to_embed.htm#comment-562">August 14, 2006  9:53 AM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="update_to_embed.htm#comment-562" title="Permalink to this comment">August 14, 2006 09:53</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c000563"></a>
+                                 <div class="comment" id="comment-563">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          Brian:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>Hi Steve, I still haven't started this.  If anybody else is updating these files, please let me know, as I would be happy to link to a finished version for Flex 2!  If not, know that I'm still planning to do this, but I haven't found the full day I need for an update.  Next weekend doesn't look full yet, so we shall see...<br />
+</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          Brian  |
+                                          <a href="update_to_embed.htm#comment-563">August 14, 2006  3:07 PM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="update_to_embed.htm#comment-563" title="Permalink to this comment">August 14, 2006 15:07</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c000572"></a>
+                                 <div class="comment" id="comment-572">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          Rob:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>FYI, these files work just fine for me.  The only change I had to make was in the HTML file.  Change the major revision from 8 to 9 and the minor revision from 5 to 0, and it will work.  </p>
+
+<p>The sizing didn't quite work out as planned.  When I opened the browser window, the Iframe was too small.  But I also modified the loadIFrame method to accept height and width parameters from my application, and things went smoothly from that point.  Resize did not work for me, but for my purposes, I do not need it.  </p>
+
+<p>At any rate, thought it might be helpful to let you all know that this code is functional. You just have to change the revision to get the IFrame going.  Pz.</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          Rob  |
+                                          <a href="update_to_embed.htm#comment-572">August 17, 2006  2:44 PM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="update_to_embed.htm#comment-572" title="Permalink to this comment">August 17, 2006 14:44</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c000578"></a>
+                                 <div class="comment" id="comment-578">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          Mike:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>The revision number changes don't work for me...anybody else get this going?</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          Mike  |
+                                          <a href="update_to_embed.htm#comment-578">August 23, 2006  1:13 PM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="update_to_embed.htm#comment-578" title="Permalink to this comment">August 23, 2006 13:13</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c000579"></a>
+                                 <div class="comment" id="comment-579">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          Brian Deitte:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>Mike, try the updated version of these files: <a href="https://deitte.com/archives/2006/08/finally_updated.htm">https://deitte.com/archives/2006/08/finally_updated.htm</a></p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          Brian Deitte  |
+                                          <a href="update_to_embed.htm#comment-579">August 23, 2006  1:22 PM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="update_to_embed.htm#comment-579" title="Permalink to this comment">August 23, 2006 13:22</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c046498"></a>
+                                 <div class="comment" id="comment-46498">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          <a title="http://tcs.com" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=46498">Rajeev kumar</a>:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>Dear sir<br />
+i am a Final year MCA student doing project on flex.<br />
+i downloaded your project and tried to run this but got problem...page was not displaying..i have a very similar requirement where i want to displayed multiple Flex builder compiled html in to single flex application..it will be great if you help me...<br />
+i am using flex builder3 for developing the application....</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          <a title="http://tcs.com" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=46498">Rajeev kumar</a>  |
+                                          <a href="update_to_embed.htm#comment-46498">March 24, 2009  7:41 AM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="update_to_embed.htm#comment-46498" title="Permalink to this comment">March 24, 2009 07:41</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c047844"></a>
+                                 <div class="comment" id="comment-47844">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          <a title="http://www.theinfinitio.com" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=47844">hitesh sethi</a>:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>doesn't work on flex 2??</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          <a title="http://www.theinfinitio.com" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=47844">hitesh sethi</a>  |
+                                          <a href="update_to_embed.htm#comment-47844">June  2, 2009  3:32 AM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="update_to_embed.htm#comment-47844" title="Permalink to this comment">June  2, 2009 03:32</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                              </div>
+                           
+                        
+                        
+                     </div>
+                     
+                  </div>
+               </div>
+<div id="beta">
+                  <div id="beta-inner" class="pkg">
+
+                     <div class="module-search module">
+                        <h2 class="module-header">Posts of Note</h2>
+                        <div class="module-content">
+                        <ul class="module-list">
+                              <li class="module-list-item"><a href="../12/about_this_blog.htm">About This Blog</a></li>
+                              <li class="module-list-item"><a href="../../2009/02/creating_a_vide.htm">Using BEML</a></li>
+                              <li class="module-list-item"><a href="../../2011/02/lessons_learned.htm">Lessons with StageVideo</a></li>
+                              <li class="module-list-item"><a href="../../2009/08/ten_brightcove.htm">Brightcove SDKs</a></li>
+                              <li class="module-list-item"><a href="../../2008/10/a_faster_flex_3.htm">A Faster Flex 3 SDK</a></li>
+                              <li class="module-list-item"><a href="../../2008/07/six_tools_for_f.htm">Tools For Flex</a></li>
+                              <li class="module-list-item"><a href="../../2008/07/dont_use_iframe.htm">HTML in Flex</a></li>
+                        </ul>
+                        </div>
+                     </div>
+                     <div class="module-search module">
+                        <h2 class="module-header">Tags</h2>
+                        <div class="module-content">
+
+        <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=flex&amp;limit=20">flex</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=brightcove&amp;limit=20">brightcove</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=flex%20compiler&amp;limit=20">flex compiler</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=flash&amp;limit=20">flash</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=brightcove%20news&amp;limit=20">brightcove news</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=advertising&amp;limit=20">advertising</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=flex%20sdk&amp;limit=20">flex sdk</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=as3&amp;limit=20">as3</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=blog%20to%20read&amp;limit=20">blog to read</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=brightcove%20dev&amp;limit=20">brightcove dev</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=html%20in%20flex&amp;limit=20">html in flex</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=adobe&amp;limit=20">adobe</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=boston%20flash%20user%20group&amp;limit=20">boston flash user group</a>
+
+                        </div>
+                     </div>
+                     <div class="module-search module">
+                        <h2 class="module-header">Ads</h2>
+<script type="text/javascript"><!--
+google_ad_client = "pub-0625677791353122";
+/* 200x200, created 5/10/09 */
+google_ad_slot = "0856043844";
+google_ad_width = 200;
+google_ad_height = 200;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<br/>
+<br/>
+</div>
+                     <div class="module-search module">
+                        <h2 class="module-header">Search this blog</h2>
+                        <div class="module-content">
+                           <form method="get" action="https://deitte.com/cgi-bin/mt/mt-search.cgi">
+                              <input type="hidden" name="IncludeBlogs" value="1" />
+                              <input id="search" name="search" size="20" />
+                              <input type="submit" value="Search" />
+                           </form>
+                        </div>
+                     </div>                   
+
+                     <div class="module-search module">
+                        <h2 class="module-header">Archive</h2>
+                        <div class="module-content">
+                        <ul class="module-list">
+                              <li class="module-list-item"><a href="https://deitte.com/archives.htm">All posts</a></li>
+                        </ul>
+                        </div>
+                     </div>
+
+                     <div class="module-rss-etc module">
+                        <h2 class="module-header">Feeds</h2>
+                        <div class="module-content">
+                        <ul class="module-list">
+                              <li class="module-list-item"><a href="https://deitte.com/old_home/index.xml">RSS 2.0</a></li>
+                              <li class="module-list-item"><a href="../../../old_home/index.rdf">RSS 1.0</a></li>
+                              <li class="module-list-item"><a href="../../../old_home/atom.xml">Atom</a></li>
+                        </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+
+            </div>
+         </div>
+      </div>
+   </div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-7910585-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+
+</body>
+</html>

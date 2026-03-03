@@ -1,0 +1,382 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="http://www.movabletype.org/" />
+
+<title>Deitte.com: October 2005 Archives</title>
+
+<link rel="stylesheet" href="https://deitte.com/old_home/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/atom+xml" title="Atom" href="https://deitte.com/old_home/atom.xml" />
+<link rel="alternate" type="application/rss+xml" title="RSS 1.0" href="https://deitte.com/old_home/index.rdf" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="https://deitte.com/old_home/index.xml" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://deitte.com/old_home/rsd.xml" />
+
+<link rel="start" href="https://deitte.com/" title="Home" />
+
+<link rel="prev" href="https://deitte.com/archives/2005/09/" title="September 2005" />
+
+
+<link rel="next" href="https://deitte.com/archives/2006/01/" title="January 2006" />
+
+
+
+
+</head>
+
+<body>
+
+<div id="container">
+
+<div id="banner">
+<h1><a href="https://deitte.com/" accesskey="1">Deitte.com</a></h1>
+<div id="banner-description">
+A Mix of Flex and Brightcove
+</div>
+</div>
+
+<div id="center">
+<div id="main-top"><img src="https://deitte.com/old_home/mt-static/escape/main_column_top.gif" alt="" /></div>
+<div class="content">
+<br />
+
+<p align="right">
+
+<a href="https://deitte.com/archives/2005/09/">&laquo; September 2005</a> |
+
+<a href="https://deitte.com/">Main</a>
+
+| <a href="https://deitte.com/archives/2006/01/">January 2006 &raquo;</a>
+
+</p>
+
+
+
+
+
+<h2>October 17, 2005</h2>
+
+
+<h3 id="a000007">ActionScript Projects in Zorn</h3>
+
+<p>I've seen some people at the MAX conference get 2400 baud modem speeds while downloading the alpha version of Zorn from the new <A HREF="http://labs.macromedia.com"> Macromedia Labs site</A>.  Remember that if you're here at the conference, many of us working on Flex have the software on a USB key.  We're happy to let you copy the bits and start playing around.</p>
+<p>
+At lunch today, talking with some people who haven't played with Flex, I realized that many people think that Flex is just for big applications.  While we do want to do large enterprise apps well, we're certainly trying to help developers create smaller apps as well.  And really, really small apps can be created if that's what you need, less than 1k, by just using ActionScript 3.</p>
+<p>
+It's not that I want to promote building just in AS3 over Flex.  The framework provides all the components that make life easier, plus I work on the Flex compiler.  But for people who just want to play with AS3, need really tiny movies, or want to isolate a problem, I think it's very helpful to be able to write just ActionScript in a project.
+</p><p>
+I'm sure there's documentation on ActionScript projects, but here's a simple example to illustrate how to do this in Zorn.    Create a "New Actionscript Project" and name it "ImageTest".  Put a PNG called "myimage.png" in the directory of the project, which defaults to "C:\Documents and Settings\username\My Documents\Flex\ImageTest".  Replace the code for ImageTest with this:
+</p>
+<pre>
+package 
+{
+        import flash.display.MovieClip;
+        import flash.display.DisplayObject;
+
+        public class ImageTest extends MovieClip
+        {
+            [Embed(source="myimage.png")]
+            public var embedClass:Class;
+
+            public function ImageTest()
+            {
+                var embedObj:DisplayObject = new embedClass();
+                embedObj.x = 100;
+                embedObj.y = 100;
+                addChild(embedObj);
+            }
+        }
+}
+</pre>
+<p>
+Then go to "Run > Run", set up a new configuration, and you'll see the image in a movie in the browser.  With a png of 805 bytes, this creates a movie of 1,809 bytes for me.  Looking at the AS3 and Embed documentation, you'll be able to see all sorts of interesting things you can do with the combination of Embed, DisplayObject, Bitmap, etc.
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2005/10/actionscript_pr.htm"> 6:29 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>October 14, 2005</h2>
+
+
+<h3 id="a000006">A Little Info on the Proxy in 1.5</h3>
+
+<p>Some more airport blogging.  I was going to write an article on the proxy, the part of Flex that is used by HTTPService and RemoteObject to access resources.  I never found time to write much about this, though, and I don't see much time clearing up in the weeks ahead.  Here's the notes I've jotted down for why you'd want to use the proxy:</p>
+
+<p>1. To have a centralized whitelist or when crossdomain.xml can't be used.<br />
+2. When you need to have the text from errors.  This doesn't show up without the proxy because the player isn't always given the text from the browser when there's an error status code.<br />
+3. When you want custom dialog boxes for security, since the proxy is the only way to do custom authentication/authorization.<br />
+4. And there's probably more reasons in 2.0.  I don't know much about what's happening in the enterprise offering, but I do know the team has some amazing people on it who have been working like mad.</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2005/10/a_little_info_o.htm"> 6:38 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+
+<h3 id="a000005">J2EE Application Server Support in Flex</h3>
+
+<p>Before the deluge of Max, Zorn, Flex and AS3 postings, let me slip a few thoughts out on J2EE application server support.  The below won't even be applicable to the 2.0 alpha, since there isn't a server in alpha quite yet.  You'll have to wait until the enterprise offering is in alpha to start thinking about the below.  So for now this is simply some lovin for all the 1.5 customers.</p>
+
+<p>I often see questions on support for different J2EE application servers.  I spent time on both ColdFusion and Flex trying to get various app servers to work correctly, so I've been interested in this subject.  </p>
+
+<p>The first thing to do is to see if your app server is supported.  You can see the list of supported servers <A HREF="http://www.macromedia.com/software/flex/productinfo/systemreqs/">here</A>.  If your app server is in the support app server list, then nothing else should be needed!  We have QA'd these app servers and we'll answer support questions on these servers.  The only time you may need something else is if you are running on ATG Dynamo, which is available via <A HREF="http://www.macromedia.com/cfusion/knowledgebase/index.cfm?id=96fd57e0">hotfix</A>.</p>
+
+<p>If your app server isn't supported, make sure to search blogs and flexcoders for known issues, as the few issues that are known have been discussed in multiple places.  For instance, JBoss is not officially supported but is often asked about.  The only issue I've heard about is answered <A HREF="http://groups.yahoo.com/group/flexcoders/message/7481">in this message</A> and in other places.   </p>
+
+<p>To expand on the JBoss support issue, something that has come up many times, make sure to turn off the unified class loading behavior for the Flex web applications.  You can do this by setting loader-repository in jboss-app, as shown <A HREF="http://www.junlu.com/msg/78287.html">here</A>.</p>
+
+<p>I've generally seen things work for unsupported app servers. Flex is written without any native code, and it doesn't interact with the J2EE APIs too much.  </p>
+
+<p>The areas that should be looked out for on unsupported app servers: </p>
+
+<p>a. loading of classes- class loading within Java can be tricky, and even trickier to diagnose.  If you see a strange ClassCastException or problems on startup, it could be a class loading issue.  We've tried to separate Flex from the rest of the app server via our own class loader, which is why most of the jars are in a "jars" directory rather than in "WEB-INF/lib".  There's not much that can be done about this issue by yourself, if you do think something is wrong.  You can try copying jars from your app server to the "jars" directory or vise versa, but that's really not recommended, as you're likely to break something else.  If you're using the samples server, you can also try replacing or removing the axis.jar from WEB-INF/lib, since this jar has caused problems at certain points.</p>
+
+<p>b. webtier compilation- one of the places we interact with the servlet API is through compilation on server.  If you don't see SWFs being compiled correctly but can compile them correctly with mxmlc, then this is the problem.  I haven't heard of any problems like this that we haven't fixed, but if you suspect a problem, I would compile with mxmlc and place the SWF on the server.  You'll miss out on some things if you do this (JSP tag library, ease of development, etc) but it may allow you to work with an unsupported app server.  </p>
+
+<p>c. data services- this refers to using RemoteObject or using WebService and HTTPService with the proxy.  It's another place where we interact with the app server through the servlet API.   It's hard to diagnose this problem if it's occurring with RemoteObject, but for WebService and HTTPService you can set noProxy to true on the tag to determine whether this is the problem.  If you are using HTTPService and having problems receiving data, try setting "flex.addFormParameters" to true as a JVM setting.  Other than that, you'll have to set noProxy to true or email on flexcoders for help.</p>
+
+<p>d. data service security- if you're using RemoteObject custom authentication, make sure that your app server is supported.  See "resources/security/CustomLoginCommand" within your Flex installation for information on setting up custom authentication on an unsupported app server.</p>
+
+<p>The above are the major areas of concern for using Flex with a given unsupported app server.  Again, in general I've seen things work fine for unsupported app servers.  It is also often hard to tell if a problem is really an issue just on a given app server, but the above can help narrow down the areas where problems could arise.</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2005/10/j2ee_applicatio.htm"> 6:31 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>October  7, 2005</h2>
+
+
+<h3 id="a000004">Did You Hear the News?</h3>
+
+<p>Hey, did you hear <A HREF="http://www.macromedia.com/newsletters/edge/october2005/index.html?sectionIndex=0 ">the news</A>? I'm kidding, as I've seen more posts and more excitement than I imagined on the upcoming alpha of Flex 2.  When you have your head down coding for so long, you sometimes lose sight of how all the daily changes being made will be seen.</p>
+
+<p>As long as I'm posting things a little late... I've already welcomed some of them, but a scotch toast to those from <A HREF="http://www.iterationtwo.com/index.html">iteration::two</A>.  I'll be waiting (I'm sure in vain) for Macromedia to send me out to the great city of Edinburgh.</p>
+
+<p>Going to MAX?  I'll be there too- feel free to say hello if you see <A HREF="http://www.macromedia.com/devnet/flex/articles/security_framework.html">this guy</A>.</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2005/10/did_you_hear_th.htm"> 9:28 AM</a>
+
+
+</span>
+<br /><br />
+
+
+<br />
+</div>
+
+</div>
+
+<div id="right">
+
+<div id="sidebar-top"><img src="https://deitte.com/old_home/mt-static/escape/side_column_top.gif" alt="" /></div>
+<div class="sidebar">
+
+<div class="sideBoxesTitle" style="background-color:#8299BC; border-bottom: 2px solid #4C6690;">&nbsp;&nbsp;&nbsp;Search</div>
+ 
+<div class="link-note">
+<form method="get" action="https://deitte.com/cgi-bin/mt/mt-search.cgi">
+<input type="hidden" name="Template" value="escape" />
+<input type="hidden" name="IncludeBlogs" value="1" />
+<label for="search" accesskey="4">Search this site:</label><br />
+<input id="search" name="search" size="15" /> <input type="submit" value="Search" />
+</form>
+</div>
+<!--
+<div id="categories">
+<div class="sideBoxesTitle" style="background-color:#8299BC; border-bottom: 2px solid #4C6690;">&nbsp;&nbsp;&nbsp;Categories</div>
+
+
+</div>
+-->
+<div class="sideBoxesTitle" style="background-color:#8299BC; border-bottom: 2px solid #4C6690;">&nbsp;&nbsp;&nbsp;Archives</div>
+
+<ul>
+
+<li><a href="https://deitte.com/archives/2011/02/">February 2011</a></li>
+
+<li><a href="https://deitte.com/archives/2010/10/">October 2010</a></li>
+
+<li><a href="https://deitte.com/archives/2010/04/">April 2010</a></li>
+
+<li><a href="https://deitte.com/archives/2010/03/">March 2010</a></li>
+
+<li><a href="https://deitte.com/archives/2010/02/">February 2010</a></li>
+
+<li><a href="https://deitte.com/archives/2009/12/">December 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/11/">November 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/10/">October 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/09/">September 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/08/">August 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/07/">July 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/06/">June 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/05/">May 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/04/">April 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/03/">March 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/02/">February 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/01/">January 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2008/12/">December 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/11/">November 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/10/">October 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/09/">September 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/08/">August 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/07/">July 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/06/">June 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/05/">May 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/04/">April 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/03/">March 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/02/">February 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/01/">January 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2007/12/">December 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/11/">November 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/10/">October 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/09/">September 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/08/">August 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/07/">July 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/06/">June 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/05/">May 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/04/">April 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/03/">March 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/02/">February 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/01/">January 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2006/12/">December 2006</a></li>
+
+<li><a href="https://deitte.com/archives/2006/11/">November 2006</a></li>
+
+<li><a href="https://deitte.com/archives/2006/10/">October 2006</a></li>
+
+<li><a href="https://deitte.com/archives/2006/08/">August 2006</a></li>
+
+<li><a href="https://deitte.com/archives/2006/07/">July 2006</a></li>
+
+<li><a href="https://deitte.com/archives/2006/06/">June 2006</a></li>
+
+<li><a href="https://deitte.com/archives/2006/05/">May 2006</a></li>
+
+<li><a href="https://deitte.com/archives/2006/03/">March 2006</a></li>
+
+<li><a href="https://deitte.com/archives/2006/02/">February 2006</a></li>
+
+<li><a href="https://deitte.com/archives/2006/01/">January 2006</a></li>
+
+<li><a href="https://deitte.com/archives/2005/10/">October 2005</a></li>
+
+<li><a href="https://deitte.com/archives/2005/09/">September 2005</a></li>
+
+</ul>
+
+<div class="sideBoxesTitle" style="background-color:#8299BC; border-bottom: 2px solid #4C6690;">&nbsp;&nbsp;&nbsp;Recent Entries</div>
+
+<ul>
+
+<li><a href="https://deitte.com/archives/2005/10/actionscript_pr.htm">ActionScript Projects in Zorn</a></li>
+
+<li><a href="https://deitte.com/archives/2005/10/a_little_info_o.htm">A Little Info on the Proxy in 1.5</a></li>
+
+<li><a href="https://deitte.com/archives/2005/10/j2ee_applicatio.htm">J2EE Application Server Support in Flex</a></li>
+
+<li><a href="https://deitte.com/archives/2005/10/did_you_hear_th.htm">Did You Hear the News?</a></li>
+
+</ul>
+
+<div class="sideBoxesTitle" style="background-color:#8299BC; border-bottom: 2px solid #4C6690;">&nbsp;&nbsp;&nbsp;Recent Diggs</div>
+
+<script language="JavaScript"
+src="http://digg.com/diggjs/user/dugg/bdeitte/1"
+type="text/javascript"></script>
+
+<div class="sideBoxesTitle" style="background-color:#8299BC; border-bottom: 2px solid #4C6690;">&nbsp;&nbsp;&nbsp;RSS, Etc</div>
+
+<div class="link-note">Pick some syndication happiness:<br/>
+<a href="https://deitte.com/old_home/index.xml">RSS 2.0</a><br/>
+<a href="https://deitte.com/old_home/index.rdf">RSS 1.0</a><br/>
+<a href="https://deitte.com/old_home/atom.xml">Atom</a>
+<p>You can email me at <IMG SRC="http://deitte.com/old_home/deitte-email.png" />
+<p>For more blog choices:
+<a href="http://www.flex.org"><img src="http://www.flex.org/images/flexorg.gif" alt="Flex.org - The Directory for Flex" border="0" /></a></p>
+
+</div>
+
+</div>
+</div>
+
+<div style="clear: both;">&#160;</div>
+
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-7910585-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+
+</body>
+</html>

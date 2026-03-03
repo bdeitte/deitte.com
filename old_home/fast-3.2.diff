@@ -1,0 +1,215 @@
+Index: modules/asc/src/java/adobe/abc/GlobalOptimizer.java
+===================================================================
+--- modules/asc/src/java/adobe/abc/GlobalOptimizer.java	(revision 4391)
++++ modules/asc/src/java/adobe/abc/GlobalOptimizer.java	(working copy)
+@@ -2162,7 +2162,21 @@
+ 	
+ 	static final Metadata[] nometadata = new Metadata[0];
+ 
++	/**
++	 * Methods ready for optimization.
++	 * Populated by readyMethod(), called from readyType()
++	 * and by initial processing of the OP_newfunction Expr.
++	 */
+ 	List<Method> ready = new ArrayList<Method>();
++
++	/** 
++	 * Track already-processed methods so they never go on the ready list twice.
++	 * @warn Methods are tracked by hashCode() b/c Method defines a compare function 
++	 * that can compare different Methods as equal (if they're in different types).
++	 * If Method.hashCode() is modified, then Method will need a unique ID to 
++	 * make this set work.
++	 */
++	Set<Integer> already_processed = new TreeSet<Integer>();
+ 	
+ 	void readyType(Type t)
+ 	{
+@@ -2174,8 +2188,11 @@
+ 	
+ 	void readyMethod(Method m)
+ 	{
+-		if (m.entry != null)
++		if (m.entry != null && ! already_processed.contains(m.hashCode()) )
++		{
+ 			ready.add(m);
++			already_processed.add(m.hashCode());
++		}
+ 	}
+ 	
+ 	void optimize(InputAbc a)
+Index: modules/compiler/src/java/flex2/tools/Compiler.java
+===================================================================
+--- modules/compiler/src/java/flex2/tools/Compiler.java	(revision 4391)
++++ modules/compiler/src/java/flex2/tools/Compiler.java	(working copy)
+@@ -281,20 +281,24 @@
+                         sources);
+ 
+                 OutputStream swfOut = new BufferedOutputStream(new FileOutputStream(outputFile));
++                PostLink postLink = null;
+ 
++                if (configuration.optimize() && !configuration.generateDebugTags())
++                {
++                    postLink = new PostLink(configuration);
++                }
++
+                 // link
+                 if (createProjector)
+                 {
+-                    ConsoleApplication app = flex2.linker.API.linkConsole(units, 
+-                            new PostLink(configuration), configuration);
+-
++                    ConsoleApplication app = flex2.linker.API.linkConsole(units, postLink, configuration);
++                    
+                     createProjector(projector, app, swfOut);
+                 }
+                 else
+                 {
+-                    Movie movie = flex2.linker.API.link(units, 
+-                            new PostLink(configuration), configuration);
+-
++                    Movie movie = flex2.linker.API.link(units, postLink, configuration);
++                    
+                     if (projector != null)
+                     {
+                         createProjector(projector, movie, swfOut);
+Index: modules/compiler/src/java/flex2/tools/oem/Application.java
+===================================================================
+--- modules/compiler/src/java/flex2/tools/oem/Application.java	(revision 4391)
++++ modules/compiler/src/java/flex2/tools/oem/Application.java	(working copy)
+@@ -1179,12 +1179,18 @@
+ 
+             ApplicationCompilerConfiguration appConfig = (ApplicationCompilerConfiguration) data.configuration;
+             VirtualFile projector = appConfig.getProjector();
++            PostLink postLink = null;
+ 
++            if (config.optimize() && !config.generateDebugTags())
++            {
++                postLink = new PostLink(config);
++            }
++
+             // link
+             if (projector != null && projector.getName().endsWith("avmplus.exe"))
+             {               
+                 ConsoleApplication temp = data.app;
+-                data.app = flex2.linker.API.linkConsole(data.units, new PostLink(config), config);
++                data.app = flex2.linker.API.linkConsole(data.units, postLink, config);
+                 size = encodeConsoleProjector(projector, out);
+                 if (hasChanged && temp != null)
+                 {
+@@ -1194,7 +1200,7 @@
+             else
+             {
+                 SimpleMovie temp = data.movie;
+-                data.movie = (FlexMovie) flex2.linker.API.link(data.units, new PostLink(config), config);
++                data.movie = (FlexMovie) flex2.linker.API.link(data.units, postLink, config);
+                 size = (projector == null) ? encode(out) : encodeProjector(projector, out);
+                 if (hasChanged && temp != null)
+                 {
+Index: modules/swfutils/src/java/flash/swf/SwfEncoder.java
+===================================================================
+--- modules/swfutils/src/java/flash/swf/SwfEncoder.java	(revision 4391)
++++ modules/swfutils/src/java/flash/swf/SwfEncoder.java	(working copy)
+@@ -100,17 +100,42 @@
+      */
+     public void compress() throws IOException
+     {
++        compress(false);
++    }
++
++    /**
++     * compress the marked section of our buffer, in place.
++     * @param isDebug If true, BEST_SPEED compression is used.  Otherwise, BEST_COMPRESSION is used.
++     * @throws IOException
++     */
++    public void compress(boolean isDebug) throws IOException
++    {
+         if (compressPos != -1)
+         {
+             // compress in place from compressPos to pos
+             pos = compressPos;
++            deflate(this, isDebug);
++            compressPos = -1;
++        }
++    }
+ 
+-			DeflaterOutputStream deflater = new DeflaterOutputStream(this, new Deflater(Deflater.BEST_COMPRESSION));
++    private void deflate(OutputStream out, boolean isDebug) throws IOException
++    {
++        int compression;
+ 
+-			deflater.write(buf, compressPos, count-compressPos);
+-            deflater.finish();
+-            compressPos = -1;
++        if (isDebug)
++        {
++            compression = Deflater.BEST_SPEED;
+         }
++        else
++        {
++            compression = Deflater.BEST_COMPRESSION;
++        }
++
++        DeflaterOutputStream deflater = new DeflaterOutputStream(out, new Deflater(compression));
++
++        deflater.write(buf, compressPos, count-compressPos);
++        deflater.finish();
+     }
+ 
+     /**
+@@ -121,6 +146,18 @@
+      */
+     public synchronized void writeTo(OutputStream out) throws IOException
+     {
++        writeTo(out, false);
++    }
++
++    /**
++     * send buffer to the given stream.  If markComp was called, bytes after that mark
++     * will be compressed.
++     * @param out
++     * @param isDebug If true, BEST_SPEED compression is used.  Otherwise, BEST_COMPRESSION is used.
++     * @throws IOException
++     */
++    public synchronized void writeTo(OutputStream out, boolean isDebug) throws IOException
++    {
+         if (compressPos == -1)
+         {
+             super.writeTo(out);
+@@ -129,11 +166,7 @@
+         {
+             count = pos;
+             out.write(buf, 0, compressPos);
+-
+-			DeflaterOutputStream deflater = new DeflaterOutputStream(out, new Deflater(Deflater.BEST_COMPRESSION));
+-
+-            deflater.write(buf, compressPos, count-compressPos);
+-            deflater.finish();
++            deflate(out, isDebug);
+         }
+     }
+ 
+Index: modules/swfutils/src/java/flash/swf/TagEncoder.java
+===================================================================
+--- modules/swfutils/src/java/flash/swf/TagEncoder.java	(revision 4391)
++++ modules/swfutils/src/java/flash/swf/TagEncoder.java	(working copy)
+@@ -210,7 +210,7 @@
+ 
+     public void writeTo(OutputStream out) throws IOException
+     {
+-        writer.writeTo(out);
++        writer.writeTo(out, isDebug());
+     }
+ 
+ 
+@@ -250,9 +250,9 @@
+     {
+         try
+         {
+-            tagw.compress();
++            tagw.compress(isDebug());
+             encodeTagHeader(tag.code, tagw.getPos(), isLongHeader(tag));
+-            tagw.writeTo(writer);
++            tagw.writeTo(writer, isDebug());
+             tagw.reset();
+         }
+         catch (IOException e)

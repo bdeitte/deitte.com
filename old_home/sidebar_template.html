@@ -1,0 +1,95 @@
+               <div id="beta">
+                  <div id="beta-inner" class="pkg">
+
+                     <div class="module-search module">
+                        <h2 class="module-header">Posts of Note</h2>
+                        <div class="module-content">
+                        <ul class="module-list">
+                              <li class="module-list-item"><a href="http://www.deitte.com/archives/2006/12/about_this_blog.htm">About This Blog</a></li>
+                              <li class="module-list-item"><a href="http://www.deitte.com/archives/2008/01/future_features.htm">Future Features in AS3</a></li>
+                              <li class="module-list-item"><a href="http://www.deitte.com/archives/2006/08/finally_updated.htm">HTML in Flex</a></li>
+                              <li class="module-list-item"><a href="http://www.deitte.com/archives/2008/01/the_best_design.htm">Tool for Flex Design</a></li>
+                              <li class="module-list-item"><a href="http://www.deitte.com/archives/2006/10/using_resource.htm">Using Resource Bundles</a></li>
+                              <li class="module-list-item"><a href="http://www.deitte.com/archives/2006/10/category_feeds.htm">Category Feeds</a></li>
+                        </ul>
+                        </div>
+                     </div>
+                     <div class="module-archives module">
+                        <h2 class="module-header">Recent Posts</h2>
+                        <div class="module-content">
+                           <ul class="module-list">
+                           <MTEntries lastn="10">
+                              <li class="module-list-item"><a href="<$MTEntryPermalink$>"><$MTEntryTitle$></a></li>
+                           </MTEntries>
+                           </ul>
+                           <a href="<$MTBlogURL$>atom.xml">Subscribe to this blog's feed</a><br />
+                           [<a href="http://www.sixapart.com/about/feeds">What is this?</a>]
+                        </div>
+                     </div>
+                     <MTIfArchiveTypeEnabled archive_type="Category"><div class="module-categories module">
+                        <h2 class="module-header">Category Archives</h2>
+                        <div class="module-content">
+                        <MTTopLevelCategories>
+                        <MTSubCatIsFirst><ul class="module-list"></MTSubCatIsFirst>
+                           <MTIfNonZero tag="MTCategoryCount">
+                           <li class="module-list-item"><a href="<$MTCategoryArchiveLink$>" title="<$MTCategoryDescription$>"><MTCategoryLabel></a>
+                           <MTElse>
+                           <li class="module-list-item"><MTCategoryLabel>
+                           </MTElse>
+                           </MTIfNonZero>
+                              <MTSubCatsRecurse>
+                           </li>
+                        <MTSubCatIsLast></ul></MTSubCatIsLast>
+                        </MTTopLevelCategories>
+                        </div>
+                     </div>
+                     </MTIfArchiveTypeEnabled>
+                     
+                     <MTIfArchiveTypeEnabled archive_type="Monthly">
+                     <div class="module-archives module">
+                        <h2 class="module-header">Monthly Archives</h2>
+                        <div class="module-content">
+                        <MTArchiveList archive_type="Monthly">
+                           <MTArchiveListHeader><ul class="module-list"></MTArchiveListHeader>
+                              <li class="module-list-item"><a href="<$MTArchiveLink$>"><$MTArchiveTitle$></a></li>
+                           <MTArchiveListFooter></ul></MTArchiveListFooter>
+                        </MTArchiveList>
+                        </div>
+                     </div>
+                     </MTIfArchiveTypeEnabled>
+
+                     <div class="module-search module">
+                        <h2 class="module-header">Search</h2>
+                        <div class="module-content">
+                           <form method="get" action="<$MTCGIPath$><$MTSearchScript$>">
+                              <input type="hidden" name="IncludeBlogs" value="<$MTBlogID$>" />
+                              <label for="search" accesskey="4">Search this blog:</label><br />
+                              <input id="search" name="search" size="20" />
+                              <input type="submit" value="Search" />
+                           </form>
+                        </div>
+                     </div>                   
+
+                     <div class="module-rss-etc module">
+                        <h2 class="module-header">RSS, Etc</h2>
+                        <div class="module-content">
+<div class="link-note">Feed choices:<br/>
+<a href="<$MTBlogURL$>index.xml">RSS 2.0</a><br/>
+<a href="<$MTBlogURL$>index.rdf">RSS 1.0</a><br/>
+<a href="<$MTBlogURL$>atom.xml">Atom</a><br/>
+<p><div class="link-note">Category-specific feeds:<br/>
+<a href="<$MTBlogURL$>index_flex.xml">RSS 2.0 (Flex category only)</a><br/>
+<a href="<$MTBlogURL$>index_video.xml">RSS 2.0 (video category only)</a><br/></div>
+
+<p><div class="link-note">Etc:<br/>
+<A HREF="http://www.deitte.com/archives/2006/12/about_this_blog.htm">About this blog</A><br/>
+<A HREF="http://digg.com/users/bdeitte/news/dugg">My diggs</A><br/>
+<A HREF="http://blog.brightcove.com/">Brightcove blog</A><br/> <br/>
+<a href="http://www.flex.org"><img src="http://www.flex.org/images/flexorg.gif" alt="Flex.org - The Directory for Flex" border="0" /></a>
+</p>
+</div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+

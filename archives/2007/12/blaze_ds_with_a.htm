@@ -1,0 +1,285 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard">
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <meta name="generator" content="Movable Type Pro 4.31-en" />
+   <meta name="keywords" content="blazeds ec2 flex ">
+   <meta name="description" content="With the current focus on Amazon's services (because of the release of SimpleDB) as well as the release of BlazeDS, I was wondering whether Amazon Elastic Compute Cloud (aka EC2)...">
+
+   <link rel="stylesheet" href="../../../old_home/styles-site.css" type="text/css" />
+   <link rel="alternate" type="application/atom+xml" title="Atom" href="../../../old_home/atom.xml" />
+   <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="https://deitte.com/old_home/index.xml" />
+
+   <title>Thinking About BlazeDS with Amazon ES2 (Deitte.com)</title>
+
+   <link rel="start" href="../../../index.html" title="Home" />
+   <link rel="prev" href="sudden_flash_pr.htm" title="Sudden Flash Problems?  Read About the Security Changes" />
+   <link rel="next" href="../../2008/01/write_a_book_on.htm" title="Write a Book on Flex?" />
+
+   
+
+   
+   <script type="text/javascript" src="../../../old_home/mt-site.js"></script>
+</head>
+<body class="layout-two-column-right individual-entry-archive" onload="individualArchivesOnLoad(commenter_name)">
+   <div id="container">
+      <div id="container-inner" class="pkg">
+
+         <div id="banner">
+            <div id="banner-inner" class="pkg">
+               <h1 id="banner-header"><a href="../../../index.html" accesskey="1">Deitte.com</a></h1>
+               <h2 id="banner-description">A Mix of Flex and Brightcove</h2>
+            </div>
+         </div>
+
+         <div id="pagebody">
+            <div id="pagebody-inner" class="pkg">
+               <div id="alpha">
+                  <div id="alpha-inner" class="pkg">
+
+                     <p class="content-nav">
+                        <a href="sudden_flash_pr.htm">&laquo; Sudden Flash Problems?  Read About the Security Changes</a> |
+                        <a href="../../../index.html">Main</a>
+                        | <a href="../../2008/01/write_a_book_on.htm">Write a Book on Flex? &raquo;</a>
+                     </p>
+
+
+                     <h2 class="archive-title">Thinking About BlazeDS with Amazon ES2</h2>
+                     <div class="entry" id="entry-184">
+                        <div class="entry-content">
+                           
+                           <div class="entry-body">
+                              <p>With the current focus on Amazon's services (because of the release of <A HREF="http://gigaom.com/2007/12/14/amazon-simple-db/">SimpleDB</A>) as well as the release of <A HREF="http://labs.adobe.com/technologies/blazeds/">BlazeDS</A>, I was wondering whether <A HREF="http://www.amazon.com/b/ref=sc_fe_l_2?ie=UTF8&node=201590011&no=3435361&me=A36L942TSJ2AJA">Amazon Elastic Compute Cloud (aka EC2)</A> could be used with BlazeDS.   I know that people set up Tomcat on EC2, and it'd be pretty interesting to start using BlazeDS on projects so easily.</p>
+
+<p>Reading about EC2, I see that there's <A HREF="http://docs.amazonwebservices.com/AWSEC2/2007-08-29/DeveloperGuide/available-apis.html">two ways to get data from your application</A>, SOAP and a query API.  The query API looks like it  would work fine for getting AMF information from an application.  I assume, however, that some changes some need to be made to Flex channels and adaptors to work with the request signatures required by Amazon?   I don't know enough about EC2 or BlazeDS to answer this question, or to know whether StreamingAMFChannel would work.  But I'd love see instructions on creating an Amazon Machine Image containing BlazeDS.<br />
+</p>
+                           </div>
+                           
+                                    
+                           
+                           <div class="entry-tags">Tags: <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=blazeds&amp;limit=20" rel="tag">blazeds</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=ec2&amp;limit=20" rel="tag">ec2</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=flex&amp;limit=20" rel="tag">flex</a>
+                           </div>
+                           
+                        </div>
+                        <p class="entry-footer">
+                           <span class="post-footers">
+                               
+                                   Posted on December 16, 2007  5:50 PM
+                               
+                           </span> 
+                           <span class="separator">|</span> <a class="permalink" href="blaze_ds_with_a.htm">Permalink</a>
+<span class="separator">|</span> <A HREF="http://digg.com/submit?url=https://deitte.com/archives/2007/12/blaze_ds_with_a.htm&title=Thinking About BlazeDS with Amazon ES2">digg</A>
+                           <span class="separator">|</span> <A HREF="http://del.icio.us/post?url=https://deitte.com/archives/2007/12/blaze_ds_with_a.htm">del.icio.us</A>
+                        </p>
+                     </div>
+
+                     
+
+                     
+                     <div id="comments" class="comments">
+                        
+                           
+                              <div class="comments-content">
+                                 <h3 class="comments-header">Comments (4)</h3>
+                           
+                                 <a id="c026566"></a>
+                                 <div class="comment" id="comment-26566">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          <a title="http://blog.xsive.co.nz" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=26566">Campbell</a>:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>What I would love to see is the python version of the RTMP server which runs over twisted Python have some smarts, so that if connections start to reach limits you could set it to start another EC2 instance and add that instance to the possible server connection pool. Then you would have an elastic RTMP server for all sorts of projects that scales on demand :)</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          <a title="http://blog.xsive.co.nz" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=26566">Campbell</a>  |
+                                          <a href="blaze_ds_with_a.htm#comment-26566">December 16, 2007  7:20 PM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="blaze_ds_with_a.htm#comment-26566" title="Permalink to this comment">December 16, 2007 19:20</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c026596"></a>
+                                 <div class="comment" id="comment-26596">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          <a title="http://dreamdrummer.com/" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=26596">Erki Esken</a>:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>Campbell, looks like there's alpha AMF module for Twisted available now:</p>
+
+<p><a href="http://twistedmatrix.com/pipermail/twisted-python/2007-December/016447.html">http://twistedmatrix.com/pipermail/twisted-python/2007-December/016447.html</a><br />
+</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          <a title="http://dreamdrummer.com/" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=26596">Erki Esken</a>  |
+                                          <a href="blaze_ds_with_a.htm#comment-26596">December 17, 2007  3:47 AM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="blaze_ds_with_a.htm#comment-26596" title="Permalink to this comment">December 17, 2007 03:47</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c029104"></a>
+                                 <div class="comment" id="comment-29104">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          <a title="http://www.machine501.com/" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=29104">Robert Cadena</a>:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>I setup a copy of FDS on EC2.  FDS is what BlazeDS was called.  There are no changes you need to make.  Think of EC2 as a shared server, but you get to pick what goes on it.  Pick a linux image, deploy it, make sure java is installed, then upload blazeds.  run tomcat.</p>
+
+<p>then authorize port 8080, the default tomcat port, for everyone.  that's all there is to it.  eventually you'll want to configure it so that your calls get proxied through some web server back to your tomcat instance, but for development purposes, just install tomcat.</p>
+
+<p>you might be mixing up EC2 and S3.  S3 is Amazon's storage service.  it is just a way of putting data up on amazon and getting it back.  you can't install a program or script, on it.  ec2 is the "server" service, where you get what looks like a full blown server just for yourself.</p>
+
+<p>it's cheap, it's reliable, and i like using it. </p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          <a title="http://www.machine501.com/" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=29104">Robert Cadena</a>  |
+                                          <a href="blaze_ds_with_a.htm#comment-29104">January 20, 2008 12:30 AM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="blaze_ds_with_a.htm#comment-29104" title="Permalink to this comment">January 20, 2008 00:30</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c029160"></a>
+                                 <div class="comment" id="comment-29160">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          <a title="https://deitte.com" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=29160">Brian Deitte</a>:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>Robert, I must have gone from EC2 to S3 in my reading on Amazon.  It looked like you could only serve data in a very specific way in EC2, but I take it that's only for S3. That's good to know.<br />
+</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          <a title="https://deitte.com" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=29160">Brian Deitte</a>  |
+                                          <a href="blaze_ds_with_a.htm#comment-29160">January 20, 2008 10:31 PM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="blaze_ds_with_a.htm#comment-29160" title="Permalink to this comment">January 20, 2008 22:31</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                              </div>
+                           
+                        
+                        
+                     </div>
+                     
+                  </div>
+               </div>
+<div id="beta">
+                  <div id="beta-inner" class="pkg">
+
+                     <div class="module-search module">
+                        <h2 class="module-header">Posts of Note</h2>
+                        <div class="module-content">
+                        <ul class="module-list">
+                              <li class="module-list-item"><a href="../../2006/12/about_this_blog.htm">About This Blog</a></li>
+                              <li class="module-list-item"><a href="../../2009/02/creating_a_vide.htm">Using BEML</a></li>
+                              <li class="module-list-item"><a href="../../2011/02/lessons_learned.htm">Lessons with StageVideo</a></li>
+                              <li class="module-list-item"><a href="../../2009/08/ten_brightcove.htm">Brightcove SDKs</a></li>
+                              <li class="module-list-item"><a href="../../2008/10/a_faster_flex_3.htm">A Faster Flex 3 SDK</a></li>
+                              <li class="module-list-item"><a href="../../2008/07/six_tools_for_f.htm">Tools For Flex</a></li>
+                              <li class="module-list-item"><a href="../../2008/07/dont_use_iframe.htm">HTML in Flex</a></li>
+                        </ul>
+                        </div>
+                     </div>
+                     <div class="module-search module">
+                        <h2 class="module-header">Tags</h2>
+                        <div class="module-content">
+
+        <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=flex&amp;limit=20">flex</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=brightcove&amp;limit=20">brightcove</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=flex%20compiler&amp;limit=20">flex compiler</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=flash&amp;limit=20">flash</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=brightcove%20news&amp;limit=20">brightcove news</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=advertising&amp;limit=20">advertising</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=flex%20sdk&amp;limit=20">flex sdk</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=as3&amp;limit=20">as3</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=blog%20to%20read&amp;limit=20">blog to read</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=brightcove%20dev&amp;limit=20">brightcove dev</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=html%20in%20flex&amp;limit=20">html in flex</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=adobe&amp;limit=20">adobe</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=boston%20flash%20user%20group&amp;limit=20">boston flash user group</a>
+
+                        </div>
+                     </div>
+                     <div class="module-search module">
+                        <h2 class="module-header">Ads</h2>
+<script type="text/javascript"><!--
+google_ad_client = "pub-0625677791353122";
+/* 200x200, created 5/10/09 */
+google_ad_slot = "0856043844";
+google_ad_width = 200;
+google_ad_height = 200;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<br/>
+<br/>
+</div>
+                     <div class="module-search module">
+                        <h2 class="module-header">Search this blog</h2>
+                        <div class="module-content">
+                           <form method="get" action="https://deitte.com/cgi-bin/mt/mt-search.cgi">
+                              <input type="hidden" name="IncludeBlogs" value="1" />
+                              <input id="search" name="search" size="20" />
+                              <input type="submit" value="Search" />
+                           </form>
+                        </div>
+                     </div>                   
+
+                     <div class="module-search module">
+                        <h2 class="module-header">Archive</h2>
+                        <div class="module-content">
+                        <ul class="module-list">
+                              <li class="module-list-item"><a href="https://deitte.com/archives.htm">All posts</a></li>
+                        </ul>
+                        </div>
+                     </div>
+
+                     <div class="module-rss-etc module">
+                        <h2 class="module-header">Feeds</h2>
+                        <div class="module-content">
+                        <ul class="module-list">
+                              <li class="module-list-item"><a href="https://deitte.com/old_home/index.xml">RSS 2.0</a></li>
+                              <li class="module-list-item"><a href="../../../old_home/index.rdf">RSS 1.0</a></li>
+                              <li class="module-list-item"><a href="../../../old_home/atom.xml">Atom</a></li>
+                        </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+
+            </div>
+         </div>
+      </div>
+   </div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-7910585-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+
+</body>
+</html>
