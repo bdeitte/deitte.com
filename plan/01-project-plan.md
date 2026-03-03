@@ -7,7 +7,7 @@
 - ✅ Phase 1.1 — Ghost content (DB + images) backed up to S3 `ghost-content/`
 - ✅ Phase 1.2 — All static dirs (old_home, archives, travel, IFrameDemo3, petitemama, helpingsiteignore, resume) backed up to S3
 - ✅ Phase 2.1 — wget crawl of deitte.com complete; output at `/tmp/deitte-crawl/deitte.com/`; also backed up to S3 `ghost-crawl/`
-- ✅ Phase 3.1 — GitHub repo `bdeitte/deitte-com` created (public); remote `origin` added; `CNAME` file written
+- ✅ Phase 3.1 — GitHub repo `bdeitte/deitte.com` created (public); remote `origin` added; `CNAME` file written
 - ✅ Phase 4 — Static dirs + crawl output copied into repo; Ghost blog index saved at `blog/index.html`
 - ✅ Phase 5.1/5.2 — `index.html` written with computer image and nav links
 - ⏳ Phase 5.3 — **NOT YET DONE**: commit to main, create gh-pages branch, configure GitHub Pages
@@ -212,13 +212,13 @@ aws s3 sync /tmp/deitte-crawl/deitte.com/ \
 **Step 1: Check if remote repo exists**
 
 ```bash
-gh repo view bdeitte/deitte-com 2>&1
+gh repo view bdeitte/deitte.com 2>&1
 ```
 
 If it doesn't exist yet:
 
 ```bash
-gh repo create bdeitte/deitte-com --public --source=. --remote=origin --push
+gh repo create bdeitte/deitte.com --public --source=. --remote=origin --push
 ```
 
 If it exists, just confirm the remote is set:
@@ -230,20 +230,20 @@ git remote -v
 **Step 2: Enable GitHub Pages on the repo**
 
 ```bash
-gh api repos/bdeitte/deitte-com/pages \
+gh api repos/bdeitte/deitte.com/pages \
   --method POST \
   --field source[branch]=main \
   --field source[path]=/
 ```
 
 If that fails (Pages already enabled or needs UI), go to:
-`https://github.com/bdeitte/deitte-com/settings/pages`
+`https://github.com/bdeitte/deitte.com/settings/pages`
 and set Source → Deploy from branch → `main` → `/ (root)`.
 
 **Step 3: Add the CNAME file**
 
 ```bash
-echo "deitte.com" > /Users/briandeitte/deitte-com/CNAME
+echo "deitte.com" > /Users/briandeitte/deitte.com/CNAME
 ```
 
 Commit later with the rest of the content (Phase 5).
@@ -255,7 +255,7 @@ Commit later with the rest of the content (Phase 5).
 ### Task 4.1: Copy static subdirectories into repo
 
 ```bash
-REPO=/Users/briandeitte/deitte-com
+REPO=/Users/briandeitte/deitte.com
 
 cp -r /tmp/deitte-backup/old_home/    $REPO/old_home/
 cp -r /tmp/deitte-backup/archives/    $REPO/archives/
@@ -271,7 +271,7 @@ Do NOT copy `petitemama/` or `helpingsiteignore/` into the repo.
 The crawled files live at `/tmp/deitte-crawl/deitte.com/`. Copy everything except the root `index.html` (which we'll replace with the new page):
 
 ```bash
-REPO=/Users/briandeitte/deitte-com
+REPO=/Users/briandeitte/deitte.com
 
 # Copy everything from crawl except index.html at root
 rsync -av \
@@ -298,14 +298,14 @@ From the crawl, the computer image will be at:
 
 Confirm:
 ```bash
-ls /Users/briandeitte/deitte-com/content/images/2020/10/ | grep computer
+ls /Users/briandeitte/deitte.com/content/images/2020/10/ | grep computer
 ```
 
 Pick the best variant (likely `computer-3.png` — inspect them in Finder or a browser to choose).
 
 ### Task 5.2: Write index.html
 
-Create `/Users/briandeitte/deitte-com/index.html`. The page should:
+Create `/Users/briandeitte/deitte.com/index.html`. The page should:
 - Use the computer image prominently
 - Have a simple, clean design (no framework needed — plain HTML/CSS)
 - Include links to:
@@ -461,7 +461,7 @@ Note: replace `/[ghost-archive-url]` with the actual archive or tag page URL fou
 **Step: Preview locally**
 
 ```bash
-cd /Users/briandeitte/deitte-com
+cd /Users/briandeitte/deitte.com
 python3 -m http.server 8080
 # Open http://localhost:8080 in browser
 ```
@@ -475,7 +475,7 @@ The `plan/` directory, `README.md`, and `CLAUDE.md` belong in the repo for refer
 **Step 1: Stage and commit all files to main**
 
 ```bash
-cd /Users/briandeitte/deitte-com
+cd /Users/briandeitte/deitte.com
 
 # Website content
 git add CNAME index.html old_home/ archives/ travel/ IFrameDemo3/ deitte_resume.pdf
@@ -529,7 +529,7 @@ git checkout main
 **Step 3: Configure GitHub Pages to serve from gh-pages**
 
 ```bash
-gh api repos/bdeitte/deitte-com/pages \
+gh api repos/bdeitte/deitte.com/pages \
   --method POST \
   --field source[branch]=gh-pages \
   --field source[path]=/
@@ -539,7 +539,7 @@ Or in the GitHub UI: Settings → Pages → Branch → `gh-pages` → `/ (root)`
 
 **Step 4: Verify**
 
-The site will be live at `https://bdeitte.github.io/deitte-com/` — confirm it loads and that `https://bdeitte.github.io/deitte-com/plan/` returns a 404.
+The site will be live at `https://bdeitte.github.io/deitte.com/` — confirm it loads and that `https://bdeitte.github.io/deitte.com/plan/` returns a 404.
 
 When deploying future website changes, repeat Step 2's checkout commands (or switch to `gh-pages`, cherry-pick the changed files, commit, and push).
 
