@@ -1,0 +1,488 @@
+@import url(base-weblog.css);
+
+/*
+name: Star crash
+designer: Mario Carboni
+designer_url: http://www.mariocarboni.com
+description: A bunch of stars crashing out
+layouts: one-column, two column-left, two-column-right, three columns
+*/
+
+
+*{
+	margin: 0;
+	padding: 0;
+	}
+	
+body{
+	font: 62.5%/1.6 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
+	text-align: center;
+	background: #fff url(bg-page.jpg) repeat-x 0 0;
+	color: #000;
+	}
+#container{
+	width: 760px;
+	margin: 0 auto;
+	text-align: left;
+	position: relative;
+	padding-bottom: 20px;
+	}
+#banner{
+	height: 100px;
+	margin: 0;
+	padding: 0;
+	background: transparent url(bg-head.gif) no-repeat 392px 100%;
+	}
+ul{
+	list-style-type: none;
+	}	
+blockquote{
+	padding: 10px;
+	font-style: italic;
+	background: transparent url(bg-blockquote.gif) no-repeat 0 0;
+	color: #666;
+	}
+h3{
+	font: 150% "Lucida Sans Unicode", "Trebuchet MS", sans-serif;
+	background: transparent url(bullet-h.gif) no-repeat 0 5px;
+	padding-left: 45px;
+	color: #333;
+	}
+/*	banner
+--------------------------------------------------------------------*/
+#banner h1{
+	color: #fff;
+	font: 1.6em/1.6em "Lucida Sans Unicode", "Trebuchet MS", sans-serif;
+	margin: 0;
+	padding: 2em 0 0;
+	}
+#banner h1 a:link, #banner h1 a:visited{
+	color: #fff;
+	text-decoration: none;
+	font-size: 1.6em;
+	}
+#banner h2{
+	color: #CAD706;
+	margin: 0;
+	padding: 0;
+	font-size: 1em;
+	letter-spacing: 1px;
+	font-family: "Trebuchet MS", Arial, sans-serif;
+	}
+
+/*	entry
+--------------------------------------------------------------------*/
+.date-header{
+	color: #666;
+	font-size: 1.1em;
+	font-weight: bold;
+	letter-spacing: 1px;
+	margin-top: 27px;
+	background: transparent url(clock.gif) no-repeat 0 50%;
+	padding-left: 26px;
+	height: 22px;
+	line-height: 22px;
+	}
+.entry{
+	font-size: 1.2em;
+	padding-bottom: 20px;
+	text-align: justify;
+	}
+.entry p{
+	word-spacing: .15em;
+	}		
+.entry ul, .entry ol{
+	list-style-type: none;
+	margin: 10px;
+	}
+.entry li{	
+	background: transparent url(bullet-li.gif) no-repeat 2px 8px;
+	padding: 0 0 10px 15px;
+	word-spacing: .15em;
+	}
+.entry-header{
+	background: transparent;
+	padding: 0;
+	}
+.entry-content{
+	margin: 0;
+	}
+.entry-body{
+	margin: 0;
+	}
+.entry-body img {
+	border: 1px solid #999;
+	}
+.entry-body img[align="right"] {
+	margin: 0 0 2em 2em;
+	}
+.entry-body img[align="left"] {
+	margin: 0 2em 2em 0;
+	}
+.entry-footer{
+	position: relative;
+	font-size: .8em;
+	margin: 10px 0 0 0;
+	padding: 30px 10px 10px 0;
+	text-align: right;
+	color: #ccc;
+	background: transparent url(bg-entry.gif) no-repeat 100% 100%;
+	white-space: nowrap;
+	width: 498px;
+	}
+.separator{
+	display: none;
+	}
+.entry .post-footers{
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding-left: 15px;
+	background: transparent url(sheet.gif) no-repeat 0 50%;
+	color: #999;
+	font-weight: bold;
+	text-align: left;
+	word-spacing: normal;
+	}
+.entry-more-link{
+	font-size: .9em;
+	}
+	
+/*	comments
+-----------------------------------------------------------------------*/
+#comments{
+	font-size: 1.2em;
+	}
+.comment{
+	margin-top: 15px;
+	background: #f7f7f7 url(bg-comm-lx.gif) no-repeat 0 0;
+	}
+.comment p.comment-footer{
+	background: transparent url(bg-comm-rx.gif) no-repeat 100% 100%;
+	margin: 0 0 0 0;
+	padding: 0 0 15px 20px;
+	}
+.comment p{
+	padding: 15px 20px;
+	color: #333;
+	word-spacing: .15em;
+	}
+.comment p:hover{
+	color: #000;
+	}
+	
+/*	comment form
+-----------------------------------------------------------------*/	
+#comments-open{
+	background: #4BBDE8 url(gradient-cyan.jpg) repeat-x 0 100%;
+	color: #fff;
+	position: relative;
+	margin-top: 15px;
+	}
+.comments-open-header{
+	background: #4BBDE8 url(bg-lx-comm-form.gif) no-repeat 0 0;
+	padding: 10px 0 0 20px;
+	font: 1.2em "Lucida Sans Unicode", "Trebuchet MS", sans-serif;
+	height: 30px;
+	}
+.comments-open-content{
+	padding: 0 0 0 20px;
+	margin: 0;
+	}
+#comment-author, #comment-email, #comment-url, #comment-text{
+	border: 0;
+	padding: 2px;
+	color: #333;
+	border: 0;
+	font-family: 'Lucide Sans unicode', Arial, Helvetica, sans-serif;
+	font-size: 1.1em;
+	padding: 2px;
+	color: #333;
+	background: #EAF9FE;
+	}
+#comment-text{
+	width: 456px;
+	height: 120px;
+	}
+#comment-author:focus, #comment-email:focus, #comment-url:focus, #comment-text:focus{
+	background: #fff;
+	}
+#comments-open-footer{
+	background: transparent url(bg-rx-comm-form.gif) no-repeat 100% 100%;
+	margin: 0;
+	padding: 15px 0 20px 0;
+	}
+#comments-open-footer input{
+	background: transparent url(bg-submit.gif) repeat-x 0 0;
+	border: 1px solid #fff;
+	padding: 2px 0;
+	width: 80px;
+	margin-right: 15px;
+	font-family: 'Lucide Sans unicode', Arial, Helvetica, sans-serif;
+	font-size: 1.1em;
+	font-weight: bold;
+	color: #666;
+	}
+.comments-open-moderated{
+	margin: 15px 10px 0 0;
+	}
+.comments-open-header{
+	font-size: 1.5em;
+	}
+/*	trackbacks
+---------------------------------------------------------------------*/
+.trackbacks{
+	padding: 20px 0;
+	font-size: 1.2em;
+	}
+.trackbacks-content p{
+	padding-right: 20px;
+	padding-top: 20px;
+	}
+.trackbacks-header{
+	margin: 0;
+	}
+.trackback{
+	background: #E0F4FC url(lx-top-trackback.gif) no-repeat 0 0;
+	padding: 0 0 0 20px;
+	margin: 15px 0;
+	}
+.trackback-footer{
+	background: #E0F4FC url(rx-bottom-trackback.gif) no-repeat 100% 100%;
+	margin: 0;
+	padding: 0 0 10px 0;
+	}
+		
+/*	sidebar
+--------------------------------------------------------------------*/
+.module{
+	font-size: 1.1em;
+	padding-bottom: 10px;
+	}
+.module-content, .module-list-item{
+	margin: 0;
+	padding: 0;
+	}
+.module-content ul{
+	margin: 0 10px;
+	padding: 0;
+	}
+.module-content li ul{
+	background-image: none;
+	border-bottom: 1px solid #eee;
+	margin: 0;
+	}
+.module-categories a{
+	display: block;
+	border-bottom: 1px solid #eee;
+	margin: 0;
+	padding: 3px 0 3px 20px;
+	background: transparent url(bullet-li.gif) no-repeat 6px 9px;
+	}
+.module-categories li ul a{
+	display: inline;
+	padding-left: 30px;
+	background: transparent url(bullet-li-_.gif) no-repeat 14px 9px;
+	border-bottom: 0;
+	line-height: 2.1em;
+	}
+.module h2{
+	font: bold 1.1em/1.4em "Trebuchet MS", Arial, sans-serif;
+	text-transform: uppercase;
+	color: #333;
+	letter-spacing: 2px;
+	background: transparent url(bullet.gif) no-repeat 0 1px;
+	padding: 0 0 5px 20px;
+	margin: 20px 10px 0 10px;
+	border-bottom: 1px solid #eee;
+	}
+.module h2 a:link, .module h2 a:visited{
+	font-size: 1em;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #333;
+	}
+.module h2 a:hover{
+	text-decoration: underline;
+	}
+.module-archives li{
+	padding: 3px 0 3px 20px;
+	background: transparent url(bullet-li.gif) no-repeat 6px 10px;
+	border-bottom: 1px solid #eee;
+	}
+.module-syndicate .module-content{
+	margin: 20px 10px 0 10px;
+	line-height: 2em;
+	background: transparent url(feed-icon.gif) no-repeat 2px 10px;
+	padding: 5px 0 5px 25px;
+	}
+.module-powered{
+	line-height: 2em;
+	text-align: center;
+	padding: 20px 0 0 0;
+	}
+.module-content a:link, .module-content a:visited{
+	color: #666;
+	text-decoration: none;
+	} 
+.module-content a:hover{
+	color: #c30;
+	}
+
+/*	search form on the right column
+---------------------------------------------------------------------*/
+#banner, #pagebody, #alpha, #beta, #gamma, #delta, .module, .module-content{
+	position: static;
+	width: auto;
+	}
+.layout-three-column #alpha form, .layout-two-column-left #alpha form, .layout-two-column-right #beta form{
+	margin-left: 10px;
+	}	
+
+/* conetnt nav
+-------------------------------------------------------------------------*/
+.content-nav{
+	font-size: 1em;
+	margin: 0 0 20px 0;
+	padding: 12px 0 13px 0;
+	font-weight: bold;
+	background: transparent url(bg-navv.jpg) no-repeat 50% 100%;
+	text-align: center;
+	color: #ccc;
+	}
+	
+/*	two columns RIGHT
+-----------------------------------------------------------------------*/	
+.layout-two-column-right #alpha-inner{
+	margin: 0 30px 0 0;
+	}	
+.layout-two-column-right #alpha{
+	float: left;
+	width: 540px;
+	}
+.layout-two-column-right #beta{
+	float: right;
+	width: 220px;
+	background: transparent url(gray-gradient.jpg) no-repeat 0 100%;
+	padding: 10px 0 30px 0;
+	}
+.layout-two-column-right #pagebody{
+	background: transparent url(star.jpg) no-repeat 495px 0;
+	}
+	
+/*	two columns LEFT
+-----------------------------------------------------------------------*/	
+.layout-two-column-left #alpha{
+	float: left;
+	width: 220px;
+	background: transparent url(gray-gradient.jpg) no-repeat 0 100%;
+	min-height: 470px;
+	height: auto !important;
+	height: 470px;
+	padding: 0 0 30px 0;
+	}
+.layout-two-column-left #beta{
+	float: right;
+	width: 540px;
+	}
+.layout-two-column-left #beta-inner{
+	margin: 0 0 0 30px;
+	}		
+.layout-two-column-left #banner{
+	background-position: 100% 100%;
+	}	
+.layout-two-column-left #pagebody{
+	background: transparent url(star.jpg) no-repeat 672px 0;
+	}
+	
+/*	three columns
+-----------------------------------------------------------------------*/
+.layout-three-column #container{
+	width: 994px;
+	}
+.layout-three-column #banner{
+	background-position: 646px 100%;
+	}
+.layout-three-column #banner h1, .layout-three-column #banner h2{
+	padding-left: 20px;
+	}
+.layout-three-column #pagebody{
+	position: relative;
+	background: transparent url(star.jpg) no-repeat 748px 0;
+	}
+.layout-three-column #alpha{
+	float: left;
+	width: 220px;
+	background: transparent url(gray-gradient.jpg) no-repeat 0 100%;
+	min-height: 470px;
+	height: auto !important;
+	height: 470px;
+	padding: 0 0 30px 0;
+	}
+.layout-three-column #beta{
+	width: 494px;
+	margin: 0 30px;
+	}
+.layout-three-column .entry-footer{
+	width: 484px;
+	}	
+.layout-three-column #gamma{
+	width: 220px;
+	float: right;
+	background: transparent url(gray-gradient.jpg) no-repeat 0 100%;
+	min-height: 470px;
+	height: auto !important;
+	height: 470px;
+	padding: 0 0 30px 0;
+	}
+.layout-three-column #alpha .module-categories{
+	margin-top: 0;
+	}
+/*	one column
+-----------------------------------------------------------------------*/	
+.layout-one-column #container{
+	width: 580px;
+	}	
+.layout-one-column #alpha{
+	width: 100%;
+	}
+.layout-one-column #banner{
+	background-position: 100% 100%;
+	}
+.layout-one-column .entry-footer{
+	width: 570px;
+	}
+.layout-one-column #pagebody{
+	background: transparent url(star.jpg) no-repeat 492px 0;
+	}	
+/*	links
+-----------------------------------------------------------------------*/
+a:link, a:visited{
+	color: #c30;
+	text-decoration: none;
+	}
+a:hover{
+	text-decoration: underline;
+	}	
+.entry a:link, .entry a:visited{
+	color: #c30;
+	text-decoration: none;
+	}
+.entry a:hover{
+	border-bottom: 1px dotted #c30;
+	}	
+
+
+/*	userpics and something else
+-----------------------------------------------------------------------*/
+.entry-userpic, .comment-userpic{
+	display: none;
+	}
+.comment-content, .entry-body{
+	width: 100%;
+	float: none;
+	}
+
+
+
+

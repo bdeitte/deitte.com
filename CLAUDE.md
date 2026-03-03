@@ -6,7 +6,7 @@ Rebuilding the deitte.com website. The project involves:
 - Backing up existing site files from an AWS server to S3
 - Light editing of the backed-up files
 - Creating a new simple website that links to the old sites
-- Deploying to GitHub and a Namecheap VPS
+- Deploying to GitHub Pages, with the custom domain managed through Namecheap
 
 ## Workflow Preferences
 
@@ -27,4 +27,5 @@ plan/           # Project plans, checklists, and decision logs
 - AWS CLI for S3 operations
 - SSH/SCP/rsync for server transfers
 - GitHub for version control and hosting the repo
-- Namecheap VPS for serving the site
+- GitHub Pages for hosting the site
+- Namecheap for domain/DNS management (pointing deitte.com to GitHub Pages)

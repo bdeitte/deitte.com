@@ -1,0 +1,317 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard">
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <meta name="generator" content="Movable Type Pro 4.31-en" />
+   <meta name="keywords" content="asdoc flex ">
+   <meta name="description" content="Update: Flex now includes ASDoc. The documentation is here. ASDoc, currently on Adobe Labs, will be included in the next update to Flex. I don't know the full list of...">
+
+   <link rel="stylesheet" href="https://deitte.com/styles-site.css" type="text/css" />
+   <link rel="alternate" type="application/atom+xml" title="Atom" href="https://deitte.com/atom.xml" />
+   <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="https://deitte.com/index.xml" />
+
+   <title>ASDoc: a list of fixes and how to alter the output (Deitte.com)</title>
+
+   <link rel="start" href="../../../index.html" title="Home" />
+   <link rel="prev" href="category_feeds.htm" title="Category Feeds and Other Updates" />
+   <link rel="next" href="pay_media_on_br.htm" title="Pay media on Brightcove (but not with Flash)" />
+
+   
+
+   
+   <script type="text/javascript" src="https://deitte.com/mt-site.js"></script>
+</head>
+<body class="layout-two-column-right individual-entry-archive" onload="individualArchivesOnLoad(commenter_name)">
+   <div id="container">
+      <div id="container-inner" class="pkg">
+
+         <div id="banner">
+            <div id="banner-inner" class="pkg">
+               <h1 id="banner-header"><a href="../../../index.html" accesskey="1">Deitte.com</a></h1>
+               <h2 id="banner-description">A Mix of Flex and Brightcove</h2>
+            </div>
+         </div>
+
+         <div id="pagebody">
+            <div id="pagebody-inner" class="pkg">
+               <div id="alpha">
+                  <div id="alpha-inner" class="pkg">
+
+                     <p class="content-nav">
+                        <a href="category_feeds.htm">&laquo; Category Feeds and Other Updates</a> |
+                        <a href="../../../index.html">Main</a>
+                        | <a href="pay_media_on_br.htm">Pay media on Brightcove (but not with Flash) &raquo;</a>
+                     </p>
+
+
+                     <h2 class="archive-title">ASDoc: a list of fixes and how to alter the output</h2>
+                     <div class="entry" id="entry-76">
+                        <div class="entry-content">
+                           
+                           <div class="entry-body">
+                              <p><b>Update: Flex now includes ASDoc.  The documentation is <A HREF="http://livedocs.adobe.com/flex/3/html/help.html?content=asdoc_1.html">here</A>.</b><br />
+ <br />
+ASDoc, <A HREF="../08/asdoc_is_availa.htm">currently on Adobe Labs</A>, will be included in the next update to Flex.  I don't know the full list of ASDoc fixes, but I can share that the top three issues in the Labs build have been fixed:<ul><li>UTF-8 characters show correctly</li><li>Bindable metadata doesn't affect output</li><li>No more circular inheritance errors when using doc-sources</li></ul>I also wanted to share some information on altering the output.  If there's a small bug in the output or it doesn't look quite right to you, there's something that can be done already to fix this.  You can alter the the files in the templates directory, asdoc/templates.  You should copy this directory to have different template files for different ASDoc builds.  Point to a different template directory with <i>templates-path</i>.</p>
+
+<p>The templates directory contains HTML files which can be edited to alter the look of the final HTML files.   There are also XSL files in there for the adventurous.  It's not a supported feature to alter these files, and they will certainly change in future releases, but they are helpful in getting the final output to look just right.</p>
+                           </div>
+                           
+                                    
+                           
+                           <div class="entry-tags">Tags: <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=asdoc&amp;limit=20" rel="tag">asdoc</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=flex&amp;limit=20" rel="tag">flex</a>
+                           </div>
+                           
+                        </div>
+                        <p class="entry-footer">
+                           <span class="post-footers">
+                               
+                                   Posted on October 22, 2006  5:53 PM
+                               
+                           </span> 
+                           <span class="separator">|</span> <a class="permalink" href="asdoc_a_list_of.htm">Permalink</a>
+<span class="separator">|</span> <A HREF="http://digg.com/submit?url=https://deitte.com/archives/2006/10/asdoc_a_list_of.htm&title=ASDoc: a list of fixes and how to alter the output">digg</A>
+                           <span class="separator">|</span> <A HREF="http://del.icio.us/post?url=https://deitte.com/archives/2006/10/asdoc_a_list_of.htm">del.icio.us</A>
+                        </p>
+                     </div>
+
+                     
+
+                     
+                     <div id="comments" class="comments">
+                        
+                           
+                              <div class="comments-content">
+                                 <h3 class="comments-header">Comments (5)</h3>
+                           
+                                 <a id="c000793"></a>
+                                 <div class="comment" id="comment-793">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          <a title="http://thefalken.livejournal.com" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=793">Tom Chiverton</a>:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>Bah, still no Linux support.</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          <a title="http://thefalken.livejournal.com" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=793">Tom Chiverton</a>  |
+                                          <a href="asdoc_a_list_of.htm#comment-793">October 23, 2006  6:04 AM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="asdoc_a_list_of.htm#comment-793" title="Permalink to this comment">October 23, 2006 06:04</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c000803"></a>
+                                 <div class="comment" id="comment-803">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          <a title="http://deitte.com" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=803">Brian</a>:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>Tom, I should be flogged for saying the top three issues were fixed!  Three out of the top four issues were fixed.  It's still remotely possible that this has or will be fixed for the next release.</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          <a title="http://deitte.com" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=803">Brian</a>  |
+                                          <a href="asdoc_a_list_of.htm#comment-803">October 23, 2006  8:11 AM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="asdoc_a_list_of.htm#comment-803" title="Permalink to this comment">October 23, 2006 08:11</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c009387"></a>
+                                 <div class="comment" id="comment-9387">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          <a title="http://flash-ripper.com/en/" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=9387">Rostislav Siryk</a>:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>Brian, I use ASDoc to create documentation for my project which does use Cairngorm framework.</p>
+
+<p>When trying to generate ASDocs, I get the errors like: </p>
+
+<p>"The definition of base class CairngormEvent was not found"</p>
+
+<p>And it is understood because Cairngorm is SWC file. </p>
+
+<p>I wonder how to overcome it?</p>
+
+<p>Sorry if it is stupid question -- I'm a newbie to ASDoc, and still didn't figure everything about this powerful tool. I realize the answer to my question is simple but couldn't find it alone.</p>
+
+<p>I'm asking here just because my team will be building our project asdocs today and I've just discovered this problem.</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          <a title="http://flash-ripper.com/en/" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=9387">Rostislav Siryk</a>  |
+                                          <a href="asdoc_a_list_of.htm#comment-9387">February 11, 2007  8:10 PM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="asdoc_a_list_of.htm#comment-9387" title="Permalink to this comment">February 11, 2007 20:10</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c009810"></a>
+                                 <div class="comment" id="comment-9810">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          <a title="https://deitte.com" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=9810">Brian Deitte</a>:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>Rostislav, make sure that the Cairngorm SWC is in the library-path when running asdoc.</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          <a title="https://deitte.com" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=9810">Brian Deitte</a>  |
+                                          <a href="asdoc_a_list_of.htm#comment-9810">February 15, 2007  1:38 PM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="asdoc_a_list_of.htm#comment-9810" title="Permalink to this comment">February 15, 2007 13:38</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c058412"></a>
+                                 <div class="comment" id="comment-58412">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          Ted Nguyen:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>Hi, <br />
+Is there anyway to create a template for let say documenting a method like in java, so that when you type ctrl+shift+d in flashbuilder it generates a boiler template doc for you.  i.e<br />
+/**<br />
+* description: <br />
+* customization note:<br />
+* @params<br />
+*/</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          Ted Nguyen  |
+                                          <a href="asdoc_a_list_of.htm#comment-58412">April 29, 2011  9:33 PM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="asdoc_a_list_of.htm#comment-58412" title="Permalink to this comment">April 29, 2011 21:33</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                              </div>
+                           
+                        
+                        
+                     </div>
+                     
+                  </div>
+               </div>
+<div id="beta">
+                  <div id="beta-inner" class="pkg">
+
+                     <div class="module-search module">
+                        <h2 class="module-header">Posts of Note</h2>
+                        <div class="module-content">
+                        <ul class="module-list">
+                              <li class="module-list-item"><a href="../12/about_this_blog.htm">About This Blog</a></li>
+                              <li class="module-list-item"><a href="../../2009/02/creating_a_vide.htm">Using BEML</a></li>
+                              <li class="module-list-item"><a href="../../2011/02/lessons_learned.htm">Lessons with StageVideo</a></li>
+                              <li class="module-list-item"><a href="../../2009/08/ten_brightcove.htm">Brightcove SDKs</a></li>
+                              <li class="module-list-item"><a href="../../2008/10/a_faster_flex_3.htm">A Faster Flex 3 SDK</a></li>
+                              <li class="module-list-item"><a href="../../2008/07/six_tools_for_f.htm">Tools For Flex</a></li>
+                              <li class="module-list-item"><a href="../../2008/07/dont_use_iframe.htm">HTML in Flex</a></li>
+                        </ul>
+                        </div>
+                     </div>
+                     <div class="module-search module">
+                        <h2 class="module-header">Tags</h2>
+                        <div class="module-content">
+
+        <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=flex&amp;limit=20">flex</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=brightcove&amp;limit=20">brightcove</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=flex%20compiler&amp;limit=20">flex compiler</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=flash&amp;limit=20">flash</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=brightcove%20news&amp;limit=20">brightcove news</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=advertising&amp;limit=20">advertising</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=flex%20sdk&amp;limit=20">flex sdk</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=as3&amp;limit=20">as3</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=blog%20to%20read&amp;limit=20">blog to read</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=brightcove%20dev&amp;limit=20">brightcove dev</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=html%20in%20flex&amp;limit=20">html in flex</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=adobe&amp;limit=20">adobe</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=boston%20flash%20user%20group&amp;limit=20">boston flash user group</a>
+
+                        </div>
+                     </div>
+                     <div class="module-search module">
+                        <h2 class="module-header">Ads</h2>
+<script type="text/javascript"><!--
+google_ad_client = "pub-0625677791353122";
+/* 200x200, created 5/10/09 */
+google_ad_slot = "0856043844";
+google_ad_width = 200;
+google_ad_height = 200;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<br/>
+<br/>
+</div>
+                     <div class="module-search module">
+                        <h2 class="module-header">Search this blog</h2>
+                        <div class="module-content">
+                           <form method="get" action="https://deitte.com/cgi-bin/mt/mt-search.cgi">
+                              <input type="hidden" name="IncludeBlogs" value="1" />
+                              <input id="search" name="search" size="20" />
+                              <input type="submit" value="Search" />
+                           </form>
+                        </div>
+                     </div>                   
+
+                     <div class="module-search module">
+                        <h2 class="module-header">Archive</h2>
+                        <div class="module-content">
+                        <ul class="module-list">
+                              <li class="module-list-item"><a href="https://deitte.com/archives.htm">All posts</a></li>
+                        </ul>
+                        </div>
+                     </div>
+
+                     <div class="module-rss-etc module">
+                        <h2 class="module-header">Feeds</h2>
+                        <div class="module-content">
+                        <ul class="module-list">
+                              <li class="module-list-item"><a href="https://deitte.com/index.xml">RSS 2.0</a></li>
+                              <li class="module-list-item"><a href="https://deitte.com/index.rdf">RSS 1.0</a></li>
+                              <li class="module-list-item"><a href="https://deitte.com/atom.xml">Atom</a></li>
+                        </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+
+            </div>
+         </div>
+      </div>
+   </div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-7910585-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+
+</body>
+</html>

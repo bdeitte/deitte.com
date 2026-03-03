@@ -1,0 +1,19 @@
+<smil xmlns="http://www.w3.org/2001/SMIL20/Language">
+	<head>
+		<meta name="title" content="LDS Test" />
+		<meta name="httpBase" content="http://bcldshd-f.akamaihd.net/" />
+	</head>
+	<body>
+		<switch>
+                         
+                        	<video src="grsmeng_1_2400@43919" system-bitrate="2400000"/>
+                        	<video src="grsmeng_1_1900@43919" system-bitrate="1900000"/>
+                        	<video src="grsmeng_1_850@43919" system-bitrate="850000"/>
+                        	<video src="grsmeng_1_90@43919" system-bitrate="90000"/>
+                        	<video src="grsmeng_1_400@43919" system-bitrate="400000"/>
+                        	<video src="grsmeng_1_600@43919" system-bitrate="600000"/>
+                        	<video src="grsmeng_1_200@43919" system-bitrate="200000"/>
+                        	<video src="grsmeng_1_1200@43919" system-bitrate="1200000"/>
+		</switch>
+	</body>
+</smil>

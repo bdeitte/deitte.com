@@ -1,0 +1,2784 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="http://www.movabletype.org/" />
+
+<title>Deitte.com: Video Archives</title>
+
+<link rel="stylesheet" href="https://deitte.com/old_home/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/atom+xml" title="Atom" href="https://deitte.com/old_home/atom.xml" />
+<link rel="alternate" type="application/rss+xml" title="RSS 1.0" href="https://deitte.com/old_home/index.rdf" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="https://deitte.com/old_home/index.xml" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://deitte.com/old_home/rsd.xml" />
+
+
+
+</head>
+
+<body>
+
+<div id="container">
+
+<div id="banner">
+<h1><a href="https://deitte.com/" accesskey="1">Deitte.com</a></h1>
+<div id="banner-description">
+A Mix of Flex and Brightcove
+</div>
+</div>
+
+<div id="center">
+<div id="main-top"><img src="https://deitte.com/old_home/mt-static/escape/main_column_top.gif" alt="" /></div>
+<div class="content">
+
+
+
+
+
+<h2>February 13, 2011</h2>
+
+
+<h3 id="a000312">Lessons Learned with StageVideo</h3>
+
+Last week, along with the <A HREF="http://blogs.adobe.com/flashplayer/2011/02/flash-player-10-2-launch.html">release of Flash Player 10.2</A>, Brightcove released a page showing off the <A HREF="http://blog.brightcove.com/en/2011/02/stage-video-brightcove-player">Brightcove player using StageVideo</A>.<br/>
+<br/>
+Here's the lessons I learned from working with StageVideo:<br/>
+<ul>
+<li>Getting started with StageVideo is fairly simple.  The article on <A HREF="http://www.adobe.com/devnet/flashplayer/articles/stage_video.html">getting started</A> spells things out well, and while the StageVideo object is quite different from the regular Video object, it's not hard at all to use.</li>
+<li>Things can get tricky when using StageVideo with a complicated player given the fact that StageVideo sits below all objects on the display list.  If you had your
+Video object added on top of a complicated display, you'll need rework this.</li>
+<li>You can use StageVideo in a player that doesn't require Flash Player 10.2  Try loading the <A HREF="http://blog.brightcove.com/en/2011/02/stage-video-brightcove-player">Brightcove player page</A> in a browser using an older version of the Flash Player to see this- it can even be loaded with Flash Player 9.  This isn't done too easily but can be managed with loading the StageVideo code in its own SWF as needed.
+<li>The StageVideo numbers are impressive, as shown in the link above.  I heard more than one person surprised at how much it knocked down the processing power needed on their machine.</li>
+</ul>
+
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2011/02/lessons_learned.htm"> 9:56 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+
+<h3 id="a000310">Come Work at Brightcove</h3>
+
+<p>It's incredibly exciting to work on a video player that can be seen on <A HREF="http://www.brightcove.com/en/why-brightcove/our-customers">websites I visit every day</A>.  Want to do the same?  We have positions open on the player team and all over the company.  There's <A HREF="http://www.brightcove.com/careers">more than 25 job openings</A> in a lot of areas.  </p>
+
+<p>I'm more than happy to answer questions- email me at bdeitte at brightcove dot com for anything you'd like to know.</p>
+
+<p>I wrote another "come work at Brightcove" post <A HREF="https://deitte.com/archives/2006/12/top_ten_reasons.htm">nearly four years ago</A>.  How time flies... most of that post is no longer relevant, but the view is the same.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2011/02/come_work_at_br.htm"> 8:40 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>October 31, 2010</h2>
+
+
+<h3 id="a000309">Speaking at RIA Unleashed</h3>
+
+<p>I'm excited to say that I'll be speaking at <A HREF="http://riaunleashed.com/">RIA Unleashed</A> in two weeks in Boston.  The talk will be about <A HREF="http://riaunleashed.com/page.cfm/topics/the-future-of-video-players">the future of video players</A> from the perspective of someone working on them at Brightcove.</p>
+
+<p>Tickets are <A HREF="http://riaunleashed2010.eventbrite.com/">still available</A> for the two-day conference that has a lot of exceptional speakers from the Flash community.  It also includes a night of geeking out at the MIT museum.</p>
+
+<p>And a welcome back to any blog readers!  I've had one month absences from this blog of five years, but this is my first six month absence.  I don't expect to keep up very well in the short term, but the blog ain't dead yet.  You can also hear from me on <A HREF="http://twitter.com/bdeitte">Twitter</A> or at brian at deitte dot com.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2010/10/speaking_at_ria.htm"> 7:52 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>April 26, 2010</h2>
+
+
+<h3 id="a000299">Why VAST Is Important</h3>
+
+<p>This is the second in a <A HREF="https://deitte.com/archives/2010/04/new_series_on_v.htm">series of articles</A> on video advertising.  I'll be writing about what VAST is, why this standard is so important, and what's happening with VAST 2.</p>
+
+<p>VAST is the standardized way to deliver an ad response to a video player.  This is done with XML which contains information about the type of ad, where the ad creative (also known as the ad video file or other asset) is located, events to fire when certain things happen, and much more.  <A HREF="http://www.iab.net/media/file/VAST-2_0-FINAL.pdf">The specification</A> explains in detail what all can be done.</p>
+
+<p>Having this standard ad response allows for ad servers to work very differently.  Instead of spending a lot of time worrying about the differences between different video players and the types and formats of responses they are expecting, the ad server can ideally return the same ad XML to all places.  More importantly, ad servers often talk to each other, grabbing ads from different places as needed and requested.  This is the real power of VAST, which is that it allows 3rd-party ad serving to happen easily, allowing ad servers to talk to each other.  This makes things like the <A HREF="http://www.mediapost.com/?fa=Articles.showArticle&art_aid=126426">real-time bartering of video ads</A> possible. </p>
+
+<p>I'm personally excited by VAST because I've seen the changes that a standard can bring.  About ten years ago, I helped implement the J2EE specification in JRun at Allaire.  J2EE, now referred to as Java EE, consolidated a lot of different ideas going on in the Java world at the time and allowed people to choose the application server that was the best for them.  I see similar parallels in VAST and VPAID (another important standard which I'll talk about in a future article).  The consolidation of ideas can be seen by looking at the <A HREF="http://support.brightcove.com/en/docs/supported-ad-formats-and-format-codes">Brightcove ad XML formats</A> which can now all be described in VAST.</p>
+
+<p>My experience with standards gives me one thing to worry about in this time period, when VAST is still being adopted, which is this: standards must be completely implemented and widely used for them to be successful.  J2EE solved this with a Compatibility Test Suite and a market that insisted on products that were J2EE.  There's different ways to get to completely implemented and widely used standards, and I hope in short time we will see VAST become this type of standard.</p>
+
+<p>VAST was created by the Interactive Advertising Bureau (the IAB).  The IAB put together this specification by talking with a lot of ad server companies, video platforms, ad agencies, and other people interested in getting a standard format.  Brightcove was one of the companies who helped with this specification, and we used our knowledge from the Brightcove ad XML that I previously mentioned to suggest changes to the specification.  The VAST specification, XSD and some samples can all be found on the <A HREF="http://www.iab.net/vast">IAB website</A>.</p>
+
+<p>You'll notice on the IAB website that the current version is 2.  VAST 1 had some support in the industry, but VAST 2 has completely overtaken it.  Many ad servers, like <A HREF="http://doubleclickadvertisers.blogspot.com/2010/04/doubleclick-platforms-support-vast-20.html">DoubleClick's platform</A> have announced supported for VAST 2.  And a growing number of video players, including Brightcove's player, allow its use.  Besides the wider support, VAST 2 also has a lot more of the elements and attributes that are needed for ad responses.  There are a numbers of limitations in the VAST 1 specification, which does not allow ad creatives in certain places, misses some events that people wanted to know about, and has elements that need to be clarified.  If you'd like to read more, Eyeblaster's blog has an <A HREF="http://creativezone.eyeblaster.com/Blog/index.php/2010/03/31/in-vast-we-trust/">excellent article</A> on the advantages of VAST 2.</p>
+
+<p>While VAST 2 is now recommended, Brightcove implements both <A HREF="http://support.brightcove.com/en/docs/vast-ad-formats-and-format-codes">VAST 1</A> and <A HREF="http://support.brightcove.com/en/docs/vast-20-ad-formats-and-format-codes">VAST 2 specifications</A>.  We are also continuously adding new features to the player to allow for more of the VAST 2 elements to be used.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2010/04/why_vast_is_imp.htm"> 7:28 AM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>April 22, 2010</h2>
+
+
+<h3 id="a000298">The Life of an Ad</h3>
+
+<p>This is the first in a <A HREF="https://deitte.com/archives/2010/04/new_series_on_v.htm">series of articles</A> on video advertising.  To start this series off, I wanted to give a general overview of how video advertising works from the point-of-view of a Brightcove player.  The slides below are adapted from a presentation I gave at <A HREF="http://www.360flex.com/">360Flex</A> a few months ago.</p>
+
+<p>This presentation would more accurately be called The Life of an Ad From the Video Player's Perspective, but that didn't sound as catchy.  It's not discussing the technical side of creating an ad or using an ad server, both of which are immense topics by themselves.</p>
+
+<div style="width:425px" id="__ss_3579927"><strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/bdeitte/life-of-an-ad" title="Life Of An Ad">Life Of An Ad</a></strong><object id="__sse3579927" width="425" height="355"><param name="movie" value="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=lifeofanad-100328143502-phpapp02&stripped_title=life-of-an-ad" /><param name="allowFullScreen" value="true"/><param name="allowScriptAccess" value="always"/><embed name="__sse3579927" src="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=lifeofanad-100328143502-phpapp02&stripped_title=life-of-an-ad" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="355"></embed></object><div style="padding:5px 0 12px">View more <a href="http://www.slideshare.net/">presentations</a> from <a href="http://www.slideshare.net/bdeitte">Brian Deitte</a>.</div></div>
+
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2010/04/the_life_of_an.htm">12:32 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>April 21, 2010</h2>
+
+
+<h3 id="a000297">New Series on Video Advertising</h3>
+
+<p>Over the next month or two, I'll be writing a series of technical articles on video advertising.   You'll learn more about how the ad lifecycle, the standards that have emerged for video ads, and what's in the video ad future.  If you're a developer who doesn't know much about advertising, this is a great time to learn!  So, before you install Adblock on this series, here's a few reasons to read more:</p>
+
+<ul><li> As a web developer, you've certainly already worked on a website that uses advertising.  Why not understand what's really going on underneath it all?  It helps to know about the HTTP protocol, even if you aren't writing a webserver, and I think that a similar case can be made for advertising.  <A HREF="http://www.joelonsoftware.com/articles/LeakyAbstractions.html">The Law of Leaky Abstraction</A> makes us all dig deeper from time to time, and an understanding of what's under the covers with ads will come in handy someday.</li>
+
+<p><li> Even if you don't deal with video ads, this series will be useful to you.  There's a lot of banner ads and rich media ads that are needed as part of a video player experience as well, and much of the articles are applicable to the rich media ad market and some to display ads. Google's blog has an <A HREF="http://googleblog.blogspot.com/2009/04/whats-rich-media-ad-anyway.html">excellent description of both rich media ads and display ads.</A></li></p>
+
+<p><li> Although I'll be writing a lot about Brightcove, almost all of the items I will cover are not specific to Brightcove.  The IAB standards and advertising approaches are industry-wide; and we'll just happen to be using a Brightcove player when talking about them.</li></p>
+
+<p><li> Video advertising is an area that's expanding rapidly, <A HREF="http://www.iab.net/insights_research/947883/1675/974054">growing more than 40% last year and projected to do the same this year.</A></li></p>
+
+<p><li> This is being written by someone who has an inside look at how video advertising is coming together.  I've been dealing with advertising at Brightcove for more than two years now, and I've written many of the pieces in the <A HREF="http://developer.brightcove.com/en/articles/brightcove-advertising-sdk">ad SDK</A>.  And, if I can persuade them, you may also see a post or two from others on the advertising team here at Brightcove in the future.</li></ul></p>
+
+<p>Have I convinced you?  I hope so, but if you need any more persuasion or just want to ask a question, write a comment here or send me a message <A HREF="http://twitter.com/bdeitte">on twitter</A>.</p>
+
+<p>Here are links to the published articles:</p>
+
+<ul><li><A HREF="https://deitte.com/archives/2010/04/the_life_of_an.htm">The Life of An Ad</A></li>
+<li><A HREF="https://deitte.com/archives/2010/04/why_vast_is_imp.htm">Why VAST Is Important</A></li>
+</ul>
+
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2010/04/new_series_on_v.htm"> 7:43 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>March  8, 2010</h2>
+
+
+<h3 id="a000296">How RIA Advertising Works</h3>
+
+<p>Below is the presentation that I gave along with Melissa Gregory at 360Flex a few hours ago.  It's about the life of an ad and a little bit about Brightcove.  </p>
+
+<p>To anybody reading this who wasn't at the conference- I talked a lot about each slide and don't have any of those notes in the presentation.  I'd be happy to explain anything more in the comments.</p>
+
+<p><A HREF="http://www.slideshare.net/bdeitte/how-ria-advertising-worksand-a-little-bit-about-brightcove">How RIA Advertising Works And a Little Bit About Brightcove</A></p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2010/03/how_ria_adverti_1.htm"> 4:42 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>February 24, 2010</h2>
+
+
+<h3 id="a000295">How RIA Advertising Works at 360Flex</h3>
+
+<p>I'm excited to announce that I'll be giving a talk, How RIA Advertising Works, at <A HREF="http://www.360flex.com/">360Flex</A>.  You can hear me at lunch on Monday, March 8th.</p>
+
+<p>I've been building <A HREF="http://developer.brightcove.com/en/articles/brightcove-advertising-sdk">advertising SDKs</A> for more than a year at Brightcove, and I want to share the things that I've learned about how advertising works- we'll go over the basics of advertising (CPMs, Mad Men, ad networks), the life of an ad (ad policies, ad delivery, impressions), and the emerging standards (VAST, VPAID).  It will be a very technical dive into an area that many of us make our living off but which not a lot of people understand.  A coworker of mine, Melissa Gregory, will also be giving a ten-minute introduction to Brightcove at the beginning of the talk.</p>
+
+<p>The presentation I'll be giving is a sponsored presentation for <A HREF="http://www.brightcove.com">Brightcove</A>.  I don't want this to dissuade those who just want to hear about RIA advertising, as my goal is to make this a talk that's the same as the non-sponsored talks at the conference.  Being a <A HREF="http://www.slideshare.net/bdeitte/aftermix-and-video">former speaker at 360Flex in Seattle</A>, I know I can make this happen, no matter if you use a different video platform or none at all.  </p>
+
+<p>I'm happy that Brightcove is a <A HREF="http://www.360flex.com/sponsors/">Bronze sponsor</A> at the event.  We'll have a booth there, which I'll be manning at points and where you can learn more about what we do (and pick up some schwag).</p>
+
+<p>Not signed up for 360Flex?  If you can get to San Jose in two weeks, you should <A HREF="http://360flex.eventbrite.com/?ref=eweb">sign up now</A>.  This is the original Flex conference, and the people who attend make it a one-of-a-kind event.  I went to the first 360Flex in San Jose as well as 360Flex in Seattle three years ago.  I met so many incredible people at both events, and I'm sure it will be the same at this one. <br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2010/02/how_ria_adverti.htm"> 8:52 AM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>February 15, 2010</h2>
+
+
+<h3 id="a000294">Brightcove on Mobile Flash Player 10.1</h3>
+
+<p>I'm very excited to see all of the <A HREF="http://blogs.adobe.com/air/2010/02/preview_of_air_on_android.html">news about Flash</A> today, but I'm most excited to be able to talk about the work that <A HREF="http://newteevee.com/2010/02/14/brightcove-pushes-mobile-video-with-flash-10-1-support/">Brightcove has been doing with Flash 10.1</A>. As you can see in the video below, we've been working hard here to have different versions of the Brightcove player on mobile devices as well as making sure the current ones work as expected in the beta of Flash Player 10.1.  The Brightcove player does a surprising amount, in my biased opinion- runtime layout with BEML, hundreds of API methods to call, segmented SWFs for optimizing size, handling large number of CDNs, support for every major ad server, and a lot more.  And all of this is happening on the Android device below.</p>
+
+<p><object id="flashObj" width="480" height="270" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,47,0"><param name="movie" value="http://c.brightcove.com/services/viewer/federated_f9/63226009001?isVid=1&isUI=1&publisherID=1125929468" /><param name="bgcolor" value="#FFFFFF" /><param name="flashVars" value="videoId=65962702001&playerID=63226009001&domain=embed&" /><param name="base" value="http://admin.brightcove.com" /><param name="seamlesstabbing" value="false" /><param name="allowFullScreen" value="true" /><param name="swLiveConnect" value="true" /><param name="allowScriptAccess" value="always" /><embed src="http://c.brightcove.com/services/viewer/federated_f9/63226009001?isVid=1&isUI=1&publisherID=1125929468" bgcolor="#FFFFFF" flashVars="videoId=65962702001&playerID=63226009001&&domain=embed&" base="http://admin.brightcove.com" name="flashObj" width="480" height="270" seamlesstabbing="false" type="application/x-shockwave-flash" allowFullScreen="true" allowScriptAccess="always" swLiveConnect="true" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash"></embed></object></p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2010/02/brightcove_on_m.htm"> 2:43 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>February 10, 2010</h2>
+
+
+<h3 id="a000293">Brightcove News: Meetups, Player Design, and Lots of Stuff</h3>
+
+<p><br />
+Brightcove News is my collection of developer-focused links about Brightcove.  I post about once a month, and you can see old posts <A HREF="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&tag=brightcove%20news&limit=20">here</A>.</p>
+
+<p>This post is long overdue, but I've been a little <A HREF="https://deitte.com/archives/2009/11/elise_marie_dei.htm">sleep-deprived and focused elsewhere lately</A>.  So here's a supersized set of links.</p>
+
+<p><b>Meetup with Us:</b> The <A HREF="http://www.meetup.com/London-Brightcove-Developer-Group/">London Brightcove Developer Group</A> has taken off, and the <A HREF="http://www.meetup.com/Boston-Brightcove-Developer-Group/">Boston Brightcove Developer Group</A> is close behind.  I put together the Boston group, so I hope you'll go to the meetup page to join!</p>
+
+<p><b>David Mendels</b>: I'm very excited that Brightcove has brought <A HREF="http://blog.brightcove.com/en/2010/01/big-news-and-big-moves-brightcove">David Mendels</A> on board as President/COO.  I knew him from his time jumpstarting the Flex team, and I can see him having the same kind of influence at Brightcove.</p>
+
+<p><b>Lots of stuff:</b> I can't think of a concise way to describe the many features that <A HREF="http://support.brightcove.com/en/product-updates">have been released</A> so here's a rundown of a lot of stuff: chromeless player templates, built-in player sharing to Twitter and Facebook, player performance enchancements, cue point editing with video preview, additional VAST support, and a lot more that you can find in the links above.</p>
+
+<p><b>BEML editing</b>: Todd Yard of the Brightcove player team has created an awesome application for <A HREF="http://blog.27bobs.com/?p=35">the visual design of players.</A>  The code complete is also very helpful.</p>
+
+<p><b>Creating Brightcove plugins</b>: I enjoyed <A HREF="http://blog.mattiasnorell.com/?p=257">this article on creating Brightcove plugins</A>.  Don't get thrown off by the message at the top of the page- it reads just fine in English.</p>
+
+<p><b>Blogs you can find:</b> The many <A HREF="http://blog.brightcove.com/en/">blogs on brightcove.com</a> have been rearranged so that you can see them in one place.  Lots of excellent reading there that you can now grab in one RSS feed or <A HREF="http://twitter.com/brightcove_blog">follow on twitter</A>.</p>
+
+<p><b>Media SDKs:</b> Two new media SDKs have been created, one for for <A HREF="http://code.google.com/p/sukiyoshi/">.NET</A> and one for <A HREF=" http://blog.brightcove.com/jeremy/2009/12/brightcove-for-coldfusion.html">ColdFusion</A>.  I've lost track of the number, but I'd guess there's a media SDK for about 10 languages now.</p>
+
+<p><b>More devices every day:</b> Brightcove can now be found on <A HREF=" http://developer.brightcove.com/en/articles/yahoo-connected-tv-widgets">Yahoo Connected TV Widgets</A>.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2010/02/brightcove_news_7.htm">10:22 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>December  1, 2009</h2>
+
+
+<h3 id="a000287">Brightcove News: $99-A-Month Edition, Mobile Enhancements, and A Lot More</h3>
+
+<p>This is my largest Brightcove News post so far, as I've been <A HREF="https://deitte.com/archives/2009/11/elise_marie_dei.htm">a little busy</A> lately.  Now that life is return to a new sleep-deprived normal, I'll share the news I've been gathering.</p>
+
+<p><b>Brightcove 4:</b> The launch of <A HREF="http://blog.brightcove.com/blog/2009/11/introducing-brightcove-4.html">Brightcove 4</A> should have its own blog post, but I'll write what I can here.  Some of these features I've written about on this blog before, like live video, VAST support, and Facebook integration.  Here's a list of features I haven't mentioned, some of which I'll talk about more below: a new Express edition, iPhone SDK, new analytics module, transcoding movies with more renditions and higher quality, ability to switch between progressive and streaming for any video in your account, live streaming with full ad support, and more ad integrations (including OpenX and Freewheel).</p>
+
+<p><b>$99-A-Month Edition:</b> The <A HREF="http://www.brightcove.com/en/video-platform/editions-and-pricing">Brightcove Express</A> version can now be bought online for $99 a month (with some other plans costing more).  I remember talking to someone awhile ago (ahem, on a podcast) and being told Brightcove was much too expensive for them to use.  This is a price that many more people can afford, and I'm very excited to see more people try out Brightcove.  If you've read this blog for awhile and are just curious to try things out (and/or you want to see the nice-looking Flex apps that are used for video management) you can also use the link above to quickly create a trial account.</p>
+
+<p><b>iPhone SDK:</b> The <A HREF="http://developer.brightcove.com/en/articles/iphone-native-application">iPhone SDK</A> is a pretty big project at Brightcove, and it's grabbed a lot of attention in the launch.  I've only seen the demos of it, and it does looks snazzy.  The switching between progressive and streaming videos in an account makes the retrieval of videos from Brightcove a lot easier for this project and for all other mobile devices.  Often companies want to have their videos streamed on the Web, for bandwidth savings and making it harder to steal, but mobile devices require progressive videos.  We now have a simple switch in the media APIs (one parameter that needs to be added to calls) to force the retrieval of progressive videos.</p>
+
+<p><b>The Mad Men Keep Going:</b> The OpenX ad integration is interesting as a free solution for advertising.  <A HREF="http://www.openx.org/">OpenX</A> is an open source ad server you can install yourself.  Also interesting on the ad front is the release of the <A HREF="http://support.brightcove.com/en/docs/developing-ad-rules-swf">ad rules SDK</A>.  This SDK, when used with the ad translation and ad display SWF SDKs, allows for complete control of the ad system in the player.  Companies like <A HREF="http://www.freewheel.tv/">Freewheel</A> need this in order to allow their own complex ad rules to behave in the player, and the <A HREF="http://developer.brightcove.com/en/articles/brightcove-advertising-sdk">ad SDKs</A> are allowing very involved integrations to be done without Brightcove's direct help.</p>
+
+<p><b>Palm OS Example:</b> The non-iPhone world, we haven't completely forgotten about you.  There's a new article on <A HREF="http://developer.brightcove.com/en/articles/getting-started-brightcove-and-mojo-sdk-webos">developing for Palm</A>.</p>
+
+<p><b>Brightcove 3.4:</b> <A HREF="http://support.brightcove.com/en/product-updates#quigon4 ">This release</A> didn't have as much in it previous dot releases, as we were gearing up for Brightcove 4, but it did include media sharing in the media module and ad support in the media controls.  </p>
+
+<p><b>New Media SDKs:</b> Two new media SDKs are being worked on: one from Al Manning for <A HREF="http://www.allenmanning.com/?p=34">ActionScript</A> and one for <A HREF="http://sourceforge.net/projects/bc-j-mapi-w/">Java</A>.</p>
+
+<p><b>Remembering ColdFusion:</b> I worked on the ColdFusion team for six months, so I won't forget about it (and the CFers can thank me for the super keyword for CFCs in 6.1 as well as many of the performance improvements).  But to bring it back for those who haven't thought about it for awhile, here's an example of <A HREF="http://www.coldfusionjedi.com/index.cfm/2009/12/1/Quick-example-of-posting-videos-to-Brightcove">posting videos to Brightcove in CF</A> and a <A HREF="http://www.computerworld.com.au/article/325172/an_interview_coldfusion_co-creator_jeremy_allaire">creator's interview with Jeremy Allaire</A></p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2009/12/brightcove_news_6.htm">10:29 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>October 18, 2009</h2>
+
+
+<h3 id="a000281">Brightcove News: London Meetup, iPhone Encoding, and Developer TV</h3>
+
+<p><b>London Brightcove Developer Group:</b> Head to London for the <A HREF="http://londonbdg.eventbrite.com/ ">inaugural meeting of a Brightcove Developer Group</A>.  It will include a coding challenge, a first prize of a HD Flip Camera, and judging by CEO Jeremy Allaire.</p>
+
+<p><b>Encoding for the iPhone:</b> Learn about the settings that we've found work well when <A HREF="http://developer.brightcove.com/en/articles/encoding-and-delivering-video-iphone">targeting your video for the iPhone</A>.  You can use this with the <A HREF="http://blog.brightcove.com/blog/2009/02/brightcove-iphone-apps-and-examples.html">existing support</A> that Brightcove has for the iPhone.</p>
+
+<p><b>Developer TV:</b> You can hear me talk on the new <A HREF="http://developer.brightcove.com/en/dev-tv">Developer TV</A> about Using Ad XML, Using VAST Ad XML, and Troubleshooting with Player Logging.  Next time I'll try to encode things better so that you can actually read the text.  And let you see more of Charlie and Callie.</p>
+
+<p><b>The Future of Online Video:</b> An interesting Q&A about online video <A HREF="http://digital.venturebeat.com/2009/10/16/the-future-of-online-video-q-a-with-brightcove-ceo-jeremy-allaire/">with Jeremy Allaire</A>.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2009/10/brightcove_news_5.htm">10:34 AM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>October  4, 2009</h2>
+
+
+<h3 id="a000279">Brightcove News: Adaptive Streaming, Boxee, and Facebook</h3>
+
+<p><b>Cambridge Developer Meetup:</b> Thanks to everyone who came to the developer meet-up two weeks ago at our office in Cambridge.  I wish I had recorded the presentations, as there was a lot of excellent demos on the iPhone, live streaming, Palm Pre, audio support, and more.  If you're interested in future meet-ups, no matter where you are, just send me an email (at brian at deitte dot com) or a comment.</p>
+
+<p><b>Adaptive Streaming:</B> Brightcove <A HREF="http://www.contentinople.com/author.asp?section_id=450&doc_id=182011&f_src=contentinople_gnews">now uses adaptive streaming</A> to pick the right video for your current bandwidth.  One interesting thing to note about Brightcove's player implementation for this is that we don't require Flash Player 10.  Or rather we require FP10 if the user really wants to use adaptive streaming, as that's the only way this feature will work, but the player itself will work fine in FP9.  It required an interesting trick to get this to work, and I don't know of any other player that does this.</p>
+
+<p><b>Boxee Support:</b> Brightcove publishers can now <A HREF="http://newteevee.com/2009/09/08/brightcove-signs-distribution-deal-with-boxee/">distribute on boxee</A>.  This may mean I need to finally stop just using a web browser after hooking my Macbook to the TV.</p>
+
+<p><b>Brightcove's Facebook Status:</B> New articles <A HREF="http://forum.brightcove.com/t5/Brightcove-Developer-Blog/Brightcove-Video-on-Facebook/ba-p/3270">have been posted</A> to show how to embed video in a Facebook news feed and add a player to a fan page.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2009/10/brightcove_news_4.htm"> 1:55 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>September  6, 2009</h2>
+
+
+<h3 id="a000273">Upcoming Meetups in Toronto, San Francisco, and Cambridge</h3>
+
+<p>Brightcove has a bunch of meetups coming up:</p>
+
+<p><A HREF="http://anyvite.com/f9clwmghsf">Brightcove San Francisco Alliance Meetup, September 10th at 6pm</A><br />
+<A HREF="http://brightcovetoronto.eventbrite.com/">Brightcove Toronto Meetup, September 10th at 7pm</A><br />
+<A HREF="http://anyvite.com/events/home/lynepgalce">Brightcove Cambridge Developer Meetup, September 17th at 7pm</A></p>
+
+<p>I'm putting together the Cambridge meetup, and I hope a lot of people in the Boston area will head to our office to meet the development team and see some of the things we've been working on. </p>
+
+<p>I'll also be teaching half of a developer training session for customers and partners on September 17th in Cambridge.  If you are interested in attending the training, please email training@brightcove.com for more details.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2009/09/upcoming_meetup.htm"> 1:35 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>August  2, 2009</h2>
+
+
+<h3 id="a000260">Ten Brightcove SDKs</h3>
+
+<p>As I look over some slides for a <A HREF="http://www.brightcove.com/en/services/training/developer">Brightcove developer class</A> that I'll be teaching, I was reminded of the surprising number of Brightcove SDKs.  Here are some links for the ten of them.</p>
+
+<p><b>Player SDK</b>: The player API allows for the manipulation of the Brightcove player through hundreds of functions in JavaScript and ActionScript.  A <A HREF="http://support.brightcove.com/en/docs/using-javascript-player-api#get-code">JS file</A> and <A HREF="http://admin.brightcove.com/playerapi/PlayerAPIExamples.zip">SWC</A> are available.  You can learn learn more about the SDK in the <A HREF="http://support.brightcove.com/en/docs/player-api-overview">documentation</A> or <A HREF="http://docs.brightcove.com/en/player/">ASDoc</A>.</p>
+
+<p><b>BEML SDK</B>: BEML is the XML language used to describe the look of a player.  The SDK is in the form of a <A HREF="http://docs.brightcove.com/en/beml/">DTD</A> and <A HREF="http://support.brightcove.com/en/docs/customizing-players-beml">documentation</A>.</p>
+
+<p><b>Media SDK</B>: The media API allows for the reading and writing of videos and playlists.  The default SDK is a <A HREF="http://docs.brightcove.com/en/media/">REST-based API</A> that returns JSON, and this is described in the <A HREF="http://support.brightcove.com/en/docs/getting-started-media-api">documentation</A>.  But more SDKs have been built on top of this for specific languages: <A HREF="http://kudos-js.com/">JavaScript</A>, <A HREF="http://echove.net/">PHP</A>, <A HREF="http://github.com/studionow/pybrightcove/tree/master">Python</A>, and <A HREF="http://code.google.com/p/tanaris/">.NET</A>.</p>
+
+<p><b>Ad Translator SDK</B>: Ad translators can be used to provide new integrations between the  player and an ad server.  There's a <A HREF="http://admin.brightcove.com/adtranslator/AdTranslatorDevKit.zip">zip file</A> that contains a SWC and ASDoc, and of course there's <A HREF="http://support.brightcove.com/en/docs/developing-ad-translators">documentation</A>.</p>
+
+<p><b>Ad SWF SDK:</B> Ad SWFs provide a way to show completely custom ads.  Similar to the ad translator SDK, there's a <A HREF="http://admin.brightcove.com/adtranslator/AdTranslatorDevKit.zip">zip file</A> that contains a SWC and ASDoc as well as <A HREF="http://support.brightcove.com/en/docs/developing-ad-swfs">documentation</A>.</p>
+
+<p>By my count, that's ten Brightcove SDKs (with two player SDKs, five media SDKs, and one for each of the rest).  If that's not enough customization for you, we have even more coming.  The ad team is getting close to releasing one more, and there's constantly <A HREF="http://support.brightcove.com/en/product-updates">other SDK improvements happening</A>.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2009/08/ten_brightcove.htm">11:14 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>July 26, 2009</h2>
+
+
+<h3 id="a000258">Brightcove News: Smaller Players, VAST Support, and Japan</h3>
+
+<p><b>Smaller Players:</b> Our AS3 players have gotten significantly smaller in the last few weeks, with a 22% reduction in the size of an average player.  This was done by expanding on some creative "don't load the same class twice" work, and the number  includes all bytes that are loaded.  The advertising module, which is only loaded in when advertising is enabled, had one of the most significant reductions, and it can be up to 50% smaller.</p>
+
+<p><b>VAST Support:</b> Brightcove now has great support for the <A HREF="http://support.brightcove.com/en/docs/vast-ad-formats-and-format-codes">VAST standard</A>, part of the emerging standardization of ad responses from the IAB.  I hope to talk about this in more depth in a later blog post and give a more general overview of the many changes going on in rich media advertising.</p>
+
+<p><b>A Few Other Features</b>: Two releases have happened since I last wrote a news update, both <A HREF="http://support.brightcove.com/en/product-updates#quigon">3.3</A>  and <A HREF="http://support.brightcove.com/en/product-updates#quigon1">3.3.1</A>.  The 3.3 release has a lot of other goodies in that <A HREF="http://blog.brightcove.com/jeremy/2009/06/brightcove-33-coolness.html">Jeremy Allaire writes about</A> and which included the VAST support mentioned above.  One thing that always feels strange from my side in product notes like this is how much is left out of what we're doing.  But then I remember that not a lot of people want to hear about the bug fixes, the automated tests and frameworks, the server growth/stability changes, etc.</p>
+
+<p><b>Konnichiwa:</b> The backend tools and players are now all <A HREF="http://blog.brightcove.com/blog/2009/07/brightcove-announces-general-availability-of-fullylocalized-online-video-platform-in-japan.html">fully localized for Japanese</A>.  </p>
+
+<p><b>Live on Saturday the 18th:</b>  You can see <A HREF="http://blog.brightcove.com/blog/2009/07/uk-football-league-manchester-city-teams-with-brightcove-to-launch-video-site-stream-live-games-.html">Manchester City play live</A> if you can go back in time to the 18th.  And choose to watch videos online with the ability to go back in time.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2009/07/brightcove_news_3.htm">10:05 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+
+<h3 id="a000257">Flash on Phones</h3>
+
+<p>I'm a week late in my posting on this, but as I've been horribly behind in my posting lately, I'll just ignore that fact.  And I still wanted to be able to point out the <A HREF="http://blog.digitalbackcountry.com/2009/07/flash-player-multi-touch-confirmation-from-kevin-lynch/">Flash multi-touch goodness</A>.  I can't wait to see the finished APIs and play around with them.</p>
+
+<p>Relatedly, while Brightcove has had an iPhone integration for awhile, I didn't realize that other people were <A HREF="http://blog.brightcove.com/global/2009/07/brightcove-video-on-noniphones.html">watching video through Skyfire</A>, which will soon be making its way to <A HREF="http://www.pocketberry.com/2009/07/13/skyfire-blackberry-web-browser-enters-beta/">Blackberry devices</A>.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2009/07/flash_on_phones.htm"> 9:43 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>June  9, 2009</h2>
+
+
+<h3 id="a000256">Brightcove News: Trial Accounts, Open Positions, and Usability</h3>
+
+<p><b>Trial accounts:</b> I think that Brightcove has had <A HREF="http://www.brightcove.com/resources/30-day-trial/">30-day trial accounts</A> for awhile, but we've been promoting them a lot more recently.  If you want to check out what we've done in Flex and Flash, sign on up.</p>
+
+<p><b>Brightcove is Hiring:</b> If you're in Boston or Beijing, we have <A HREF="http://tbe.taleo.net/NA4/ats/careers/searchResults.jsp?org=BRIGHTCOVE&cws=1">some positions open right now that you may want to look at</A> for QA, system engineering, and project management</A>.  I bring this up only to help out Brightcove and my blog readers in the current job market, and of course not at all because your mentioning of my name gives me a referral bonus.</p>
+
+<p><b>New Brightcove.com:</b> <A HREF="http://www.brightcove.com/en/">The website</A> was revamped lately, including all the technical sections.  There are <A HREF="http://support.brightcove.com/en/docs">reorganized docs</A> (a great improvement), <A HREF="http://support.brightcove.com/en/training-videos">training videos</A>, <A HREF="http://support.brightcove.com/en/">portals, <A HREF="http://community.brightcove.com/en/">portals</A>, and more <A HREF="http://developer.brightcove.com/en/">portals</A>.  It's been redone with Drupal, which will help more of us make changes faster.</p>
+
+<p><b>Usability studies:</b> There are always <A HREF="http://blog.brightcove.com/interaction/2009/05/brightcove-usability-studies-help-us-help-you.html">usability studies</a> going on at Brightcove, and we're always looking for customers to put under the microscope or send in a suggestion or two.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2009/06/brightcove_news_2.htm">12:44 AM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>May 18, 2009</h2>
+
+
+<h3 id="a000252">Brightcove News: Audio Players, the State of Advertising, and More</h3>
+
+<p><b>Dev articles</b> There are new development articles about <A HREF="http://help.brightcove.com/developer/topics/advertising/no-adserver.cfm">using ads without an ad server</A> and <A HREF="http://help.brightcove.com/developer/topics/players/dynamicLoadJS/dynamic-load-js.cfm">dynamically loading a player in Javascript</A>.  You can find more articles on the <A HREF="http://community.brightcove.com/t5/Brightcove-Developer-Blog/bg-p/bc-dev-blog">developer blog</A>.</p>
+
+<p><b>New Brightcove blog</b> I just found out about <A HREF="http://ashleystreb.com/">Ashley Streb's blog</A>, and given he's my manager at Brightcove, I will say it's the most fantastic blog of all time.  Seriously, though, check it out as as it has a lot of good info on video sitemaps, creating BEML components in Flex, and EC2.</p>
+
+<p><b>Audio support</b> Now leaving the video-only world, Brightcove 3 has some support for audio players, as shown in a <A HREF="http://blog.brightcove.com/method/2009/05/first-play.html">Universal Music player</A>.</p>
+
+<p><b>On the VUDU</b> And leaving the browser (although not for the first time), Brightcove will <A HREF="http://www.reelseo.com/vudu-brightcove-set-top-box-conten/8786/">start showing up on the VUDU set top box</A>, starting with Sony's music videos.</p>
+
+<p><b>InSkin ads</b> I found <A HREF="http://www.inskinmedia.co.uk/">InSkin</A> ads fascinating because the team working on the Brightcove ad API hadn't even heard of it until it was up on a major website.  We're seeing more and more partners that can develop ad solutions without any of our internal development, thanks to our fantastic ad APIs.  (Did I mention I worked on them?)  And the resulting ads <A HREF="http://www.telegraph.co.uk/culture/culturevideo/">look really good</A>.</p>
+
+<p><b>The state of ads</b> Not directly related to Brightcove, but I'm always reading interesting articles about advertising, and there's been a few more than using lately.  It's ranged from <A HREF="http://newteevee.com/2009/03/30/web-video-commercials-worth-734m-in-08/">the perpetual</A> sizing <A HREF="http://newteevee.com/2009/04/06/tvs-web-revenues-163b-in-2008/">news</A> to the <A HREF="http://www.techcrunch.com/2009/03/22/why-advertising-is-failing-on-the-internet/">sky is falling</A> to <A HREF="http://www.businessinsider.com/four-rules-for-selling-ads-against-web-video-2009-5">practical advice</A><br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2009/05/brightcove_news_1.htm"> 8:58 AM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>April 20, 2009</h2>
+
+
+<h3 id="a000249">Brightcove and Adobe Announce Alliance</h3>
+
+<p>I was happy to see the announcement of a <A HREF="http://blog.brightcove.com/blog/2009/04/brightcove-adobe-announce-farreaching-strategic-alliance-at-nab-.html">strategic alliance between Brightcove and Adobe</A>.  The alliance will focus on a few areas: long-form HD video, content protection for video, Adobe Creative Suite integration, collaboration on Adobe's new player framework (known as Strobe), and some sales and marketing collaboration.</p>
+
+<p>Since I came from Adobe about <A HREF="https://deitte.com/archives/2006/10/heading_to_brig.htm">two and half years ago</A> and use Flex and Flash every day, it's not too surprising that I'm excited to see Brightcove have an even stronger relationship with Adobe.  I'll also be very interested in checking out Strobe more to see the ways that we can work with it.  </p>
+
+<p>You can read some more about the alliance in <A HREF="http://www.xconomy.com/boston/2009/04/20/brightcove-basks-in-light-of-adobes-new-strobe/">an interview with Jeff Whatcott</A>.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2009/04/brightcove_and.htm">10:24 AM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>March 25, 2009</h2>
+
+
+<h3 id="a000246">I'm on The Flex Show</h3>
+
+<p>I'm on the latest episode of <A HREF="http://www.theflexshow.com/blog/index.cfm/2009/3/25/The-Flex-Show-Episode-70-Brian-Deitte-from-Brightcove">The Flex Show</A>, where I talk about making changes to the Flex SDK and the <A HREF="https://deitte.com/archives/2008/10/a_faster_flex_3.htm">Faster Flex 3 SDK</A>.  </p>
+
+<p>It was a lot of fun to do the interview with Jeffry Houser and John Wilker, and I'm glad they gave me the opportunity to do this.  They've interviewed nearly everyone I read or admire in the Flex world, so make sure to check out the <A HREF="http://www.theflexshow.com/blog/">other podcasts</A> if you haven't already.</p>
+
+<p>Thankfully they cut out the part where my phone rings and the other amusing parts.  Although I need to respond to one of those missing pieces: yes Juan Sanchez, I do like quesadillas.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2009/03/im_on_the_flex.htm">10:35 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+
+<h3 id="a000245">Brightcove News: New Release, .NET SDK, and More Blogs</h3>
+
+<p><b>"Watching" video online:</b> Ryan Stewart had a <A HREF="http://blog.digitalbackcountry.com/2009/03/when-the-kids-go-online-instead-of-watching-tv/">good post</A> about the differences in watching video online.  It made me think of a recent experiment to put the Brightcove player <A HREF="http://active6.com/blog/flex/a-few-thing-to-iron-out-but/">in a 3D environment</A> and the other BEML and API uses I've been seeing.</p>
+
+<p><b>Brightcove 3.2:</b> A <A HREF="http://help.brightcove.com/publisher/updates/index.cfm#padawan">new release</A> of Brightcove came out over the weekend, and you can read about all of the module and API changes in the link.</p>
+
+<p><b>.NET SDK:</b> Adding to the PHP, Python, and JS SDKs for the Brightcove APIs, there's now a <A HREF="http://code.google.com/p/tanaris/">.NET version</A>.</p>
+
+<p><b>Ad inventory:</b> Both <A HREF="http://blog.streamingmedia.com/the_business_of_online_vi/2009/03/is-there-a-shortage-of-online-video-advertising-inventory.html">streaming media</A> and <A HREF="http://blog.brightcove.com/jeremy/2009/02/pick-your-own-ad-proposal.html">Jeremy's blog</A> had some thoughts on online video ad inventory.</p>
+
+<p><b>More Brightcove meetups:</b> I had a <A HREF="http://blog.brightcove.com/blog/2009/03/developers-developers-developers.html">great time at the New York meetup</A> (I'm the blurry guy in the lower-left corner).  There's <A HREF="http://blog.brightcove.com/blog/2009/03/brightcoves-march-meetups-los-angeles-new-york-london.html">more coming up</A>.  Actually, now that I read that last post again, I see there's only one meetup that's left, so book your flight to London tonight.</p>
+
+<p><b>Japan and Comics:</B> Brightcove showed off <A HREF="http://www.beet.tv/2009/03/sun-never-sets-over-brightcove-with-global-expansion-in-japan.html">the many customers in Japan</A>, and Marvel was <A HREF="http://newteevee.com/2009/03/09/marvel-moves-beyond-motion-comics-with-more-web-video/">highlighted on NewTeeVee</A>.</p>
+
+<p><b>Blogs blogs blogs:</b> Jeremy Allaire <A HREF="http://blog.brightcove.com/blog/2009/03/brightcove-blogorama.html">wrote about the many Brightcove blogs</A> that can now be found on blog.brightcove.com.  The blogs aren't just about Brightcove, and you can check them out for a number of insightful posts on video.  There's other Brightcove blogs off of the site, and you can read about Flex and Brightcove from <A HREF="http://holaflex.com">Oscar Cortes</A>, <A HREF="http://allenmanning.com">Al Manning</A>, <A HREF="http://active6.sitelinx.net/blog/">Bob de Wit</A>, and of course me.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2009/03/new_release.htm">10:29 AM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>February 23, 2009</h2>
+
+
+<h3 id="a000242">Brightcove News: NYC Meetup, Python Library, and More</h3>
+
+<p>As I mentioned <A HREF="https://deitte.com/archives/2009/02/brightcove_news.htm">last week</A> I'm going to try to group together the Brightcove and video news I find and post it a bit more regularly.  Well, the news has been overflowing, so it's time for another post.</p>
+
+<p><b>NYC Meetup:</b> Want to see me and other Brightcovians in New York?  We'll be there <A HREF="http://anyvite.com/events/home/4tccdahlxq">on March 13th</A>.</p>
+
+<p><b>Brightcove API in Python:</b> StudioNow created a <A HREF="http://paltman.com/2009/feb/06/brightcove-api-in-python/">Python library</A> for the Brightcove API.  It's exciting to see projects like this grow organically for Brightcove.</p>
+
+<p><b>And PHP and Javascript:</b> Speaking of the APIs, Brian Franklin and Matthew Congrove created wrappers <A HREF="http://echove.net/">for PHP</A> and <A HREF="http://kudos-js.com/">for JavaScript</A>.</p>
+
+<p><b>Jeremy Allaire's new blog:</b> Jeremy Allaire has a <A HREF="http://blog.brightcove.com/jeremy/">new blog</A> which already has a lot of long and insightful posts on it.  You can ready about <A HREF="http://blog.brightcove.com/jeremy/2009/02/dan-rayburn-online-video-is-a-cost-centermaybe.html">the difficult economics of long tail video</A> and <A HREF="http://blog.brightcove.com/jeremy/2009/02/the-difficult-economics-of-long-tail-video.html">whether online video is a cost center</A>.</p>
+
+<p><b>Brightcove A-Twitter:</b> Brightcove is twittering.  You can subscribe to <A HREF="http://twitter.com/brightcove">Brightcove</A>, <A HREF="http://twitter.com/jerBrightcove">Jeremy</A>, and I'm sure others.</p>
+
+<p><b>Tremor Gets $18M:</b> Tremor, the advertising network that Brightcove uses for the <A HREF="http://help.brightcove.com/publisher/docs/advertising/ad-basic.cfm">Brightcove Basic edition</A> raised <A HREF="http://newteevee.com/2009/02/18/tremor-raises-18m-more-for-video-ads/">$18M in funding</A>.</p>
+
+<p><b>Advertising articles</b>: Last but not least, you can check out some articles I wrote on the developer center.  <A HREF="http://help.brightcove.com/developer/topics/advertising/ad-sdk.cfm">The Brightcove Advertising SDK</A> gives a good technical overview of the Brightcove advertising system.  <A HREF="http://help.brightcove.com/developer/topics/advertising/custom-templates.cfm">Ads and Custom Player Templates</A> explains how to use custom BEML and ads.  <A HREF="http://help.brightcove.com/developer/topics/players/player-logging.cfm">Player Logging</A> gives tips on figuring out advertising problems in a Brightcove player.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2009/02/brightcove_nyc.htm"> 7:44 AM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>February 16, 2009</h2>
+
+
+<h3 id="a000240">Creating a Video Player with BEML</h3>
+
+Recently I wanted to create a player to show a Caiman, Scarlet Macaw, and other animals from Costa Rica.  The default players that could be used with Brightcove didn't look quite right for what I wanted to do, and so I had my first real need to use BEML for a custom player. <br/><br/>
+
+BEML is the XML syntax that's used to create a template that's used to create a Brightcove player.  The BEML syntax will look familiar to Flex users, as there is a Canvas, VBox, HBox, Label, and many other similar components.  One big difference with BEML is that it is interpreted at runtime, which means it's a bit simpler in it's language constructs, but this allows Brightcove to provide quick previews and good caching of players.<br/><br/>
+
+The player I wanted to create needed to display a long description below the video.  None of the default templates had a really large place for text, but it looked to me like one of the existing templates could be altered for my use.  So I went went into the publishing module, clicked on All Templates, and then clicked on Duplicate for the Compact Tabbed Navigation 3.0 template.  <br/><br/>
+
+I then saw the BEML for the copied template, which I could then alter.<br/><br/>
+
+<IMG src="http://deitte.com/old_home/animal_beml.jpg" /><br/><br/>
+
+I first changed the height in the BEML so that the player would be taller.  I didn't know exactly how much long description space I would need on the bottom, so it's probably too large, but that doesn't matter if the player is only being viewed on its own page.  To change the height, I changed:<br/><br/>
+
+<pre>
+&lt;Layout id="application" width="798" height="603" boxType="vbox" 
+    padding="6" gutter="4"&gt;
+</pre>
+<br/>
+to:<br/><br/>
+
+<pre>
+&lt;Layout id="application" width="798" height="703" boxType="vbox" 
+    padding="6"  gutter="4"&gt;
+</pre>
+<br/>
+I decided I would use the Long Description field for each video, which can be edited in the media module, to display the text that I wanted.  So I replaced the existing reference to the Short Description in the BEML to refer to where I what I would really edit for each video.  I changed:
+<br/><br/>
+<pre>
+&lt;Label height="52" multiline="true" 
+    text="{currentItem.shortDescription}" 
+    truncate="true"/&gt;
+</pre>
+<br/>
+to:
+<br/><br/>
+<pre>
+&lt;Label height="52" multiline="true" 
+    text="{currentItem.longDescription}" 
+    truncate="true"/&gt;
+</pre>
+<br/>
+The last change I made, and the most important change, was to remove the existing XML for the template that was below the video.  I only wanted the title, long description, and link in this spot.  So I changed:
+<br/><br/>
+<pre>
+        &lt;VBox gutter="15"&gt;
+          ... skipping the XML in here, which includes a TitleLabel, 
+          Link, ExpandingBanner, and much more
+        &lt;/VBox&gt;
+</pre>
+<br/>
+to:
+<br/><br/>
+<pre>
+        &lt;VBox&gt;
+          &lt;TitleLabel height="24" width="765" id="videoTitle" 
+              text="{videoPlayer.video.displayName}" 
+              selected="true" size="18" truncate="true"/&gt;
+          &lt;Label height="88" width="765" multiline="true" 
+              id="longDesc" text="{videoPlayer.video.longDescription}" 
+              size="18" truncate="true"/&gt;
+          &lt;Canvas&gt;
+            &lt;Link x="1" y="-5" size="10" id="relatedLink" 
+              text="{videoPlayer.video.linkText}" vAlign="bottom"
+              url="{videoPlayer.video.linkURL}"/&gt;
+          &lt;/Canvas&gt;
+        &lt;/VBox&gt;
+</pre>
+<br/>
+With the BEML changes made, I could preview and see that I had the template that I wanted.
+<br/><br/>
+<IMG src="http://deitte.com/old_home/animal_preview.jpg" />
+<br/><br/>
+I played around with the BEML for awhile, but the whole process still took less than an hour.  It was a lot more time consuming to edit the videos and come up with the descriptions.  After the template was created, I created a player from the template, made all the changes in the media module for the videos, and saw the results of my work.
+<br/><br/>
+<IMG src="http://deitte.com/old_home/animal_player.jpg" />
+<br/><br/>
+I had fun creating the player, which was some good eating of dog food.  If you'd like to learn more about BEML, I would start at <A HREF="http://help.brightcove.com/developer/docs/playerapi/beml-intro.cfm">Customizing Players with BEML</A> in the Brightcove documentation.  And if you'd like to see me almost step on a poisonous snake, you can <A HREF="http://link.brightcove.com/services/player/bcpid10373052001">look here</A>.  
+<br/><br/>
+<b>Update:</b> check out <A HREF="http://blog.brightcove.com/jeremy/2009/02/beml-brightcove-experience-markup-language.html">Jeremy Allaire's post</A> for more details on BEML.
+<br/><br/>
+<b>Update2:</b>Here's the full BEML from my example:
+<pre>
+&lt;Runtime&gt;
+  &lt;Theme name="Deluxe" style="Light"&gt;
+    &lt;Style id="default"&gt;&lt;![CDATA[.titleText {fontSize: 12;}
+         .bodyText {fontSize: 10;}.linkText {fontSize: 10;}]]&gt;&lt;/Style&gt;
+  &lt;/Theme&gt;
+  &lt;Layout id="application" width="798" height="723" boxType="vbox" 
+       padding="6" gutter="4"&gt;
+    &lt;HBox height="40" vAlign="bottom" gutter="9"&gt;
+      &lt;Image id="logo" width="300" scaleMode="scaleDown" 
+           hAlign="left" vAlign="bottom"/&gt;
+      &lt;TabBar id="playlistTabs" height="22" tabAlign="right" 
+           hideSingleTab="true"/&gt;
+    &lt;/HBox&gt;
+    &lt;HBox height="406" gutter="6"&gt;
+      &lt;VideoPlayer id="videoPlayer" width="480" 
+           video="{videoList.selectedItem}"/&gt;
+      &lt;List id="videoList" rowHeight="78" automaticAdvance="true" 
+           data="{playlistTabs.selectedItem.videoDTOs}" 
+           selectOnClick="true" itemInsetV="4" itemLeading="2"&gt;
+        &lt;ListItem boxType="hbox"&gt;
+          &lt;Spacer width="8"/&gt;
+          &lt;VBox width="80" height="74" vAlign="middle"&gt;
+            &lt;ThumbnailButton height="60" data="{currentItem}" 
+                 source="{currentItem.thumbnailURL}"/&gt;
+          &lt;/VBox&gt;
+          &lt;Spacer width="7"/&gt;
+          &lt;VBox&gt;
+            &lt;Spacer height="3"/&gt;
+            &lt;TitleLabel height="18" text="{currentItem.displayName}" 
+                 truncate="true"/&gt;
+            &lt;Label height="52" multiline="true" 
+                 text="{currentItem.longDescription}" 
+                 truncate="true"/&gt;
+          &lt;/VBox&gt;
+          &lt;Spacer width="3"/&gt;
+        &lt;/ListItem&gt;
+      &lt;/List&gt;
+    &lt;/HBox&gt;
+    &lt;VBox gutter="15"&gt;
+      &lt;HBox height="102"&gt;
+        &lt;Spacer width="6"/&gt;
+        &lt;VBox&gt;
+          &lt;TitleLabel height="24" width="765" id="videoTitle" 
+               text="{videoPlayer.video.displayName}" selected="true" 
+               size="18" truncate="true"/&gt;
+          &lt;Label height="72" width="765" multiline="true" 
+               id="longDesc" 
+               text="{videoPlayer.video.longDescription}" size="18" 
+               truncate="true"/&gt;
+          &lt;Canvas&gt;
+            &lt;Link x="1" y="-5" size="10" id="relatedLink" 
+                 text="{videoPlayer.video.linkText}" vAlign="bottom"
+                 url="{videoPlayer.video.linkURL}"/&gt;
+          &lt;/Canvas&gt;
+        &lt;/VBox&gt;
+      &lt;/HBox&gt;
+    &lt;/VBox&gt;
+  &lt;/Layout&gt;
+&lt;/Runtime&gt;
+</pre>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2009/02/creating_a_vide.htm">12:34 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>February 10, 2009</h2>
+
+
+<h3 id="a000238">Brightcove News: iPhone Support and Other Examples</h3>
+
+<p>Rather than my occasional blog post on a Brightcove news item, I'm going to be trying to group together and post more about Brightcove, especially info for developers.  For the Flex readers out there who don't want the Brightcove news, you can always subscribe to the <A HREF="http://deitte.com/old_home/index_flex.xml">Flex-only feed</A>.  But then you'll be missing out some random Flash and video development goodness that you should read, in my completely-biased opinion.</p>
+
+<p><b>iPhone support:</b> Brightcove released a <A HREF="http://help.brightcove.com/developer/samples/iPhone/iPhone-portal.cfm">page on iPhone support</A>, including example files and a live demo.  Given that H.264 has been supported by Brightcove for awhile, this could have been done earlier by customers, but the HTML and JS files make it a lot easier.</p>
+
+<p><b>Code!</b> I'm not sure how I missed <A HREF="http://active6.sitelinx.net/blog/">Bob de Wit's blog</A> until now.  Bob is a consultant for Brightcove in Europe, and his blog has a lot of great Brightcove examples, like <A HREF="http://active6.com/blog/flash/subtitling-in-brightcove-3/">subtitling</A> and <A HREF="http://active6.com/blog/flex/embedding-a-brightcove-3-player-in-a-flex-3-application/">using a player in Flex</A>.  </p>
+
+<p><b>Get a reply from Jeremy Allaire:</b> The <A HREF="http://community.brightcove.com/brgh/">Brightcove community forums</A> are getting a lot of traction, and you'll see pretty much everyone from Brightcove on there.  There's answers from the developers, support, architects, and everyone else at Brightcove (including BC-JAllaire).<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2009/02/brightcove_news.htm">10:25 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>January 13, 2009</h2>
+
+
+<h3 id="a000237">Comments Are Off (Temporarily)</h3>
+
+<p>Sorry if you're coming here to comment between January 14th and February 2nd, as comments will be turned off.  I still get a few spammers who sneak through ever week, and I'd rather not let them get away with it.  So I'll be turning off the comments as I go get married and spend some time in Costa Rica.  It's nice get off the grid for a bit, something I haven't done for a few years.  Not that I'd have much of a choice in the matter- I have a suspicion that my soon-to-be wife would have a bit of a problem with me posting to the blog in the next week...</p>
+
+<p>While I'm away, you should see some articles appear on the <A HREF="http://help.brightcove.com/developer/">Brightcove developer center</A> from me.  There will be one that gives an overview of the advertising SDK as well as one on advertising in custom templates.  <br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2009/01/comments_are_of.htm"> 1:08 AM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+
+<h3 id="a000236">Brightcove Year in Review</h3>
+
+<p>Brightcove released a letter from Jeremy Allaire today that had a lot of <A HREF="http://blog.brightcove.com/blog/2009/01/brightcove-expands-leadership-team-letter-from-brightcove-ceo.html">interesting information</A> about Brightcove's international expansion, revenue, alliance program, and plans for the year.  </p>
+
+<p>Some key hirings and board members were also announced.  As <A HREF="http://blogs.zdnet.com/Stewart/?p=960">Ryan Stewart noted in his post</A>, Brightcove  is keeping on with the Allaire/Macromedia/Adobe tradition by bringing on Jeff Whatcott and David Mendels.  Coming from the same Newton office myself or not, I'm very happy that they're both with Brightcove.  And so is <A HREF="http://onflash.org/ted/2009/01/brightcove-expands.php">Ted Patrick</A>.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2009/01/brightcove_year.htm">12:32 AM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>December 21, 2008</h2>
+
+
+<h3 id="a000234">Tools for Brightcove Developers</h3>
+
+<p>With the recent news about the <A HREF="http://www.techcrunch.com/2008/12/07/two-months-after-release-brightcove-announces-nearly-100-api-partners/">Brightcove API partners</A>, I wanted to go over some of the tools for those API partners and more importantly, for developers creating websites using Brightcove.</p>
+
+<p><b>Features</b></p>
+
+<p>There's four major areas in Brightcove 3 to focus on: the <A HREF="http://help.brightcove.com/developer/docs/mediaapi/media-API-getting-started.cfm">media API</A>, player XML (<A HREF="http://help.brightcove.com/developer/docs/playerapi/beml-intro.cfm">BEML</A>), the <A HREF="http://help.brightcove.com/developer/docs/playerapi/player-overview.cfm">player API</A>, and the <A HREF="http://help.brightcove.com/developer/docs/advertising/integrations.cfm">ad API</A>.  There's a lot more information in the linked documentation than I could mention here, and you should be able to get a good idea there of how you can manipulate players, videos, playlists, etc.</p>
+
+<p>I've been working a lot on the ad APIs, and I'm always happy to answer questions on them (just see the next section).  We've doing a lot to make it easier to integrate new ad platforms with Brightcove, which you can see in the <A HREF="http://help.brightcove.com/developer/docs/advertising/ad-translator.cfm">ad translator</A>  and <A HREF="http://help.brightcove.com/developer/docs/advertising/ad-swf.cfm">ad SWF</A> documentation.</p>
+
+<p><b>Community</b></p>
+
+<p>Brightcove has been working a lot on the documentation and community on its site lately.  You can see this in the <A HREF="http://help.brightcove.com/developer/">development help</A>, which includes links to the new <A HREF="http://community.brightcove.com">forums</A> and <A HREF="http://help.brightcove.com/developer/docs/index.cfm">development documentation</A>.  There's also still the Yahoo group <A HREF="http://tech.groups.yahoo.com/group/brightcove-dev/">brightcove-dev</A>.</p>
+
+<p><b>Recent Changes</b></p>
+
+<p>We continue to release new updates that include changes that are helpful for developers.  On help.brightcove.com, you can get a general overview of the changes in <A HREF="http://help.brightcove.com/publisher/updates/index.cfm#obiwan">Brightcove 3.1</A> and <A HREF="http://help.brightcove.com/publisher/updates/index.cfm#obiwan1">Brightcove 3.1.1</A></p>
+
+<p>Some of the notably recent changes include <A HREF="http://help.brightcove.com/publisher/docs/publishing/templates.cfm">additional player templates</A>, <A HREF="http://help.brightcove.com/developer/docs/playerapi/player-SWC.cfm">a player SWC</A>, and <A HREF="http://tech.groups.yahoo.com/group/brightcove-dev/message/4065">new player logging</A>.</p>
+
+<p><b>Thoughts?</b></p>
+
+<p>So what do you think is missing above?  What developer tools does Brightcove need to work more on?<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2008/12/tools_for_brigh.htm"> 3:47 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>November 19, 2008</h2>
+
+
+<h3 id="a000231">Day 2 at MAX</h3>
+
+<p>Here are my notes from the second day at MAX.  It includes info on the keynote, development best practices with Flex, Flash security, RTMFP, and speech to text.</p>
+
+<p><b>General Notes</b></p>
+
+<p>A lot of people were interested in the basics of Brightcove but didn't know a lot about the technology.  I've been meaning to write more about certain areas for awhile- advertising, BEML, a few other things- and this reminds me to do this.</p>
+
+<p>I got a lot of comments on the <A HREF="https://deitte.com/archives/2008/10/a_faster_flex_3.htm">compiler update I've released</A>, and I appreciate all the comments on it.  But I want to make clear again that I didn't make the compiler changes myself!  I've merged the changes from the Flex compiler team- thank Paul Reilly and the rest of that group for doing the real work.  </p>
+
+<p><b>Keynote</b></p>
+
+<p>Besides making me go slightly deaf with the sound system, they showed off a lot of new features in CS4 and other products.  They showed off a literal copy and paste from CS4 applications to Catalyst which was then turned into components.   This round tripping is done through FXG support in CS4 applications and Catalyst.</p>
+
+<p>I saw Alchemy again as they showed the following demos in Flash: open SSL encryption, decoding of Ogg Vorbis, decoding of RAW images, showing PDFs in Flash, Doom, and Mario.  The showing PDFs is particularly interesting for the future of the Flash player and the Adobe Reader.  I wonder if some of PDF viewing will switch over to the Flash player?</p>
+
+<p>On the .NET front in Flex, they have a partner plugin to Visual Studio and a possible C# version of BlazeDS.</p>
+
+<p>In addition to multi-bitrate and RTMFP, they showed off an interesting live feature in FMS.  You can now record a stream and stream it live at the same time to have a DVR-like experience.</p>
+
+<p><b>Developer Best Practices With Flex</b></p>
+
+<p>This session was about developer best practices with Flex with a particular focus on using Catalyst.  There was quite a bit a talk about general engineering practices that should be used in Flex as they should be used elsewhere: use coding standards, comment code, and use design patterns.  Nothing too surprising in this part of the talk other than advocating code behind, which I don't think works very well for Flex.</p>
+
+<p>They talked about various things that developers should do to prepare their projects for Catalyst development, such as applying metadata to files and laying things out properly.  There will be a lot more code-level interaction with designers when Catalyst is used.</p>
+
+<p>One more interesting note, something which I didn't know yet, is that Catalyst is built on Eclipse.</p>
+
+<p><b>Flash Security: Why and How</b></p>
+
+<p>This was an explanation of content restrictions with the Flash Player.  Deneb had a few overriding rules for Flash security: use least privilege, validate input, deploy HTTPS consistently, prototype early, and keep track of security changes.</p>
+
+<p>You need to call Security.allowDomain() if a SWF loads from another domain.  This allows the SWF you are loading to call things within the parent SWF.  The wrong way to do this is to call Security.allowDomain("*").  "There are rare times when you might want to do this."  </p>
+
+<p>You need to specify allowScriptAccess or allowNetworking in the HTML to allow your SWF to script the HTML from a different domain.  allowScriptAccess set to never isn't used anymore because there really isn't a way in Flash to stop same domain communication between the SWF and a browser.</p>
+
+<p>Data loading requires permission because it's data that the user can access but not necessarily data that's publically available.  So a cross-domain policy file is required so that the server gives permission for the data to go elsewhere.  Flash is also the first client to allow direct cross-domain data loading, although browsers are looking into similar abilities in HTML5.</p>
+
+<p>You must use a socket policy file with any socket connection (including the same domain).</p>
+
+<p>You need to specify allowInsecureDomain() to allow HTTP connection when HTTPS is being used in the main SWF.  This can cause a man in the middle attack.  Allowing HTTP content in HTTPS is even worse.</p>
+
+<p><b>Sneak Peeks</b></p>
+
+<p>I saw RTMFP <A HREF="https://deitte.com/archives/2008/11/day_1_at_max.htm">yesterday</A>, but there was a live demo of the many-to-many feature in progress today.  RTMFP application-level multicast allows for many-to-many broadcasting, live streaming from one client to many clients without using a server.</p>
+
+<p>Nitro is a platform to create Flash widgets which can be distributed to desktop, Web, TV, and mobile.</p>
+
+<p>Content Intelligence Toolkit can find different scenes in a video and give information about each scene in metadata: lighting, activity, etc.  Includes tracking of faces, and most impressively, speech to text of the video. <br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2008/11/day_2_at_max.htm"> 3:25 AM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>November  4, 2008</h2>
+
+
+<h3 id="a000229">Brightcove Ends Free Network Service</h3>
+
+<p>There has been a lot of interesting Brightcove news lately that I haven't blogged about.  There were two big publishers that Brighcove announced signing: <A HREF="http://newteevee.com/2008/10/27/brightcove-scores-aol/">AOL</A> and <A HREF="http://www.beet.tv/2008/10/the-new-york--2.html">The New York Times</A>.  </p>
+
+<p>The big news today is that <A HREF="http://blog.brightcove.com/blog/2008/11/brightcove-ends-free-network-service.html">Brightcove ends the free Network service</A>.  I'm not sure at all what to expect from the blogs and news sites on this, but it'll be <A HREF="https://deitte.com/archives/2007/11/links_on_the_br.htm">interesting again</A> to see the comments throughout the day.</p>
+
+<h5>(Of course, it's not the most interesting thing going on today in the US: go vote.)</h5>
+
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2008/11/brightcove_ends.htm"> 8:23 AM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>October 14, 2008</h2>
+
+
+<h3 id="a000225">Brightcove 3 Now Available</h3>
+
+<p>When I had posted the <A HREF="https://deitte.com/archives/2008/10/screenshots_of.htm">screenshots of Brightcove's new Flex applications</A> two days ago, I had forgotten what was happening today.  Brightcove 3 is <A HREF="http://www.brightcove.com/products/">now available</A>, and if you talk to our friendly sales department, you can now see the new Flex and AS applications we've been creating.  And I can now talk about it all.</p>
+
+<p>Some of the things I'm excited about in Brightcove 3:</p>
+
+<ul><li>BEML (Brightcove Experience Markup Language), an XML markup language for creating players.  It has bindings, hbox, label, and a bunch of other things that will be familiar to Flex developers, and it'll allow everyone to create new players quickly.</li>
+<li>Fast and light AS3 video players.  Part of the lightness is accomplished by a lot of SWF loading to only load in what is needed.</li>
+<li>Well-designed Flex 3 applications for managing videos, players, advertising, reports, etc.  These are applications that we've been working on for more than a year and are already being used by large publishers to manage thousands of videos.</A>
+<li>More media, player, and advertising APIs.  You can access all of this in AS3 or Javascript, accessing the videos or controlling your videos in too many ways to mention here.</li></ul>
+
+<p>There's a lot more to talk about in the items above, but I'll have to leave that for another day.  Some helpful links for learning more about Brightcove 3:</p>
+
+<ul><li><A HREF="http://blog.brightcove.com/blog/2008/10/brightcove-3--.html">Brightcove blog post</A></li>
+<li><A HREF="http://www.brightcove.com/products/">Brightcove product page</A></li>
+<li>Interview with Jeremy Allaire on <A HREF="http://www.beet.tv/2008/10/brightcove-unve.html">Beet.TV</A></li>
+<li>PR-ish article on <A HREF="http://www.marketwatch.com/news/story/brightcove-3-transforms-business-online/story.aspx?guid={8E91DFC1-8D9F-4388-836C-3BDFF6A7ED2E}&dist=hpp">MarketWatch</A></li>
+<li><A HREF="http://www.eweek.com/c/a/Messaging-and-Collaboration/Brightcove-3-SAAS-Video-Platform-Wins-Endorsement-From-Sun-Microsystems/">eWeek article</A></li>
+<li>A partial review on<A HREF="http://mashable.com/2008/10/13/brightcove-3-review"> Mashable</A></li>
+<li><A HREF="http://blogs.zdnet.com/Stewart/?p=946">Ryan Stewart's post</A></li>
+</ul>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2008/10/brightcove_3_no.htm"> 8:13 AM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>October 12, 2008</h2>
+
+
+<h3 id="a000223">Screenshots of Brightcove's New Flex Applications</h3>
+
+<p>Brightcove has announced a <A HREF="https://deitte.com/archives/2008/06/a_shiny_new_bri.htm">major upgrade to its features</A>, and now I can show a few screenshots of the Flex applications.  Or rather I can link to some <A HREF="http://www.techcrunch.com/2008/10/12/brightcove-3-leaked-screenshots/">leaked screenshots on TechCrunch</A>.  It's a bit confusing if you just look at the page for the screenshots, as it includes both the old Brightcove and the new Brightcove.  But once you know that, it's easy to tell which ones are new.  </p>
+
+<p>The home page is HTML, but the rest of the new screenshots show Flex 3 applications.  This was a large undertaking by a lot of people here at Brightcove.  I'd love to write some more about this, but I'm going to have to wait until it all goes public.</p>
+
+<p><b>Update:</b> You can now read <A HREF="https://deitte.com/archives/2008/10/brightcove_3_no.htm">a lot more about the release</A>.</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2008/10/screenshots_of.htm"> 2:42 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>July  8, 2008</h2>
+
+
+<h3 id="a000212">Flash Job In Flashlog</h3>
+
+This wins for the most creative job posting I've ever seen, certainly better than my <A HREF="https://deitte.com/archives/2006/12/top_ten_reasons.htm">Brightcove top ten list</A> a year ago.  (Although Brightcove is where you should apply of course.)  If you view a <A HREF="http://blip.tv/file/1044637?utm_source=featured_ep&utm_medium=featured_ep">blip.tv player</A>, you'll see this:
+<p/>
+<pre>
+Showplayer initializing...
+                              __---__
+                           _-       _--______
+                      __--( /     \)XXXXXXXXXXXXX_
+                    --XXX(   O   O  )XXXXXXXXXXXXXXX-
+                   /XXX(       U     )        XXXXXXX\
+                 /XXXXX(              )--_  XXXXXXXXXXX\
+                /XXXXX/ (      O     )   XXXXXX   \XXXX\
+                XXXXX/   /            XXXXXX   \_ \XXXX----
+                XXXXXX__/          XXXXXX         \_----  -
+        ---___  XXX__/          XXXXXX      \_         ---
+          --  --__/   ___/\ XXXXXX            /  ___---=
+            -_    ___/    XXXXXX              '--- XXXXXX
+              --\XXX\XXXXXX                      /XXXXX
+                \XXXXXXXX                        /XXXXX/
+                 \XXXXX                        _/XXXXX/
+                   \XXXX--__/              __-- XXXX/
+                    --XXXXXXX---------------  XXXXX--
+                       \XXXXXXXXXXXXXXXXXXXXXXX-
+                         --XXXXXXXXXXXXXXXXXX-
+(128)
+
+
+
+Hello there, Flash cowboy!
+If you can read this message, you should apply for a job at blip.tv.
+Send an email to careers@blip.tv with your resume and make sure to
+let us know that you saw this message.
+
+               Love,
+               The blip.tv dev team
+</pre>
+Very amusing.  Flash video players seem to have a habit of leaving <A HREF="https://deitte.com/archives/2007/02/youtubes_hidden.htm">amusing messages</a>. 
+
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2008/07/flash_job_in_fl.htm"> 7:07 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>June 17, 2008</h2>
+
+
+<h3 id="a000208">A Shiny New Brightcove</h3>
+
+<p>Brightcove <A HREF="http://www.brightcove.com/about_brightcove/press_releases.cfm?ID=277">announced today</A> the beta of a new set of tools and features.  Most interesting for the readers here is the <A HREF="http://www.techcrunch.com/2008/06/16/brightcove-gutted-and-rebuilt/">article on Techcrunch</A>, where you can see a tiny picture of one of the Flex applications.  As I mentioned here in a <A HREF="https://deitte.com/archives/2008/05/the_making_of_a.htm">previous post</A>, there's a lot of interesting AS and Flex working going on here.  And someday soon you'll be able to see more than a little image of it!<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2008/06/a_shiny_new_bri.htm"> 8:56 AM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>June  9, 2008</h2>
+
+
+<h3 id="a000207">Please Ignore the Blog Mess (aka Want a Freelance Job?)</h3>
+
+<p>So I haven't played around with the design of this site in a long time, and while it's a pain to do in Movable Type, I figured it was time to do some damage.  Apparently I did a little too much damage while watching the Celtics game tonight, as I managed to completely mess up my setup.</p>
+
+<p>I had a backup, but Movable Type's odd linking structure has left me with a few missing files.  So now I'm stuck with an odd-looking blog until I find the time to fix things.  It's better than the default look, as long as you don't look at the bottom of the front page.  (You looked, didn't you?)</p>
+
+<p>On the subject, if you have or know someone with the following four characteristics:</p>
+
+<p>- CSS knowledge<br />
+- know Movable Type or are willing to put up with a wacky templating system<br />
+- a good knack for design <br />
+- free time</p>
+
+<p>Send me an email at bdeitte at gmail dot com with your rates.  Obviously I can't spend a fortune on a free blog, but with my lack of time, I'm more than happy to pay for someone else to clean up my mess (and then make it much better).<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2008/06/please_ignore.htm"> 6:32 AM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>May 29, 2008</h2>
+
+
+<h3 id="a000204">The Making of a Platform with Adobe Technology</h3>
+
+<p>Brightcove is using Flex and Flash in many significant ways to make a video platform, and I thought it'd be interesting to some people to share some of the uses.  I can't share a lot, but I can take the information from a <A HREF="http://www.slideshare.net/bdeitte/platform-as-art-a-developers-perspective">keynote presentation</A> by Ashley Streb at <a href="http://www.webmaniacsconference.com/">Webmaniacs 2008</a>.  You can also see the full presentation embedded at the end of this post.</p>
+
+<p>The scale of things at Brightcove is something that drives a lot of what happens with Flex and Flash at Brightcove.  From the slides:</p>
+
+<pre>135 Million Unique Users/month (as of 6 - 9 months ago)
+1.5 Petabytes (1,500,000 GBs) of media delivered/month
+Thousands of platform users, hundreds of major media brands, 
+  50 television networks, newspaper and magazine publishers, 
+  and all the major record labels in the US.
+</pre>
+
+<p>All of these users and media go through the Brightcove players, which have AS1, AS2, and AS3 versions in hundreds of different permutations.  Some of the data on the AS3 versions from the slides:</p>
+
+<pre>ActionScript 3, AVM2
+AMF3 as client/server communication protocol
+~70K LOC written
+</pre>
+
+<p>There's nothing too surprising in there, but there's some more interesting size information in the slides.  Keeping down the size helps the performance, and there's been a lot of work by Todd Yard (and others) on making the players faster and faster for the 135 million (or whatever the current number is) users.</p>
+
+<p>The players and videos are managed by manager applications that were created with Flex.  When some of your customers have thousands of videos and thousands of playlists of videos, the management becomes... tricky.  The slides touch on some of the ways this happens:</p>
+
+<pre>AVM2
+Structure server API; initial view, lazy load, different types of DTOs
+Make clients intelligent about their needs 
+Datagrid presentation strategies
+</pre>
+
+<p>I'm sure there's some questions on some of the above, like the datagrid presentation strategies, but I'll have to expand on them another day.  These business applications have some other data points on them that I can share:</p>
+
+<pre>Flex 2, AVM2
+Flex vs. ActionScript vs. DHTML
+AMF3 as client/server communication protocol
+Cairngorm as micro-architecture
+~100K LOC written, 150 Commands
+FlexBuilder as IDE/Developer Tool
+FlexUnit for unit testing
+Homegrown integration tool
+</pre>
+
+<p>There's a lot more in the slides below, including info about Brightcove as a service, code layout, the use of Scrum, our Java setup, etc.  If you'd like to hear more about any of this, just comment or send me an email.<br />
+</p>
+
+
+<div style="width:425px;text-align:left" id="__ss_431628"><object style="margin:0px" width="425" height="355"><param name="movie" value="http://static.slideshare.net/swf/ssplayer2.swf?doc=webmaniacs-1211928294903570-9"/><param name="allowFullScreen" value="true"/><param name="allowScriptAccess" value="always"/><embed src="http://static.slideshare.net/swf/ssplayer2.swf?doc=webmaniacs-1211928294903570-9" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="355"></embed></object><div style="font-size:11px;font-family:tahoma,arial;height:26px;padding-top:2px;"><a href="http://www.slideshare.net/?src=embed"><img src="http://static.slideshare.net/swf/logo_embd.png" style="border:0px none;margin-bottom:-5px" alt="SlideShare"/></a> | <a href="http://www.slideshare.net/bdeitte/platform-as-art-a-developers-perspective?src=embed" title="View Platform as Art: A Developer's Perspective on SlideShare">View</a> | <a href="http://www.slideshare.net/upload?src=embed">Upload your own</a></div></div>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2008/05/the_making_of_a.htm"> 9:15 AM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>March  3, 2008</h2>
+
+
+<h3 id="a000196">The Brightcove Office Invasion</h3>
+
+<p>It doesn't have the Golden Girls like the <A HREF="http://weblogs.macromedia.com/mchotin/archives/2008/02/flex_behind_the.cfm">Flex behind the scenes videos</A>, but Boston.com came by the Brightcove office a few weeks ago for a <A HREF="http://multimedia.boston.com/pub/tn/3/office_invasion.htm">video about development hell and Paris Hilton</A>.</p>
+
+<p>In other Brightcove news, check out a new use of Aftermix, with pages to create and view mashups on <A HREF="http://www.snow.com/info/whatsnew.asp">snow.com</A>.  It's the first off-site use of the application.  </p>
+
+<p>I haven't been working on Aftermix lately, but there's a lot of other interesting Flex work going on here... just nothing I can blog about yet.</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2008/03/the_brightcove.htm"> 8:05 AM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>November 28, 2007</h2>
+
+
+<h3 id="a000180">Links on the Brightcove.tv Upload Shutdown</h3>
+
+<p>Since I am a part of the Scrum team that is making the changes to brightcove.tv upload, it's been very interesting to read all the blog posts about it.  I'll leave the comments on the changes to those at a higher payscale, but here's some links:</p>
+
+<p>Ryan Stewart <A HREF="http://blogs.zdnet.com/Stewart/?p=641">asks about Aftermix</A>, and I really wish I could comment on this one.</p>
+
+<p>Mashable wins for <A HREF="http://mashable.com/2007/11/27/brightcovetv-shutdown">most hyperbolic title</A>.  Company to follow?  Huh?</p>
+
+<p>Jeremy Allaire <A HREF="http://blog.brightcove.com/blog/2007/11/brightcovetv-an.html">clarified the changes</A>, making sure it's clear that this only affects consumer uploads on brightcove.tv.  </p>
+
+<p>And just posted is <A HREF="http://www.brightcove.com/about_brightcove/perspectives.cfm">a thoughtful article from Jeremy Allaire and Adam Berrey</A> talking about the changes in Internet video.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2007/11/links_on_the_br.htm"> 5:01 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>November 24, 2007</h2>
+
+
+<h3 id="a000177">Mashup Culture</h3>
+
+<p>I noticed a new <A HREF="http://www.ted.com/index.php/talks/view/id/187">talk by Lawrence Lessig</A> about mashup culture (found on <A HREF="http://nwebb.co.uk/blog/?p=140">nwebb.co.uk</A>).</p>
+
+<p>Considering how often I mention Aftermix here, it's impossible not to mention Lessig at some point.  He's writen a lot about remixing, with perhaps the most well-known commentary in <A HREF="http://www.washingtonpost.com/wp-dyn/content/article/2007/07/11/AR2007071101996.html">an article in the Washington Post</A> on Star Wars and Eyespot.</p>
+
+<p>Lessig isn't the only person talking about remixing, of course.  There's even videos on the subject, such as <A HREF="http://www.youtube.com/watch?v=CJn_jC4FNDo">A Fair(y) Use Tale</A>.   And there's people talking about Lessig as well, such as the always-interesting <A HREF="http://www.convergenceculture.org/weblog/2007/07/the_sharecroppers_of_the_digit.php">Convergence Culture blog</A>.   My own opinion on all of this?  It's definitely something I like reading about...  how's that for a non-answer?  :)  A lot of people enjoyed making Avril remixes, and I certainly didn't feel like a sharecropper making my mix, and so I'll leave it at that.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2007/11/mashup_culture.htm"> 1:00 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>November 18, 2007</h2>
+
+
+<h3 id="a000173">The Future of Brightcove and Aftermix</h3>
+
+<p>There's a <A HREF="http://videonuze.com/blogs/details.php?id=252">interview on videonuze.com</A> with Jeremy Allaire.  It has a lot of interesting information about Brightcove's positioning and future.</p>
+
+<p>Also, as perhaps a few of you have noticed, <A HREF="http://www.brightcove.tv/aftermix">Aftermix</A> has ended it beta run on brightcove.tv.  To quote, "While the beta program has officially ended, you'll soon be able to use Aftermix on many sites throughout the web."  So you'll have to wait a little bit, but I'll let you all know where you can next mash things up.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2007/11/the_future_of_b.htm"> 6:46 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>October 13, 2007</h2>
+
+
+<h3 id="a000169">I'm doing Javascript work now</h3>
+
+<p>It's been a bit too long since my last update, but blogging keeps getting pushed down on the TODO list.  I have a long post on components in the works, but I wanted to post something else in the meantime to get myself back on the blogging horse.</p>
+
+<p>So it's true that I'm doing Javascript right now, although it's just for a week before I head back to Flex-land.  But it makes for a great headline, no?  This past week, I delved into innerHTML and the rest of the Ajaxy world that I've never been in before.  I did this to help create some HTML pages for work, and in the sprit of <A HREF="https://deitte.com/archives/2007/07/17_thoughts_on.htm">Scrum</A>, this was a task that I volunteered for.  I wanted to learn the basics, and it's been pretty easy to do so.  One thing I've enjoyed in my scripting is the instantaneous nature of the changes- there's a noticeable difference between waiting less than a second and waiting up to five seconds to see a change.  One thing I haven't enjoyed is, well, Javascript.  I've been spoiled by AS3.</p>
+
+<p>What else have I been up to, technology-wise?  Well, MAX was not one of those things, although I really wish I could have gone.  I didn't keep up with the mountain of blog postings last week, but I did read a lot of the <A HREF="http://thefactoryfactory.com/wordpress/?p=312">great posts</A> on <A HREF="http://blog.digitalbackcountry.com/?p=1065">Thermo</A>.  I'm waiting to see the code generation before I know how excited to get.</p>
+
+<p><A HREF="http://www.brightcove.tv/aftermix/welcome/">Aftermix</A> is still going strong, and in time I'll be able to talk about some very interesting changes ahead.  And Brightcove is going strong, with lots of <A HREF="http://blog.brightcove.com/">big deals and news</A> lately.  Brightcove is a great place to work, and if you're a Flex/Java developer/QA looking for a job, send me an email at bdeitte at brightcove dot com.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2007/10/im_doing_javasc.htm"> 7:25 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>September 13, 2007</h2>
+
+
+<h3 id="a000167">Invite-free Aftermix on Brightcove.TV</h3>
+
+<p>You can now play with Aftermix without an invite <A HREF="http://www.brightcove.tv/aftermix/welcome/">by going to the welcome page</A>.  It's still in beta, but let me know what you think.  The welcome page will take you to the contests for Avril Lavinge, Mashers of Horror, and Big and Rich.  </p>
+
+<p>You may also notice that this is a link to <A HREF="http://www.brightcove.tv">brightcove.tv</A> and not <A HREF="http://www.brightcove.com">brightcove.com</A>.  You can read more about Brightcove.TV <A HREF="http://blog.brightcove.com/blog/2007/09/from-brighcovec.html">on the Brightcove blog</A> or <A HREF="http://mashable.com/2007/09/13/brightcove-url/">on Mashable</A>.</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2007/09/invitefree_afte.htm">10:15 AM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>August 21, 2007</h2>
+
+
+<h3 id="a000166">The Future of Flash Video</h3>
+
+<p>Adobe <A HREF="http://home.businesswire.com/portal/site/google/index.jsp?ndmViewId=news_view&newsId=20070820006124&newsLang=en">just announced</A> support for H.264 in the Flash Player.  </p>
+
+<p>What does this mean?  For a short primer on H.264, see <A HREF="http://www.apple.com/quicktime/technologies/h264/">Apple's page on the subject.</A>  For the technical overview, check out <A HREF="http://www.kaourantin.net/2007/08/what-just-happened-to-video-on-web_20.html">Tinic's extremely detailed post</A>.  Now I'm not going to be able to sleep, as it's time to go read Tinic's post closely and salivate over the details.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2007/08/the_future_of_f.htm"> 1:11 AM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>August 19, 2007</h2>
+
+
+<h3 id="a000165">My Slides From 360Flex</h3>
+
+<p>The slides from my presentation on Aftermix and Video at 360Flex:</p>
+
+<p><object type="application/x-shockwave-flash" data="http://s3.amazonaws.com/slideshare/ssplayer.swf?id=94364&doc=aftermix-and-video2017" width="425" height="348"><param name="movie" value="http://s3.amazonaws.com/slideshare/ssplayer.swf?id=94364&doc=aftermix-and-video2017" /></object></p>
+
+<p>You can also download the PPT from slideshare.com by going to their site and clicking on "Download file".  The slides have a lot of notes in them, as I tried to keep the slides themselves concise. </p>
+
+<p>Thanks to John and Tom for putting together a great conference.  Thanks to effectiveui for the boxers that made me laugh when I finally saw the joke ("don't just focus on the backend").  Thanks to Jeff Tapper and Mike Nimer for getting a bunch of interesting folks together for dinner on the last night.  And thanks to all the people who stuck it out for the last session on the last day to see my talk.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2007/08/my_slides_from.htm">11:58 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+
+<h3 id="a000163">Junk Comments</h3>
+
+<p>I was just trying to catch up on this blog by answer comments in <A HREF="https://deitte.com/archives/2006/10/using_resource.htm">Using Resource Bundles in Flex</A> and <A HREF="https://deitte.com/archives/2006/08/finally_updated.htm">Embedding HTML in a Flex application</A> when I had my new comment show up as a Junk Comment in Movable Type.  Err, that's not good.  </p>
+
+<p>If anybody has posted on this site and didn't see their comment show up, please email me at brian @theurlyouseeabove.com or try to repost it.  Sorry about that.</p>
+
+<p>Also, if you're looking for the slides from my presentation at 360Flex, I should have them up here by the end of the day.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2007/08/junk_comments.htm"> 1:00 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>August  9, 2007</h2>
+
+
+<h3 id="a000162">Aftermix on Mashable</h3>
+
+<p>Things have been very quiet on the <A HREF="https://deitte.com/archives/2007/02/aftermixing_at.htm">Aftermix</A> front lately, but if you have access to the beta, you should notice a few bug fixes today.  On the news front, there was a lot of interest on <A HREF="http://mashable.com/2007/08/08/brightcove-aftermix-invites/">Mashable</A> for getting invites.</p>
+
+<p>Want to hear more about Aftermix or about video in general?  There's still space at <A HREF="http://www.360conferences.com/360flex/2007/08/360flex-300-this-is-sparrrrrrtttttaaaaa.html">360Flex in Seattle next week</A>.  I'll be speaking at 4pm on Wednesday.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2007/08/aftermix_on_mas.htm"> 5:44 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>July 27, 2007</h2>
+
+
+<h3 id="a000160">The Best Aftermixes So Far</h3>
+
+<p>Two Brightcove interns, Rene Dongo and Oliver Anderson, have put together a list of their <A HREF="http://www.brightcove.com/channel_all_favorites.jsp?channel=1119657938&firstVideo=0">favorite Aftermixes</A> and <A HREF="http://www.brightcove.com/channel_all_favorites.jsp?channel=1119268185&firstVideo=0">favorite Avril Aftermixes</A>.  Here's some highlights for your Friday clicking:</p>
+
+<p><A HREF="http://www.brightcove.com/title.jsp?title=1078545321&channel=987348368&lineup=-1">A Buzzword QuickDemo</A>.  There's something very meta about this use of Aftermix.</p>
+
+<p><A HREF="http://www.brightcove.com/title.jsp?title=932512808&channel=932890559&lineup=-1">concaf lionel richie</A>.  Just wait a bit with this one... someone had way too much fun with audio commentary.</p>
+
+<p><A HREF="http://www.brightcove.com/title.jsp?title=1078545321&channel=987348368&lineup=-1">LOLCATS Supermix</A>.  The meme may be over, but the cats live on.</p>
+
+<p><A HREF="http://www.brightcove.com/title.jsp?title=1078629499&channel=987230177&lineup=-1">Avril Aftermix</A>.  The main bug mentioned in the comment in this video is fixed. </p>
+
+<p><A HREF="http://www.brightcove.com/title.jsp?title=979039292&channel=463919500&lineup=-1">CSS' Birds RMX</A>.  I just like the flying dogs.</p>
+
+<p><A HREF="http://www.brightcove.com/title.jsp?title=1112157373&channel=315799648&lineup=-1">Intern War</A>.  This epic was created by another Brightcove intern, <A HREF="http://link.brightcove.com/services/player/bcpid987453468">Max Gold</A>.  This will also be the basis of some upcoming Aftermix tutorial videos we're releasing.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2007/07/the_best_aftermixes_so_far.htm"> 2:19 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>July 25, 2007</h2>
+
+
+<h3 id="a000159">Remixing and Complexity</h3>
+
+<p>Here's two articles I've been thinking about lately, especially in how they relate to <A HREF="http://www.brightcove.com/aftermix/join/index.jsp?src=deitte">Aftermix</A>:</p>
+
+<p><A HREF="http://www.convergenceculture.org/weblog/2007/07/the_sharecroppers_of_the_digit.php">Remixing and Fair Use</A></p>
+
+<p><A HREF="http://nick.typepad.com/blog/2007/07/culture-of-comp.html">Culture of Complexity</A><br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2007/07/remixing_and_co.htm">12:58 AM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>July  8, 2007</h2>
+
+
+<h3 id="a000156">Brightcove On HBO</h3>
+
+<p>I was just watching Entourage and saw the Brightcove player in a fake TMZ video.  Watching it on a tiny TV, I was squinting to see if the icons were the Brightcove ones.  It was was, uh, an interesting video to have Brightcove showcased.</p>
+
+<p>Update: And <A HREF="http://link.brightcove.com/services/link/bcpid285859616/bclid294430730/bctid1112812714">here's a clip of the show</A>, now on TMZ.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2007/07/brightcove_on_h.htm">10:02 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>June 26, 2007</h2>
+
+
+<h3 id="a000154">Aftermix, Invites, and Remixer</h3>
+
+<p>Ryan Stewart, who keeps growing on his uncanny ability to find stories, posted a link to the <A HREF="http://www.brightcove.com/aftermix/join/index.jsp?src=deitte">Aftermix invite form</A> in a <A HREF="http://blogs.zdnet.com/Stewart/?p=421">blog post last week</A>.  </p>
+
+<p>We won't be allowing everyone into Aftermix for the short term as we still work like mad on the beta version.  But I hope everyone still fills out the form to check this out, and I'll also be posting a way to make sure your request is selected.  (And sorry but it won't be a <A HREF="http://www.colettas.org/?p=109">Flex quiz</A>.)  There's also the <A HREF="http://www.360conferences.com/360flex/2007/06/360flex-seattle-has-your-beta-invites.html">invites at 360Flex</A>.</p>
+
+<p>Last but not least, a very late congrats to the team at Adobe for the <A HREF="http://www.techcrunch.com/2007/06/16/youtube-remixer-edit-videos-online-at-youtube/">Remixer app on YouTube</A>.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2007/06/aftermix_invite.htm">12:02 AM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>May 23, 2007</h2>
+
+
+<h3 id="a000151">Buzzword, FlexBox, and Transformers</h3>
+
+<p>Too much work and too little blogging.  Here's a catch-all post to catch up on Flex things.</p>
+
+<p>I've seen <A HREF="http://www.colettas.org/?p=103">Buzzword</A>, and... wow.   Congrats to the Flex team there.  I'm most impressed by the details, the way that little things just work.  </p>
+
+<p>The news is old, but I'll still point out that <A HREF="http://flexbox.mrinalwadhwa.com/">FlexBox</A> has been updated.  It's an excellent way to find new Flex components.  </p>
+
+<p>And related to FlexBox, since the IFrame component is on there, is that I've finally responded to the last month of comments on <A HREF="https://deitte.com/archives/2006/08/finally_updated.htm">Embedding HTML</A>. </p>
+
+<p>And Transformers.  What does Transformers have to do with Flex?  I could make up a metaphor here about the versatility of Flex.  Or make an awful joke about Flash being more than meets the eye.  But really, I just wanted to be a geek and embed this:</p>
+
+<p><embed src='http://admin.brightcove.com/destination/player/player.swf' bgcolor='#FFFFFF' flashVars='allowFullScreen=true&initVideoId=900692032&servicesURL=http://www.brightcove.com&viewerSecureGatewayURL=https://www.brightcove.com&cdnURL=http://admin.brightcove.com&autoStart=false' base='http://admin.brightcove.com' name='bcPlayer' width='486' height='412' allowFullScreen='true' allowScriptAccess='always' seamlesstabbing='false' type='application/x-shockwave-flash' swLiveConnect='true' pluginspage='http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash'></embed></p>
+
+<p>The movie looks a lot like all the rest of the Hollywood action films in recent years, but it's Transformers.  The ten year-old kid in me is very excited.</p>
+
+<p>Lastly, as a non-Flex update, there was an update to <A HREF="http://brightcove.com">brightcove.com</A> last night, but I'll wait to post more on this, as I can't yet talk about any video mixing part of this update.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2007/05/buzzword_flexbo.htm"> 6:47 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>May  8, 2007</h2>
+
+
+<h3 id="a000150">Details Leaking Out on Aftermix</h3>
+
+<p>Details on Aftermix have been slowly emerging, and Anthropomedia points to two of them in a post on <A HREF="http://anthropomedia.blogspot.com/2007/04/brightcoves-aftermix.html"> Brightcove's Aftermix</A>.  For the <A HREF="http://www.mediapost.com/videos.html?bcpid=464120922&bclid=823367507&bctid=824006272">MediaPost video mentioned</A>, go to the 35 minute point to see Jeremy Allaire's demo of Aftermix.  Or you can check out the early <A HREF="http://www.brightcove.com/title.jsp?title=769453319&channel=285130124">support video</A>.</p>
+
+<p>I can't comment on the blog post's questions on the underlying business model, but I can briefly comment on the blog post's suggestion that Aftermix is half-baked right now.  We have a team here that includes people who previously worked on Flex, which is the development technology for Aftermix.  This Flex group includes me, and you can also see that I went to Brightcove <A HREF="https://deitte.com/archives/2006/10/heading_to_brig.htm">seven months ago</A>.  Hopefully I've been doing something since then.  :)  I wish I could say more, but that's for another day.  In time, on this blog, you'll hear more about the fully-baked version.</p>
+
+<p>As for the version of Aftermix shown in the videos, a lot has changed (and is better) in our local builds.  To let out one detail, the tab navigator is gone.  Those of us who have seen too many Flex applications that look alike will appreciate this.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2007/05/details_leaking.htm">11:29 AM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>May  2, 2007</h2>
+
+
+<h3 id="a000149">Looking for More Flex or Flash QA (and Developers)</h3>
+
+<p>Do you want to test or develop a video player that's viewed millions of times a month?  How about working on a brand-new video editor?  Brightcove is looking for more Flex and Flash people to work on <A HREF="http://brightcove.com">brightcove.com</A>.  We're looking for both QA and developers to work on <A HREF="https://deitte.com/archives/2007/02/aftermixing_at.htm">Aftermix</A>, the <A HREF="http://www.brightcove.com/title.jsp?title=627011240&channel=184253309">site's video player</A>, and more.</p>
+
+<p>Check out my previous post, <A HREF="https://deitte.com/archives/2006/12/top_ten_reasons.htm">Top 10 Reasons to Work at With Flex Brightcove</A>, for some Aftermix-focused reasons to check things out.  </p>
+
+<p>You can ask questions or email your resume to work AT brightcove DOT com.  And you can always ask me questions at bdeitte AT brightcove DOT com.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2007/05/looking_for_mor.htm">10:11 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+
+<h3 id="a000148">Brightcove Widgets From Yourminis</h3>
+
+<p>If you look at the bottom of the right-hand column on this site, you'll now see this <A HREF="http://www.yourminis.com/">yourminis</A> widget:</p>
+
+<p><embed src="http://www.yourminis.com/Dir/GetContainer.api?uri=yourminis/bdeitte/mini:brightcove2deitte" FlashVars="buildnumber=1%2E5%2E2%2E25&height=300&width=160&textc=16777215&mysearch=%2Abuzz%2A&textcolor=16777215&externalURL=http%3A%2F%2Fct%2Eyourminis%2Ecom%2FDir%2FGetMiniSwfPub%2Eapi%3Furi%3Dyourminis%2Fbrightcove%2Fmini%3Abrightcovevideo&maxheight=370&maxwid=420&newwindow=1&accountname=bdeitte&uri=yourminis%2Fbdeitte%2Fmini%3Abrightcove2deitte&swfurl=%2Fwidget%5Fapi%2Eswf&swfurl=/widget_api.swf&mininame=brightcove2deitte&title=Brightcove%20Video&swfhost=ct.yourminis.com&hostname=www.yourminis.com&statshostname=stats.yourminis.com&buildnumber=1.5.2.25&xwidth=170&xheight=310" type="application/x-shockwave-flash" allowScriptAccess="always" wmode="transparent" width="170" height="310"></embed><br /></p>
+
+<p>It's displaying the top videos on Brightcove.com, but you can change it to display videos from different categories.  You can also change other properties, as I changed mine to fit into the column's width.  </p>
+
+<p>See the <A HREF="http://www.yourminis.com/minis/yourminis/brightcove/mini:brightcovevideo">original Brightcove widget here</A>.</p>
+
+<p>On a side note, since most people are still coming here for Flex information, I wanted to point out again that I have <A HREF="https://deitte.com/archives/2006/10/category_feeds.htm">RSS feeds for both the Flex and video categories</A>.  But I'm happy if you keep reading all my ramblings.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2007/05/brightcove_widg.htm">10:00 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>April 22, 2007</h2>
+
+
+<h3 id="a000146">Snacking with Henry Jenkins</h3>
+
+<p>Henry Jenkins wrote a <A HREF="http://www.henryjenkins.org/2007/04/snack_media.html">contrarian post</A>     about the conventional wisdom on the video snacking culture.  While I agree that snacks can be good for you, I found it hard to swallow (if you'll excuse the pun) that we only have more snacks now because "the menu itself has gotten longer".  The menu may be longer, but I don't see it expanding at a uniform rate, as the shorter form has taken over the Web.  </p>
+
+<p>On the subject of Henry Jenkins, if you're interested in online media, you really should be reading <A HREF="http://www.henryjenkins.org/">his blog</A>.   I don't find the time to read most of his posts, and I found it amusing that he joked about their length in his latest post.  But his blog posts, which take a lot more brain cells to read than the average item in my aggregator, are worth a read.</p>
+
+<p>I first heard about Henry Jenkins six months ago when I was starting out at Brightcove.  I was trying to find books and blogs on new media, and I picked up <A HREF="http://www.amazon.com/Convergence-Culture-Where-Media-Collide/dp/0814742815">Convergence Culture</A>.  I really liked the book and highly recommend it.  I hope to write some longer thoughts on the book some day and how some of the ideas apply to <A HREF="https://deitte.com/archives/2007/02/aftermixing_at.htm">Aftermix</A>.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2007/04/snacking_with_henry_jenkins.htm">11:32 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>April 16, 2007</h2>
+
+
+<h3 id="a000142">Brightcove's Planned Support of Silverlight</h3>
+
+<p>Brightcove is now <A HREF="http://blog.brightcove.com/blog/2007/04/now_playing_wit.html">planning to support Silverlight</A> in addition to Flash video.  </p>
+
+<p>I'm just posting this to give <A HREF="http://www.onflex.org/ted/2007/04/m-silverlight-vs-adobe-flash-player.php">Ted Patrick</A> and <A HREF="http://blogs.msdn.com/msmossyblog/archive/2007/04/16/microsoft-debuts-its-flash-killer-silverlight.aspx">Scott Barnes</A> the opportunity to have a "discussion" on the matter.  :)</p>
+
+<p>Back to <A HREF="https://deitte.com/archives/2007/02/aftermixing_at.htm">Aftermix</A> work, which yes, is still in Flex 2.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2007/04/brightcoves_pla.htm"> 7:03 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>April 15, 2007</h2>
+
+
+<h3 id="a000140">CBS and More from Brightcove</h3>
+
+<p>I don't usually publish details on the content deals from Brightcove, as it would bore almost all of the geeks reading this blog.  And writing the daily posts would put me to sleep as well.  But as a wide-ranging deal, the <A HREF="http://newteevee.com/2007/04/12/cbs-doesnt-need-youtube-or-newco/">CBS deal</A> is pretty interesting.  Brightcove also provided  some interesting hints of future possibility in the <A HREF="http://blog.brightcove.com/blog/2007/04/cbs_corporation.html">press release</A>: </p>
+
+<p>Brightcove will feature ad-supported CBS video channels on its popular consumer destination, Brightcove.com. Fans of hit CBS programs will be able to post comments and interact with other viewers, remix content through interactive editing tools, and share videos through personal channels on Brightcove.com. For long-form CBS content, Brightcove will also provide a full-screen theater-mode viewing experience.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2007/04/cbs_and_more_fr.htm"> 1:08 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>March 28, 2007</h2>
+
+
+<h3 id="a000138">A Major Brightcove.com Update</h3>
+
+<p>Now you can tell the world what you think about the latest TMZ video on <A HREF="http://www.brightcove.com">brightcove.com</A>.   (If you admit to watching TMZ videos, of course).  As of early this morning, Brightcove entered the world of spam and "first post!" with a commenting system on video pages.  I already see a lot of amusing comments (and user thumbnails) on the site.  </p>
+
+<p>A lot of other changes were included in the update to brightcove.com, including a major performance increase, more ways to browse for new content, a fix for view counts, and a <A HREF="http://www.brightcove.com/buzz.jsp">list of the newest videos</A>.  Sorry, but no Aftermix yet.</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2007/03/a_major_brightc.htm"> 8:37 AM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>March 12, 2007</h2>
+
+
+<h3 id="a000130">Brightcove is Now Twittering</h3>
+
+<p>You can get video diversions <A HREF="http://twitter.com/brightcove">here</A>.</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2007/03/brightcove_is_n.htm">10:37 AM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>March  2, 2007</h2>
+
+
+<h3 id="a000127">Random dog videos- dailydogvideo.com</h3>
+
+<p>After watching a bunch of cat videos at a meeting today (don't ask), I figured it was time to create a post about a little project I've helping with, <A HREF="http://www.dailydogvideo.com">http://www.dailydogvideo.com</A></p>
+
+<p>It's simply one embedded dog video each day.  I had the idea for the site after watching way too many pet videos on <A HREF="http://brightcove.com">brightcove.com</A> and other sites.  It has only taken a few hours to set up, and my girlfriend Betsy is running with the site, selecting the videos and making sure everything goes smoothly.</p>
+
+<p>The site features videos from any video site, although I nudge Betsy into selecting more of the Brightcove videos.  You can subscribe through email or RSS, which is updated, you guessed it, once a day.</p>
+
+<p><b>Update:</b> The site has gone away, but my wife has a new site at <A HREF="http://petitemama.com/">petitemama.com</A></p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2007/03/random_dog_vide.htm"> 6:00 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>February 27, 2007</h2>
+
+
+<h3 id="a000126">Aftermixing at Brightcove</h3>
+
+<p>Today at the Adobe Engage event, Jeremy Allaire showed a little bit of Aftermix, an unreleased video mixing application from Brightcove.  I'm very excited to see all of the posts and discussion on Aftermix and its possibilities, especially since I have my hand in the making of this Flex 2 application.  Here's a roundup of what others are writing about Aftermix:</p>
+
+<p>A <A HREF="http://blogs.zdnet.com/Berlind/?p=362">GooTube lookout</A> from David Berlind.</p>
+
+<p><A HREF="http://www.jeff-barr.com/?p=911">Jeff Barr writes</A> about Aftermix, consumers, and the video-snacking culture.</p>
+
+<p>Kristen Nicole <A HREF="http://www.606tech.com/fullarticle.php?artid=397">suggests that Brightcove keeps quality first</A>.</p>
+
+<p>Everyone's favorite prolific blogger <A HREF="http://blogs.zdnet.com/Stewart/?p=281">Ryan Stewart has a post</A>.</p>
+
+<p>Mashable has a post with a title we can all agree as hyperbolic, <A HREF="http://mashable.com/2007/02/27/brightcove-aftermix/">Brightcove Launching AfterMix - Pulls Ahead of YouTube?</A></p>
+
+<p><A HREF="http://www.redmonk.com/jgovernor/2007/02/28/brightcove-towards-a-media-we-distribution-model/">James Governor's post</A> asks Brightcove to remember the 'roots.  <br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2007/02/aftermixing_at.htm">11:30 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>February 21, 2007</h2>
+
+
+<h3 id="a000123">YouTube's Hidden Anger for the Play Button</h3>
+
+<p>This was too amusing not to post* and a reminder to make sure no traces show up in a production SWF.  Below is the trace output from an embedded YouTube video.  In the middle of the output: "showing the goddamn play button".</p>
+
+<p>Constructing movie<br />
+Warning: onStatus is not a function<br />
+Ending the movie is :_level0.tube.movie<br />
+constructing MovieController:undefined<br />
+timer.seek_total_timeundefined<br />
+regular:undefined smal._xstart:undefined<br />
+constructing EmbedSoundController:undefined<br />
+setting movie<br />
+setting the movie video_id:1AH9VEM_qC0 base_url:http://www.youtube.com/<br />
+DIFFERENT loading :undefined vs http://www.youtube.com/get_video?video_id=1AH9VE<br />
+M_qC0&t=OEgsToPDskKQgp5rypS4WQ0olAuex1N1<br />
+registering controller to:_level0.tube.movie<br />
+registering sound to:_level0.tube.movie<br />
+controller movie is:_level0.tube.movie<br />
+show v:100<br />
+showing the goddamn play button<br />
+ sw:425 sh:350 rw:450.55 rh:356.1<br />
+resizing to:425:350<br />
+resizing to:425:318.75 ratio:1.33333333333333<br />
+overlay: 425,318.75<br />
+end_screen: 425,318.75<br />
+actual size of movie is:425:318.9<br />
+resize width:425 bg offset30.55<br />
+ moive_width:425 w:425 mx:0<br />
+px:undefined py:undefined<br />
+fiting image to:425:318.75 actual:425:318.75<br />
+we loaded the image</p>
+
+<p>*Yes YouTube is a competitor in some ways to the company I work for, Brightcove, but it's certainly not meant as a dig at them!  <br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2007/02/youtubes_hidden.htm"> 5:55 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>February 18, 2007</h2>
+
+
+<h3 id="a000121">Jobs' Thoughts on DRM</h3>
+
+<p>Steve Jobs has sparked more conversation on DRM in music with his <A HREF="http://www.apple.com/hotnews/thoughtsonmusic/">Thoughts on Music</A> article.  I'm sure this article will percolate into the conversations on video DRM (or <A HREF="https://deitte.com/archives/2006/10/pay_media_on_br.htm">creators' rights</A>).</p>
+
+<p>Macrovision, a copy prevention company, <A HREF="http://www.macrovision.com/company/news/drm/response_letter.shtml">responded to the article</A>.  And daring fireball <A HREF="http://daringfireball.net/2007/02/macrovision_translation">posted an amusing response to Macrovision's letter</A>.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2007/02/jobs_thoughts_o.htm">11:06 AM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>February 10, 2007</h2>
+
+
+<h3 id="a000117">Random Videos Redux</h3>
+
+<p>I was just looking at my <A HREF="http://awstats.sourceforge.net/">awstats</A> for deitte.com and noticed that a lot of people are finding the site with the search terms "random videos".  If you <A HREF="http://www.google.com/search?hl=en&q=random+videos&btnG=Google+Search">search Google for random videos</A>, you'll see <A HREF="https://deitte.com/archives/2007/01/random_videos.htm">this post</A> in the top 10!  It's the first time I've seen that a lot of people are coming to the site for video info.</p>
+
+<p>Time for a few more random videos:</p>
+
+<p><A HREF="http://www.brightcove.com/title.jsp?title=464025021&channel=78144477">The YouTube (or Brightcove) Gotcha Game</A><br />
+<A HREF="http://www.brightcove.com/title.jsp?title=459255727&channel=416730308">How to Shotgun a Bottled Beer</A><br />
+<A HREF="http://www.brightcove.com/title.jsp?title=474425052&channel=598199">Nintendos are Hot</A></p>
+
+<p>A lot more random Brightcove videos can be found on the <A HREF="http://blog.brightcove.com/addict/">Brightcove Video Addict blog.</A><br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2007/02/random_videos_r.htm"> 1:30 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>February  1, 2007</h2>
+
+
+<h3 id="a000116">Personal Channels on Brightcove</h3>
+
+<p>You can now create your own personal channel on Brightcove and upload your own videos to it.  Just <A HREF="http://www.brightcove.com/registration.jsp">register</A> and you can start uploading and marking your favorite videos.</p>
+
+<p>One thing I've noticed is that an uploaded video takes a few minutes to show up on your page, so don't think that your upload failed if you don't see it right away.  There's a few quirks, and there's some features that I'd like to see, but it's a good start.  I especially like the inline editing.</p>
+
+<p>I'm not sure how this monkey got on the Internet, but <A HREF="http://www.brightcove.com/channel.jsp?channel=463872412">check out his page</A>.</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2007/02/personal_channe.htm"> 3:43 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>January 26, 2007</h2>
+
+
+<h3 id="a000106">Random Videos</h3>
+
+<p><A HREF="http://www.brightcove.com/title.jsp?title=323642690&channel=307757804">Gus And Chippy</A> A favorite of my mine from the Brightcove Pets channel.  I think you'll be able to guess which dog is Chippy.</p>
+
+<p><A HREF="http://www.brightcove.com/title.jsp?title=348393553&channel=184253275">Cat Opening a Door</A> The first step in global cat domination.</p>
+
+<p><A HREF="http://www.brightcove.com/title.jsp?title=422561644&channel=353512430">More from Barak Obama</A> Another in the long-line of videos from candidates, but I liked the quality of this one.</p>
+
+<p><A HREF="http://www.brightcove.com/title.jsp?title=428947737&channel=422544479">A Very... Uh... Interesting Person</A> Fast forward to 7:00.  The <A HREF="http://digg.com/videos/comedy/I_Feel_Like_I_m_Being_Molested_Via_Video"> digg comments</A> about this video are hilarious.</p>
+
+<p>I'm not planning to post a lot of Brightcove videos here, but you may see a few more random videos from time to time.  On the topic of Brightcove, <A HREF="http://www.pbs.org/mediashift/2007/01/digging_deepercan_brightcove_s.html">PBS</A> and <A HREF="http://www.pcmag.com/article2/0,1759,2086595,00.asp?kc=PCRSS05039TX1K0000751">PC Magazine</A> have recent articles about online video and Brightcove.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2007/01/random_videos.htm">12:48 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>January 17, 2007</h2>
+
+
+<h3 id="a000103">Brightcove Raises $59.5M in Financing</h3>
+
+<p>Yesterday, <A HREF="http://www.brightcove.com/title.jsp?title=422873237&channel=353512430">Barak Obama announced his run for the presidency</A> using Brightcove.</p>
+
+<p>Today, Brightcove <A HREF="http://blog.brightcove.com/blog/2007/01/brightcove_rais.html">announced the completion of a major round of private financing for $59.5M</A>.</p>
+
+<p>Tomorrow, I expect to see the announcement of Jeremy Allaire's 100M war chest and presidential run.</p>
+
+<p>Well, perhaps not, but I'm very excited that Brightcove has obtained this financing and that the company can continue to grow.  It means we can keep working hard on and investing in the interesting projects you'll see in the year ahead.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2007/01/brightcove_rais.htm"> 8:31 AM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>December 31, 2006</h2>
+
+
+<h3 id="a000096">About This Blog</h3>
+
+<p>Hi, I'm Brian Deitte.  I work at <A HREF="http://www.brightcove.com/">Brightcove</A>, where I develop in Flex, AS3, and Java for the Brightcove video platform.   Previously I worked at Adobe (through Macromedia through Allaire) where I worked on the Flex team from Flex 1.0 to Flex 2.01.  </p>
+
+<p>You can subscribe to this blog through <A HREF="https://deitte.com/old_home/index.xml">this RSS feed</A>.  </p>
+
+<p>If you'd like to say hi or have an interesting idea to share, please send me an email at brian at deitte.com.  You can also find me on <A HREF="http://twitter.com/bdeitte">Twitter</A>.</p>
+
+<p>Are you wondering how you pronounce Deitte?  Say "be it", but with a "d" instead of a "b".<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2006/12/about_this_blog.htm">12:14 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+
+<h3 id="a000095">Happy New Year</h3>
+
+<p>A Happy New Year to all!  Between a trip around the world to a new job to so much else, this has been a very interesting year for me.  I hope everyone has a good year ahead.</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2006/12/happy_new_years.htm">12:05 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>December 18, 2006</h2>
+
+
+<h3 id="a000092">Time Tells the YouTube Story Through Brightcove</h3>
+
+<p>I love the fact that the "YouTube: The Early Days" video (as part of the <A HREF="http://www.time.com/time/magazine/article/0,9171,1569514,00.html">Time Person of the Year feature</A>) uses the <A HREF="http://www.time.com/time/personoftheyear/2006/video/index.html">Brightcove player</A>.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2006/12/time_tells_the.htm"> 3:41 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+
+<h3 id="a000090">Top Ten Reasons to Work with Flex at Brightcove</h3>
+
+<p>We're still in need of Flex developers and QA for an exciting project at Brightcove.  In the spirit of  <A HREF="http://www.onflex.org/ted/2006/12/top-10-myths-about-adobe-flex-20.php">Ted Patrick</A>, here's my top ten list for working at Brightcove:</p>
+
+<p>1. First off, I'd like to stress that you don't have to know Flex.  Knowing your UIComponents would be helpful, but we're more interested in your ability and willingness to work on a Flex project.  In other words, we're interested in <A HREF="http://www.jivesoftware.com/blog/2006/08/31/culture-club/">athletes more than experts</A>.</p>
+
+<p>2. It's a new project, which means that you get a lot of say on how things work in the development and testing environments.  You'll be on the ground floor of a new project and the first floor of a growing company.  </p>
+
+<p>3. Work with Flex 2 every day, all day.</p>
+
+<p>4. Work directly with three former members of the Flex team.  This includes Sean Neville, who was writing about Flex <A HREF="http://www.artima.com/weblogs/viewpost.jsp?thread=21896">more than three years ago</A> and <A HREF="https://deitte.com/archives/2006/10/heading_to_brig.htm">me</A>.</p>
+
+<p>5. Work close to a lot of excellent Flex, Flash and Java developers.  This includes one of the authors of the <A HREF="http://www.oreilly.com/catalog/actscpt3ckbk">AS 3.0 Cookbook</A>, <A HREF="http://www.bit-101.com/blog">Keith Peters</A>, Flasher extraordinaire <A HREF="http://blog.pixelconsumption.com">Sam Robbins</A>, and a swath of people who've helped build J2EE servers.</p>
+
+<p>6. It's a project that <A HREF="http://blog.brightcove.com/blog/2006/06/in_wake_of_gate.html">Jeremy Allaire</A> is excited about.  He'll come by occasionally and ask about the project.</p>
+
+<p>7. My HR one-liner: Brightcove has a good set of medical, dental, 401k and other benefits.</p>
+
+<p>8. You won't have to see any more posts on this site about the subject.  I can't help but try to get more people on board to the project I'm on.  Like the threat in an NPR fund drive, you could make the world a better place and help me get back to more insightful posts by working here.</p>
+
+<p>9. Brightcove is all about <A HREF="http://www.brightcove.com/title.jsp?title=315814062">video</A>, <A HREF="http://link.brightcove.com/services/link/bcpid285076535/bctid284957308">video</A>, <A HREF="http://www.brightcove.com/title.jsp?title=301961647">video</A>.  The online world is currently abuzz with <A HREF="http://www.beet.tv/">video</A>.  Wouldn't you like to work with video?</p>
+
+<p>10. Have you seen the view out of our office at One Cambridge Center in Kendall Square?  </p>
+
+<p><A HREF="http://flickr.com/photos/aaskov/113907739/in/photostream/"><IMG src="http://deitte.com/old_home/brightcove_view.jpg"></A></p>
+
+<p><b>Apply by emailing your resume to resume to work AT brightcove DOT com</b> or finding the job through the <A HREF="http://corp.brightcove.com/about_brightcove/brightcove_careers.cfm">career site</A>.  And if you have any questions for me, I'd be more than happy to answer them at bdeitte AT brightcove DOT com.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2006/12/top_ten_reasons.htm"> 3:12 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>December 17, 2006</h2>
+
+
+<h3 id="a000089">An Ajax Look at Flex, New TV, and More</h3>
+
+<p>Three groups of links for your Sunday reading:</p>
+
+<p>1. Andy Budd has a fascinating post on going to the Flash on the Beach conference as an Ajax developer: <A HREF="http://www.andybudd.com/archives/2006/12/the_lions_den/index.php">The Lion's Den</A> (found via <A HREF="http://aralbalkan.com/799">Aral Balkan</A>)  Having lived in Flex-land for too long, I always find it interesting to hear a perspective, positive or not, from someone in the majority group of Web development.  To quote: "The thing that excites me the most about FLEX 2.0 is how similar it is to standards based development. You have an declarative XML-based mark-up language to build the UI. You can then add style in the form of CSS and behaviour using the ECMAScript based Actionscript language. Cool huh?"</p>
+
+<p>2. I saw the <A HREF="http://newteevee.com">newwteevee.com blog</A> after a <A HREF="http://newteevee.com/2006/12/08/brightcove-adds-user-gen-uploads">post on Brightcove's user upload feature</A>.   I'm now a daily reader, as the blog is  the best place I've found to read about everything happening with online video.</p>
+
+<p>3. The folks at Jive Software (founded by fellow University of Iowans) have had a number of <A HREF="http://www.jivesoftware.com/blog/2006/08/31/culture-club/">good posts</A> about software companies, the latest being about <A HREF="http://jivesoftware.com/blog/2006/12/12/the-open-organization">creating an open organization</A>.  <br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2006/12/an_ajax_look_at.htm">10:05 AM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>December  5, 2006</h2>
+
+
+<h3 id="a000088">Ryan Stewart on Brightcove</h3>
+
+<p>Ryan Stewart has a <A HREF="http://blogs.zdnet.com/Stewart/?p=189">glowing blog post</A> about Brightcove on <A HREF="http://blogs.zdnet.com/Stewart/">his ZDNet blog.</A>  Even if you know about Brightcove already, it's a great article to read to get a few more ideas about it.  I also see that Ryan has updated his mugshoot... Ryan, you look much older and balder.  :)  <br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2006/12/ryan_stewart_on.htm"> 2:41 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+
+<h3 id="a000086">Amusing Support Videos</h3>
+
+<p>I actually enjoyed watching these support videos.  That's scary.  The current version includes an interviewing video character, pancakes, and Buddha:</p>
+
+<p><embed src="http://services.brightcove.com/services/viewer/federated_f8/285076524" bgcolor="#FFFFFF" flashVars="videoId=316040073&playerId=285076524&viewerSecureGatewayURL=https://services.brightcove.com/services/amfgateway&servicesURL=http://services.brightcove.com/services&cdnURL=http://admin.brightcove.com&domain=embed&autoStart=false&" base="http://admin.brightcove.com" name="flashObj" width="492" height="327" seamlesstabbing="false" type="application/x-shockwave-flash" swLiveConnect="true" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash"></embed></p>
+
+<p>Here's <A HREF="http://studio.brightcove.com/support-tv/index.cfm?episode=101">the rest of the support videos.</A><br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2006/12/amusing_support.htm"> 2:20 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>November 22, 2006</h2>
+
+
+<h3 id="a000084">Brightcove Holiday Lights</h3>
+
+<p>Take a look at the top floor of One Cambridge Center:</p>
+
+<p><IMG src="http://deitte.com/old_home/brightcove-lights.jpg" /></p>
+
+<p>I shall never divulge the names of the conspirators, but there was a number of people here working to get this done yesterday.  It may need a video running out of the rest of the windows to make it MIT-worthy, but having the font look like the Brightcove font is a nice touch.  </p>
+
+<p>Picture taken by David Adler.  <br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2006/11/brightcove_holi.htm">11:27 AM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>November 19, 2006</h2>
+
+
+<h3 id="a000082">Full-Screen mode on Brightcove</h3>
+
+<p>Brightcove videos now have a full-screen mode.  You can enable this by clicking the maximize box in videos, like in the fish-eating turtle one below:</p>
+
+<p><embed src='http://admin.brightcove.com/destination/player/player.swf' bgcolor='#FFFFFF' flashVars='allowFullScreen=true&initVideoId=307734405&servicesURL=http://services.brightcove.com/services&cdnURL=http://admin.brightcove.com&autoStart=false' base='http://admin.brightcove.com' name='bcPlayer' width='486' height='412' allowFullScreen='true' seamlesstabbing='false' type='application/x-shockwave-flash' swLiveConnect='true' pluginspage='http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash'></embed></p>
+
+<p><A HREF="http://link.brightcove.com/services/link/bcpid276938852/bclid254756195/bctid313666816<br />
+">Here's the video</A> I originally wanted to embed in this post, but apparently I can't get the embed code on all videos on brightcove.com.  I assume this is a publisher option, and hopefully more publishers will understand the importance of enabling this. </p>
+
+<p><br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2006/11/fullscreen_mode.htm"> 1:20 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>November  5, 2006</h2>
+
+
+<h3 id="a000081">Brightcove in Newsweek</h3>
+
+<p>Jeremy Allaire has a excellent interview about Brightcove <A HREF="http://msnbc.msn.com/id/15549204/site/newsweek/">in Newsweek</A>.  Also, as long as I'm in the Brightcove-article-linking mood, I'll mention <A HREF="http://blog.brightcove.com/blog/2006/11/clarifying_brig.html">a lengthy post</A> on what Brightcove is (and isn't).  <br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2006/11/brightcove_in_n.htm">10:53 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>October 30, 2006</h2>
+
+
+<h3 id="a000079">A good time waster for today: brightcove.com</h3>
+
+<p>Check out <A HREF="http://www.brightcove.com">brightcove.com</A> for lots of video goodness.  The site was consumerized, and you can now view videos through a popularity ranking or microchannels.  <A HREF="http://www.brightcove.com/channel.jsp?channel=196219738">The Horror Channel</A> is a good one for this week.</p>
+
+<p>There's a lot more to today's launch, including the ability for anyone to launch a Brightcove channel, AdNet, website affiliates, distribution through AOL Video, open APIs, and lots more that you can read about <A HREF="http://blog.brightcove.com/blog/2006/10/the_brightcove_.html">in this article</A>.  There's also <A HREF="http://www.techcrunch.com/2006/10/29/brightcove-launches-its-network-for-small-video-publishers/">a </A> <A HREF="http://news.zdnet.com/2100-9588_22-6130433.html">barrage</A> <A HREF="http://today.reuters.com/news/articleinvesting.aspx?view=CN&storyID=2006-10-30T022603Z_01_N29279095_RTRIDST_0_MEDIA-BRIGHTCOVE.XML&rpc=66&type=qcna">of</A> <A HREF="http://www.usatoday.com/tech/products/2006-10-29-brightcove_x.htm?POE=TECISVA">press</A>          <A HREF="http://networks.silicon.com/webwatch/0,39024667,39163683,00.htm">today</A>.</p>
+
+<p>It's been exciting starting at the company at this time (and quite lucky).  It has, however, meant that I haven't gotten to meet everyone yet, as there's a lot of people who have been working around-the-clock to get this all out.  </p>
+
+<p>If anybody is wondering, I promise to get back to some technical posts on this blog.  Next up will probably be a post about my current experiences with Flex.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2006/10/a_good_time_was.htm"> 8:34 AM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>October 24, 2006</h2>
+
+
+<h3 id="a000078">Brightcove looking for Flex developers and QA</h3>
+
+<p>Brightcove is looking for developers and QA for an exciting, new Flex 2 project.  This is the project that <A HREF="https://deitte.com/archives/2006/10/heading_to_brig.htm">brought me to Brightcove</A>, so you'll be working with me on creating an application that focuses on video on the Web.  </p>
+
+<p>We would love Flex experience, but if you're just starting down the path of Flex and want to keep learning more, we're definitely interested as well.</p>
+
+<p>The positions are based in Cambridge, Massachusetts.  To apply, please see the links below or send your resume to work AT brightcove DOT com.  </p>
+
+<p>Software Engineer:  <A HREF="http://tbe.taleo.net/NA4/ats/careers/requisition.jsp?org=BRIGHTCOVE&cws=1&rid=116">http://tbe.taleo.net/NA4/ats/careers/requisition.jsp?org=BRIGHTCOVE&cws=1&rid=116</A></p>
+
+<p>Senior QA Software Engineer: <A HREF="http://tbe.taleo.net/NA4/ats/careers/requisition.jsp?org=BRIGHTCOVE&cws=1&rid=112">http://tbe.taleo.net/NA4/ats/careers/requisition.jsp?org=BRIGHTCOVE&cws=1&rid=112</A></p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2006/10/brightcove_look.htm">12:05 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>October 22, 2006</h2>
+
+
+<h3 id="a000077">Pay media on Brightcove (but not with Flash)</h3>
+
+<p>I noticed that the lastest update to Brightcove's services includes a <A HREF="http://www.brightcove.com/resources/faq-pay-media.cfm">beta of pay media services</A> for distrubuting your content to everyone for a price.  </p>
+
+<p>As I would have guessed, the pay services require the use of Windows Media Video.  Hopefully in time Flash video will have a good, non-streaming solution to DRM.  It is something that's often <A HREF="http://weblogs.macromedia.com/md/archives/2005/12/flash_on_cnncom.cfm" >discussed</A> and <A HREF="http://www.flashcomguru.com/index.cfm/2006/9/7/vcsacp">worked on</A>.</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2006/10/pay_media_on_br.htm"> 6:22 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>October 21, 2006</h2>
+
+
+<h3 id="a000075">Category Feeds and Other Updates</h3>
+
+<p>This blog went through an overhaul* today, with a new look and new feeds.  If you only want to read about Flex now, you can use this feed:<br />
+<a href="http://deitte.com/old_home/index_flex.xml">RSS 2.0 (Flex category only)</a><br />
+If you're coming here for video and Brightcove information, then use this feed:<br />
+<a href="http://deitte.com/old_home/index_video.xml">RSS 2.0 (video category only)</a><br />
+And all of the posts are still available on this feed:<br />
+<a href="http://deitte.com/old_home/index.xml">RSS 2.0</a></p>
+
+<p>Also, unrelatedly, I've been asked by a few people if I'll be at MAX this year.  I won't be there, as I'll be diving into the new job.  I'll just have to drink with everyone another day.</p>
+
+<p>* I updated <A HREF="http://www.sixapart.com/movabletype/">Movable Type</A> to 3.3, which was surprisingly painless.  The snazzy new CSS styling is from <A HREF="http://www.lilia.com">Lilia Ahner</A>.  The category feeds were figured out from <A HREF="http://www.jacobsen.no/anders/blog/archives/2002/10/30/optimizing_movable_type_part_6_category_xml_feeds.html">Anders Jacobsen's blog</A>.</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2006/10/category_feeds.htm"> 5:12 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>October 12, 2006</h2>
+
+
+<h3 id="a000073">Heading to Brightcove</h3>
+
+<p>I'm leaving the house of Adobe and heading out to sea.  I've decided to join <A HREF="http://www.brightcove.com">Brightcove</A>, where I will be working on a Flex application and helping the push towards <A HREF="http://blog.brightcove.com/blog/2006/09/nbbc_apple_itv_.html">Internet TV</A>.</p>
+
+<p>It was not an easy decision- I've worked with many great people during my six year stint in the Boston office, and Adobe is an excellent company to work for.  But I've gotten very excited about the job at Brightcove and what the company is doing.</p>
+
+<p>I plan to still stay involved with Flex at some level, as I think it has a very promising future.  This blog will now talk about Flex as well as Internet video.  Separate RSS feeds will be set up soon.</p>
+
+<p>To end with, here's part of the email I sent out to the people I work with:</p>
+
+<p>It was beer-o-clock on Friday that I finally realized that I'll soon be leaving here for good.  More than six years ago I came here, and I couldn't believe that I got to work on JRun, a product I was already using.  We put out a few releases, decided dung beetles weren't a good idea for an advertisement, and then scattered.  I ended up on ColdFusion, where Damon put Erik and me to work on eeking out performance improvements, and where I got to give a code name to a product (RedSky).  From there it was on to Royale, where I saw many parts of Flex.  I went from RemoteObject advice from some Scottish voices to arguing web services with Tom Ruggles to SWCs and Flex Compiler Core.</p>
+
+<p>I would mention all the people who stick in my mind over the years here, but that would take up all the time I need to still finish my last feature... but I do want to say thanks to everyone.  I very much appreciate all the friends (and products) that have been created in my time here.  </p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2006/10/heading_to_brig.htm"> 5:08 PM</a>
+
+
+</span>
+<br /><br />
+
+<br />
+</div>
+</div>
+
+<div id="right">
+
+<div id="sidebar-top"><img src="https://deitte.com/old_home/mt-static/escape/side_column_top.gif" alt="" /></div>
+<div class="sidebar">
+
+<div class="sideBoxesTitle" style="background-color:#8299BC; border-bottom: 2px solid #4C6690;">&nbsp;&nbsp;&nbsp;February 2012</div>
+
+<div id="calendar">
+<table summary="Monthly calendar with links to each day's posts">
+<tr>
+<th abbr="Sunday">Sun</th>
+<th abbr="Monday">Mon</th>
+<th abbr="Tuesday">Tue</th>
+<th abbr="Wednesday">Wed</th>
+<th abbr="Thursday">Thu</th>
+<th abbr="Friday">Fri</th>
+<th abbr="Saturday">Sat</th>
+</tr>
+
+
+<tr>
+
+<td>&nbsp;</td>
+
+
+
+<td>&nbsp;</td>
+
+
+
+<td>&nbsp;</td>
+
+
+
+<td>1</td>
+
+
+
+<td>2</td>
+
+
+
+<td>3</td>
+
+
+
+<td>4</td></tr>
+
+<tr>
+
+<td>5</td>
+
+
+
+<td>6</td>
+
+
+
+<td>7</td>
+
+
+
+<td>8</td>
+
+
+
+<td>9</td>
+
+
+
+<td>10</td>
+
+
+
+<td>11</td></tr>
+
+<tr>
+
+<td>12</td>
+
+
+
+<td>13</td>
+
+
+
+<td>14</td>
+
+
+
+<td>15</td>
+
+
+
+<td>16</td>
+
+
+
+<td>17</td>
+
+
+
+<td>18</td></tr>
+
+<tr>
+
+<td>19</td>
+
+
+
+<td>20</td>
+
+
+
+<td>21</td>
+
+
+
+<td>22</td>
+
+
+
+<td>23</td>
+
+
+
+<td>24</td>
+
+
+
+<td>25</td></tr>
+
+<tr>
+
+<td>26</td>
+
+
+
+<td>27</td>
+
+
+
+<td>28</td>
+
+
+
+<td>29</td>
+
+
+
+<td>&nbsp;</td>
+
+
+
+<td>&nbsp;</td>
+
+
+
+<td>&nbsp;</td></tr>
+
+
+</table>
+</div>
+
+<div class="sideBoxesTitle" style="background-color:#8299BC; border-bottom: 2px solid #4C6690;">&nbsp;&nbsp;&nbsp;Search</div>
+ 
+<div class="link-note">
+<form method="get" action="https://deitte.com/cgi-bin/mt/mt-search.cgi">
+<input type="hidden" name="Template" value="escape" />
+<input type="hidden" name="IncludeBlogs" value="1" />
+<label for="search" accesskey="4">Search this site:</label><br />
+<input id="search" name="search" size="15" /> <input type="submit" value="Search" />
+</form>
+</div>
+
+<div id="categories">
+<div class="sideBoxesTitle" style="background-color:#8299BC; border-bottom: 2px solid #4C6690;">&nbsp;&nbsp;&nbsp;Categories</div>
+
+
+</div>
+
+<div class="sideBoxesTitle" style="background-color:#8299BC; border-bottom: 2px solid #4C6690;">&nbsp;&nbsp;&nbsp;Archives</div>
+
+<ul>
+
+<li><a href="https://deitte.com/archives/2011/02/">February 2011</a></li>
+
+<li><a href="https://deitte.com/archives/2010/10/">October 2010</a></li>
+
+<li><a href="https://deitte.com/archives/2010/04/">April 2010</a></li>
+
+<li><a href="https://deitte.com/archives/2010/03/">March 2010</a></li>
+
+<li><a href="https://deitte.com/archives/2010/02/">February 2010</a></li>
+
+<li><a href="https://deitte.com/archives/2009/12/">December 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/11/">November 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/10/">October 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/09/">September 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/08/">August 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/07/">July 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/06/">June 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/05/">May 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/04/">April 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/03/">March 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/02/">February 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/01/">January 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2008/12/">December 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/11/">November 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/10/">October 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/09/">September 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/08/">August 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/07/">July 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/06/">June 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/05/">May 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/04/">April 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/03/">March 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/02/">February 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/01/">January 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2007/12/">December 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/11/">November 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/10/">October 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/09/">September 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/08/">August 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/07/">July 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/06/">June 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/05/">May 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/04/">April 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/03/">March 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/02/">February 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/01/">January 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2006/12/">December 2006</a></li>
+
+<li><a href="https://deitte.com/archives/2006/11/">November 2006</a></li>
+
+<li><a href="https://deitte.com/archives/2006/10/">October 2006</a></li>
+
+<li><a href="https://deitte.com/archives/2006/08/">August 2006</a></li>
+
+<li><a href="https://deitte.com/archives/2006/07/">July 2006</a></li>
+
+<li><a href="https://deitte.com/archives/2006/06/">June 2006</a></li>
+
+<li><a href="https://deitte.com/archives/2006/05/">May 2006</a></li>
+
+<li><a href="https://deitte.com/archives/2006/03/">March 2006</a></li>
+
+<li><a href="https://deitte.com/archives/2006/02/">February 2006</a></li>
+
+<li><a href="https://deitte.com/archives/2006/01/">January 2006</a></li>
+
+<li><a href="https://deitte.com/archives/2005/10/">October 2005</a></li>
+
+<li><a href="https://deitte.com/archives/2005/09/">September 2005</a></li>
+
+</ul>
+
+<div class="sideBoxesTitle" style="background-color:#8299BC; border-bottom: 2px solid #4C6690;">&nbsp;&nbsp;&nbsp;Recent Entries</div>
+
+<ul>
+
+<li><a href="https://deitte.com/archives/2011/02/lessons_learned.htm">Lessons Learned with StageVideo</a></li>
+
+<li><a href="https://deitte.com/archives/2011/02/come_work_at_br.htm">Come Work at Brightcove</a></li>
+
+<li><a href="https://deitte.com/archives/2010/10/speaking_at_ria.htm">Speaking at RIA Unleashed</a></li>
+
+<li><a href="https://deitte.com/archives/2010/04/why_vast_is_imp.htm">Why VAST Is Important</a></li>
+
+<li><a href="https://deitte.com/archives/2010/04/the_life_of_an.htm">The Life of an Ad</a></li>
+
+<li><a href="https://deitte.com/archives/2010/04/new_series_on_v.htm">New Series on Video Advertising</a></li>
+
+<li><a href="https://deitte.com/archives/2010/03/how_ria_adverti_1.htm">How RIA Advertising Works</a></li>
+
+<li><a href="https://deitte.com/archives/2010/02/how_ria_adverti.htm">How RIA Advertising Works at 360Flex</a></li>
+
+<li><a href="https://deitte.com/archives/2010/02/brightcove_on_m.htm">Brightcove on Mobile Flash Player 10.1</a></li>
+
+<li><a href="https://deitte.com/archives/2010/02/brightcove_news_7.htm">Brightcove News: Meetups, Player Design, and Lots of Stuff</a></li>
+
+</ul>
+
+<div class="link-note">
+<a href="https://deitte.com/old_home/index.xml">Syndicate this site (XML)</a>
+</div>
+
+
+
+</div>
+</div>
+
+<div style="clear: both;">&#160;</div>
+
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-7910585-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+
+</body>
+
+</html>

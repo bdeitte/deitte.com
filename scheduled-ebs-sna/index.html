@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Scheduled EBS snapshots</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css%3Fv=5a11b1448c.css" />
+
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/index.html" />
+    
+    <meta property="og:site_name" content="Deitte.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Scheduled EBS snapshots" />
+    <meta property="og:description" content="As part of my Ghost setup on AWS, I wanted to make sure I had backups of EBS in case things go wrong (as they always do, eventually).  I couldn&#x27;t find many guides for this, surprisingly.  I guess most people use the AWS UI for this, or haven&#x27;t published their" />
+    <meta property="og:url" content="https://deitte.com/scheduled-ebs-sna/" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1541480601022-2308c0f02487?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ" />
+    <meta property="article:published_time" content="2016-01-31T00:00:00.000Z" />
+    <meta property="article:modified_time" content="2020-10-14T03:08:58.000Z" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Scheduled EBS snapshots" />
+    <meta name="twitter:description" content="As part of my Ghost setup on AWS, I wanted to make sure I had backups of EBS in case things go wrong (as they always do, eventually).  I couldn&#x27;t find many guides for this, surprisingly.  I guess most people use the AWS UI for this, or haven&#x27;t published their" />
+    <meta name="twitter:url" content="https://deitte.com/scheduled-ebs-sna/" />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1541480601022-2308c0f02487?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Brian Deitte" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="1333" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Deitte.com",
+        "url": "https://deitte.com/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://deitte.com/content/images/2020/10/computer-3-10.23.00-PM--4-.png"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Brian Deitte",
+        "image": {
+            "@type": "ImageObject",
+            "url": "//www.gravatar.com/avatar/ac1c7f152ab59ed6b2f8c28eb39153a9?s=250&d=mm&r=x",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://deitte.com/author/brian/",
+        "sameAs": []
+    },
+    "headline": "Scheduled EBS snapshots",
+    "url": "https://deitte.com/scheduled-ebs-sna/",
+    "datePublished": "2016-01-31T00:00:00.000Z",
+    "dateModified": "2020-10-14T03:08:58.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1541480601022-2308c0f02487?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=2000&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ",
+        "width": 2000,
+        "height": 1333
+    },
+    "description": "As part of my Ghost setup on AWS [https://github.com/bdeitte/ghost-on-aws], I\nwanted to make sure I had backups of EBS in case things go wrong (as they always\ndo, eventually). I couldn&#x27;t find many guides for this, surprisingly. I guess\nmost people use the AWS UI for this, or haven&#x27;t published their solutions, or\ntrust EBS and what they change on it more than they should.\n\nI did find something pretty close to what I wanted, a blog post on How to\nSchedule Daily Rolling EBS Snapshots\n[https://www.f",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://deitte.com/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 3.35" />
+    <link rel="alternate" type="application/rss+xml" title="Deitte.com" href="../rss/index.html" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-7910585-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-7910585-1');
+</script>
+
+<style>
+ .site-logo {
+ 	max-height: 200px;
+ }
+    
+.site-header-content {
+    max-height: 200px;
+}
+   
+.site-nav-logo {
+    padding: 5px;
+}
+
+.site-nav-logo img {
+    height: 40px;
+}    
+
+.post-full-image img {
+    max-width: 640px;
+}
+
+.post-full-image {
+    background: white;
+}
+
+</style>
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+
+        
+
+<header class="site-header">
+    <div class="outer site-nav-main">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left-wrapper">
+        <div class="site-nav-left">
+                <a class="site-nav-logo" href="../index.html"><img src="../content/images/2020/10/computer-3-10.23.00-PM--4-.png" alt="Deitte.com" /></a>
+            <div class="site-nav-content">
+                    <span class="nav-post-title ">Scheduled EBS snapshots</span>
+            </div>
+        </div>
+    </div>
+    <div class="site-nav-right">
+            <div class="social-links">
+            </div>
+                <a class="rss-button" href="https://feedly.com/i/subscription/feed/https://deitte.com/rss/" title="RSS" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="6.18" cy="17.82" r="2.18"/><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/></svg>
+</a>
+
+    </div>
+</nav>
+    </div>
+</div></header>
+
+
+<main id="site-main" class="site-main outer">
+    <div class="inner">
+
+        <article class="post-full post ">
+
+            <header class="post-full-header">
+
+
+                <h1 class="post-full-title">Scheduled EBS snapshots</h1>
+
+
+                <div class="post-full-byline">
+
+                    <section class="post-full-byline-content">
+
+                        <ul class="author-list">
+                            <li class="author-list-item">
+
+                                <div class="author-card">
+                                    <img class="author-profile-image" src="https://www.gravatar.com/avatar/ac1c7f152ab59ed6b2f8c28eb39153a9?s=250&amp;d=mm&amp;r=x" alt="Brian Deitte" />
+                                    <div class="author-info">
+                                        <h2>Brian Deitte</h2>
+                                        <p>Read <a href="../author/brian/index.html">more posts</a> by this author.</p>
+                                    </div>
+                                </div>
+
+                                <a href="../author/brian/index.html" class="author-avatar">
+                                    <img class="author-profile-image" src="https://www.gravatar.com/avatar/ac1c7f152ab59ed6b2f8c28eb39153a9?s=250&amp;d=mm&amp;r=x" alt="Brian Deitte" />
+                                </a>
+
+                            </li>
+                        </ul>
+
+                        <section class="post-full-byline-meta">
+                            <h4 class="author-name"><a href="../author/brian/index.html">Brian Deitte</a></h4>
+                            <div class="byline-meta-content">
+                                <time class="byline-meta-date" datetime="2016-01-31">31 Jan 2016</time>
+                                <span class="byline-reading-time"><span class="bull">&bull;</span> 1 min read</span>
+                            </div>
+                        </section>
+
+                    </section>
+
+
+                </div>
+            </header>
+
+            <figure class="post-full-image">
+                <img
+                    srcset="https://images.unsplash.com/photo-1541480601022-2308c0f02487?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ 300w,
+                            https://images.unsplash.com/photo-1541480601022-2308c0f02487?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ 600w,
+                            https://images.unsplash.com/photo-1541480601022-2308c0f02487?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ 1000w,
+                            https://images.unsplash.com/photo-1541480601022-2308c0f02487?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ 2000w"
+                    sizes="(max-width: 800px) 400px,
+                        (max-width: 1170px) 1170px,
+                            2000px"
+                    src="https://images.unsplash.com/photo-1541480601022-2308c0f02487?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ"
+                    alt="Scheduled EBS snapshots"
+                />
+            </figure>
+
+            <section class="post-full-content">
+                <div class="post-content">
+                    <!--kg-card-begin: markdown--><p>As part of my <a href="https://github.com/bdeitte/ghost-on-aws">Ghost setup on AWS</a>, I wanted to make sure I had backups of EBS in case things go wrong (as they always do, eventually).  I couldn't find many guides for this, surprisingly.  I guess most people use the AWS UI for this, or haven't published their solutions, or trust EBS and what they change on it more than they should.</p>
+<p>I did find something pretty close to what I wanted, a blog post on <a href="https://www.flynsarmy.com/2015/06/how-to-schedule-daily-rolling-ebs-snapshots/">How to Schedule Daily Rolling EBS Snapshots</a>.   I expanded on this and made it a <a href="https://github.com/bdeitte/scheduled-snapshots">github repo for everyone to use.</a>  Thanks to the original author for the help here, and I hope others are helped out by my additions here.</p>
+<!--kg-card-end: markdown-->
+                </div>
+            </section>
+
+
+
+        </article>
+
+    </div>
+</main>
+
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+
+                <article class="post-card post ">
+
+    <a class="post-card-image-link" href="../new-blog-old-again/index.html">
+        <img class="post-card-image"
+            srcset="../content/images/size/w300/2020/10/30d64ee1.png 300w,
+                   ../content/images/size/w600/2020/10/30d64ee1.png 600w,
+                  ../content/images/size/w1000/2020/10/30d64ee1.png 1000w,
+                 ../content/images/size/w2000/2020/10/30d64ee1.png 2000w"
+            sizes="(max-width: 1000px) 400px, 700px"
+            loading="lazy"
+            src="../content/images/size/w600/2020/10/30d64ee1.png"
+            alt="New Blog, Old Again"
+        />
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="../new-blog-old-again/index.html">
+
+            <header class="post-card-header">
+                <h2 class="post-card-title">New Blog, Old Again</h2>
+            </header>
+
+            <section class="post-card-excerpt">
+                    <p>I was handling some overdue, routine maintenance on this blog (upgrading to Ghost 0.10, resizing some AWS resources based on actual usage), and I realized I should really say</p>
+            </section>
+
+        </a>
+
+        <footer class="post-card-meta">
+            <ul class="author-list">
+                <li class="author-list-item">
+            
+                    <div class="author-name-tooltip">
+                        Brian Deitte
+                    </div>
+            
+                    <a href="../author/brian/index.html" class="static-avatar">
+                        <img class="author-profile-image" src="https://www.gravatar.com/avatar/ac1c7f152ab59ed6b2f8c28eb39153a9?s=250&amp;d=mm&amp;r=x" alt="Brian Deitte" />
+                    </a>
+                </li>
+            </ul>
+            <div class="post-card-byline-content">
+                <span><a href="../author/brian/index.html">Brian Deitte</a></span>
+                <span class="post-card-byline-date"><time datetime="2016-09-03">3 Sep 2016</time> <span class="bull">&bull;</span> 1 min read</span>
+            </div>
+        </footer>
+
+    </div>
+
+</article>
+
+                <article class="post-card post ">
+
+    <a class="post-card-image-link" href="../highly-available-s3/index.html">
+        <img class="post-card-image"
+            srcset="https://images.unsplash.com/photo-1501623021299-5a9e5f95960b?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ 300w,
+                    https://images.unsplash.com/photo-1501623021299-5a9e5f95960b?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ 600w,
+                    https://images.unsplash.com/photo-1501623021299-5a9e5f95960b?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ 1000w,
+                    https://images.unsplash.com/photo-1501623021299-5a9e5f95960b?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ 2000w"
+            sizes="(max-width: 1000px) 400px, 700px"
+            loading="lazy"
+            src="https://images.unsplash.com/photo-1501623021299-5a9e5f95960b?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ"
+            alt="Highly-available S3"
+        />
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="../highly-available-s3/index.html">
+
+            <header class="post-card-header">
+                <h2 class="post-card-title">Highly-available S3</h2>
+            </header>
+
+            <section class="post-card-excerpt">
+                    <p>It's possible to raise the availability of S3 through a multi-region setup.  Below I'll explain some of the work we've done at Brightcove on this, including a new Node.js</p>
+            </section>
+
+        </a>
+
+        <footer class="post-card-meta">
+            <ul class="author-list">
+                <li class="author-list-item">
+            
+                    <div class="author-name-tooltip">
+                        Brian Deitte
+                    </div>
+            
+                    <a href="../author/brian/index.html" class="static-avatar">
+                        <img class="author-profile-image" src="https://www.gravatar.com/avatar/ac1c7f152ab59ed6b2f8c28eb39153a9?s=250&amp;d=mm&amp;r=x" alt="Brian Deitte" />
+                    </a>
+                </li>
+            </ul>
+            <div class="post-card-byline-content">
+                <span><a href="../author/brian/index.html">Brian Deitte</a></span>
+                <span class="post-card-byline-date"><time datetime="2016-01-24">24 Jan 2016</time> <span class="bull">&bull;</span> 4 min read</span>
+            </div>
+        </footer>
+
+    </div>
+
+</article>
+        </div>
+    </div>
+</aside>
+
+
+
+
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="../index.html">Deitte.com</a> &copy; 2026</section>
+                <nav class="site-footer-nav">
+                    <a href="../index.html">Latest Posts</a>
+                    
+                    
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous">
+    </script>
+    <script src="../assets/built/casper.js%3Fv=5a11b1448c"></script>
+
+    <script>
+        // Parse the URL parameter
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        // Give the parameter a variable name
+        var action = getParameterByName('action');
+
+        $(document).ready(function () {
+            if (action == 'subscribe') {
+                $('body').addClass("subscribe-success");
+            }
+
+            $('.subscribe-success-message .subscribe-close').click(function () {
+                $('.subscribe-success-message').addClass('close');
+            });
+
+            // Reset form on opening subscrion overlay
+            $('.subscribe-button').click(function() {
+                $('.subscribe-overlay form').removeClass();
+                $('.subscribe-email').val('');
+            });
+        });
+    </script>
+
+    <script>
+    $(document).ready(function () {
+        // FitVids - start
+        var $postContent = $(".post-full-content");
+        $postContent.fitVids();
+        // FitVids - end
+
+        // Replace nav with title on scroll - start
+        Casper.stickyNavTitle({
+            navSelector: '.site-nav-main',
+            titleSelector: '.post-full-title',
+            activeClass: 'nav-post-title-active'
+        });
+        // Replace nav with title on scroll - end
+
+        // Hover on avatar
+        var hoverTimeout;
+        $('.author-list-item').hover(function () {
+            var $this = $(this);
+
+            clearTimeout(hoverTimeout);
+
+            $('.author-card').removeClass('hovered');
+            $(this).children('.author-card').addClass('hovered');
+
+        }, function () {
+            var $this = $(this);
+
+            hoverTimeout = setTimeout(function () {
+                $this.children('.author-card').removeClass('hovered');
+            }, 800);
+        });
+    });
+</script>
+
+
+    
+
+</body>
+</html>

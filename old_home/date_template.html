@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<$MTPublishCharset$>" />
+<meta name="generator" content="http://www.movabletype.org/" />
+
+<title><$MTBlogName encode_html="1"$>: <$MTArchiveTitle$> Archives</title>
+
+<link rel="stylesheet" href="<$MTBlogURL$>styles-site.css" type="text/css" />
+<link rel="alternate" type="application/atom+xml" title="Atom" href="<$MTBlogURL$>atom.xml" />
+<link rel="alternate" type="application/rss+xml" title="RSS 1.0" href="<$MTBlogURL$>index.rdf" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<$MTBlogURL$>index.xml" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="<$MTBlogURL$>rsd.xml" />
+
+<link rel="start" href="<$MTBlogURL$>" title="Home" />
+<MTArchivePrevious>
+<link rel="prev" href="<$MTArchiveLink$>" title="<$MTArchiveTitle encode_html="1"$>" />
+</MTArchivePrevious>
+<MTArchiveNext>
+<link rel="next" href="<$MTArchiveLink$>" title="<$MTArchiveTitle encode_html="1"$>" />
+</MTArchiveNext>
+
+<MTBlogIfCCLicense>
+<$MTCCLicenseRDF$>
+</MTBlogIfCCLicense>
+
+</head>
+
+<body>
+
+<div id="container">
+
+<div id="banner">
+<h1><a href="<$MTBlogURL$>" accesskey="1"><$MTBlogName encode_html="1"$></a></h1>
+<div id="banner-description">
+<$MTBlogDescription$>
+</div>
+</div>
+
+<div id="center">
+<div id="main-top"><img src="<$MTStaticWebPath$>escape/main_column_top.gif" alt="" /></div>
+<div class="content">
+<br />
+
+<p align="right">
+<MTArchivePrevious>
+<a href="<$MTArchiveLink$>">&laquo; <$MTArchiveTitle$></a> |
+</MTArchivePrevious>
+<a href="<$MTBlogURL$>">Main</a>
+<MTArchiveNext>
+| <a href="<$MTArchiveLink$>"><$MTArchiveTitle$> &raquo;</a>
+</MTArchiveNext>
+</p>
+
+<MTEntries>
+<$MTEntryTrackbackData$>
+
+<MTDateHeader>
+<h2><$MTEntryDate format="%x"$></h2>
+</MTDateHeader>
+
+<h3 id="a<$MTEntryID pad="1"$>"><$MTEntryTitle$></h3>
+
+<$MTEntryBody$>
+
+<MTEntryIfExtended>
+<$MTEntryMore$>
+</MTEntryIfExtended>
+
+<span class="posted">
+Posted by <$MTEntryAuthor$> at <a href="<$MTEntryPermalink valid_html="1"$>"><$MTEntryDate format="%X"$></a>
+<MTEntryIfAllowComments>
+| <a href="<$MTEntryPermalink archive_type="Individual"$>#comments">Comments (<$MTEntryCommentCount$>)</a>
+</MTEntryIfAllowComments>
+<MTEntryIfAllowPings>
+| <a href="<$MTEntryPermalink archive_type="Individual"$>#trackbacks">TrackBack</a>
+</MTEntryIfAllowPings>
+</span>
+<br /><br />
+</MTEntries>
+
+<br />
+</div>
+
+</div>
+
+<div id="right">
+
+<div id="sidebar-top"><img src="<$MTStaticWebPath$>escape/side_column_top.gif" alt="" /></div>
+<div class="sidebar">
+
+<div class="sideBoxesTitle" style="background-color:#8299BC; border-bottom: 2px solid #4C6690;">&nbsp;&nbsp;&nbsp;Search</div>
+ 
+<div class="link-note">
+<form method="get" action="<$MTCGIPath$><$MTSearchScript$>">
+<input type="hidden" name="Template" value="escape" />
+<input type="hidden" name="IncludeBlogs" value="<$MTBlogID$>" />
+<label for="search" accesskey="4">Search this site:</label><br />
+<input id="search" name="search" size="15" /> <input type="submit" value="Search" />
+</form>
+</div>
+<!--
+<div id="categories">
+<div class="sideBoxesTitle" style="background-color:#8299BC; border-bottom: 2px solid #4C6690;">&nbsp;&nbsp;&nbsp;Categories</div>
+
+<MTSubCategories>
+<MTSubCatIsFirst><ul></MTSubCatIsFirst>
+<MTIfNonZero tag="MTCategoryCount">
+<li><a href="<$MTCategoryArchiveLink$>" title="<$MTCategoryDescription$>"><MTCategoryLabel></a>
+<MTElse>
+<li><MTCategoryLabel>
+</MTElse>
+</MTIfNonZero>
+<MTSubCatsRecurse max_depth="3">
+</li>
+<MTSubCatIsLast></ul></MTSubCatIsLast>
+</MTSubCategories>
+</div>
+-->
+<div class="sideBoxesTitle" style="background-color:#8299BC; border-bottom: 2px solid #4C6690;">&nbsp;&nbsp;&nbsp;Archives</div>
+
+<ul>
+<MTArchiveList archive_type="Monthly">
+<li><a href="<$MTArchiveLink$>"><$MTArchiveTitle$></a></li>
+</MTArchiveList>
+</ul>
+
+<div class="sideBoxesTitle" style="background-color:#8299BC; border-bottom: 2px solid #4C6690;">&nbsp;&nbsp;&nbsp;Recent Entries</div>
+
+<ul>
+<MTEntries lastn="10">
+<li><a href="<$MTEntryPermalink$>"><$MTEntryTitle$></a></li>
+</MTEntries>
+</ul>
+
+<div class="sideBoxesTitle" style="background-color:#8299BC; border-bottom: 2px solid #4C6690;">&nbsp;&nbsp;&nbsp;Recent Diggs</div>
+
+<script language="JavaScript"
+src="http://digg.com/diggjs/user/dugg/bdeitte/1"
+type="text/javascript"></script>
+
+<div class="sideBoxesTitle" style="background-color:#8299BC; border-bottom: 2px solid #4C6690;">&nbsp;&nbsp;&nbsp;RSS, Etc</div>
+
+<div class="link-note">Pick some syndication happiness:<br/>
+<a href="<$MTBlogURL$>index.xml">RSS 2.0</a><br/>
+<a href="<$MTBlogURL$>index.rdf">RSS 1.0</a><br/>
+<a href="<$MTBlogURL$>atom.xml">Atom</a>
+<p>You can email me at <IMG SRC="http://deitte.com/old_home/deitte-email.png" />
+<p>For more blog choices:
+<a href="http://www.flex.org"><img src="http://www.flex.org/images/flexorg.gif" alt="Flex.org - The Directory for Flex" border="0" /></a></p>
+
+</div>
+
+</div>
+</div>
+
+<div style="clear: both;">&#160;</div>
+
+</div>
+<$MTInclude module="GoogleA"$>
+
+</body>
+</html>

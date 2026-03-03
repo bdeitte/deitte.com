@@ -1,0 +1,48 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>IFrameDemo.mxml</title>
+<link rel="stylesheet" type="text/css" href="../SourceStyles.css"/>
+</head>
+
+<body><pre><span class="mxmlCdata">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+
+<span class="mxmlComponent">&lt;mx:Application</span> xmlns:mx=&quot;<span class="mxmlString">http://www.adobe.com/2006/mxml</span>&quot; xmlns=&quot;<span class="mxmlString">*</span>&quot; creationComplete=&quot;iFrame.visible<span class="asOperator">=</span><span class="asReserved">true</span>&quot; viewSourceURL=&quot;<span class="mxmlString">srcview/index.html</span>&quot;<span class="mxmlComponent">&gt;</span> 
+
+    <span class="mxmlComponent">&lt;mx:HBox</span> width=&quot;<span class="mxmlString">100%</span>&quot; height=&quot;<span class="mxmlString">100%</span>&quot;<span class="mxmlComponent">&gt;</span>
+
+        <span class="mxmlComponent">&lt;mx:Panel</span> title=&quot;<span class="mxmlString">Tree</span>&quot; width=&quot;<span class="mxmlString">200</span>&quot; height=&quot;<span class="mxmlString">100%</span>&quot; roundedBottomCorners=&quot;<span class="mxmlString">true</span>&quot;<span class="mxmlComponent">&gt;</span>
+             <span class="mxmlComponent">&lt;mx:Tree</span> id=&quot;<span class="mxmlString">tree</span>&quot; width=&quot;<span class="mxmlString">100%</span>&quot; height=&quot;<span class="mxmlString">100%</span>&quot; dataProvider=&quot;<span class="mxmlString">{</span>treeData<span class="mxmlString">}</span>&quot;
+                     labelField=&quot;<span class="mxmlString">@label</span>&quot; showRoot=&quot;<span class="mxmlString">false</span>&quot;
+                     change=&quot;iFrame.source <span class="asOperator">=</span> <span class="asBracket">(</span>Tree<span class="asBracket">(</span>event.target<span class="asBracket">)</span>.selectedItem.attribute<span class="asBracket">(</span><span class="asString">&apos;path&apos;</span><span class="asBracket">)</span>.toString<span class="asBracket">())</span>;&quot;  <span class="mxmlComponent">/&gt;</span>
+        <span class="mxmlComponent">&lt;/mx:Panel&gt;</span>
+
+        <span class="mxmlComponent">&lt;mx:Panel</span> width=&quot;<span class="mxmlString">100%</span>&quot; height=&quot;<span class="mxmlString">100%</span>&quot; title=&quot;<span class="mxmlString">Content</span>&quot; paddingTop=&quot;<span class="mxmlString">1</span>&quot; paddingBottom=&quot;<span class="mxmlString">1</span>&quot; paddingLeft=&quot;<span class="mxmlString">1</span>&quot; paddingRight=&quot;<span class="mxmlString">1</span>&quot; <span class="mxmlComponent">&gt;</span>
+            <span class="mxmlComponent">&lt;IFrame</span> id=&quot;<span class="mxmlString">iFrame</span>&quot; source=&quot;<span class="mxmlString">http://www.adobe.com/devnet/flex/</span>&quot; width=&quot;<span class="mxmlString">100%</span>&quot; height=&quot;<span class="mxmlString">100%</span>&quot;  <span class="mxmlComponent">/&gt;</span>
+            <span class="mxmlComponent">&lt;mx:ControlBar&gt;</span>
+                <span class="mxmlComponent">&lt;mx:CheckBox</span> id=&quot;<span class="mxmlString">cbVisible</span>&quot; label=&quot;<span class="mxmlString">IFrame Visible</span>&quot; selected=&quot;<span class="mxmlString">true</span>&quot; click=&quot;iFrame.visible<span class="asOperator">=</span>cbVisible.selected&quot;<span class="mxmlComponent">/&gt;</span>
+            <span class="mxmlComponent">&lt;/mx:ControlBar&gt;</span>
+        <span class="mxmlComponent">&lt;/mx:Panel&gt;</span>
+
+    <span class="mxmlComponent">&lt;/mx:HBox&gt;</span>
+
+    <span class="mxmlTag">&lt;mx:XMLList</span> id=&quot;<span class="mxmlString">treeData</span>&quot;<span class="mxmlTag">&gt;</span>
+        <span class="mxmlComponent">&lt;node</span> label=&quot;<span class="mxmlString">Flex Resources</span>&quot;<span class="mxmlComponent">&gt;</span>
+            <span class="mxmlComponent">&lt;node</span> label=&quot;<span class="mxmlString">Flex Developer Center</span>&quot; path=&quot;<span class="mxmlString">http://www.adobe.com/devnet/flex/</span>&quot; <span class="mxmlComponent">/&gt;</span>
+            <span class="mxmlComponent">&lt;node</span> label=&quot;<span class="mxmlString">Flex Team Blog</span>&quot; path=&quot;<span class="mxmlString">http://weblogs.macromedia.com/flexteam/</span>&quot; <span class="mxmlComponent">/&gt;</span>
+            <span class="mxmlComponent">&lt;node</span> label=&quot;<span class="mxmlString">Flex Blogs on MXNA</span>&quot; path=&quot;<span class="mxmlString">http://weblogs.macromedia.com/mxna/FeedList.cfm#Flex</span>&quot; <span class="mxmlComponent">/&gt;</span>
+            <span class="mxmlComment">&lt;!--</span><span class="mxmlComment"> these sites pop themselves out of a frame:
+            &lt;node label=&quot;flex.org&quot; path=&quot;http://www.flex.org&quot; /&gt;
+            &lt;node label=&quot;Adobe Labs&quot; path=&quot;http://labs.adobe.com/wiki/index.php/Main_Page&quot; /&gt;
+            </span><span class="mxmlComment">--&gt;</span>
+        <span class="mxmlComponent">&lt;/node&gt;</span>
+        <span class="mxmlComponent">&lt;node</span> label=&quot;<span class="mxmlString">Search</span>&quot;<span class="mxmlComponent">&gt;</span>
+            <span class="mxmlComponent">&lt;node</span> label=&quot;<span class="mxmlString">Google</span>&quot; path=&quot;<span class="mxmlString">http://www.google.com</span>&quot; <span class="mxmlComponent">/&gt;</span>
+            <span class="mxmlComponent">&lt;node</span> label=&quot;<span class="mxmlString">Yahoo</span>&quot; path=&quot;<span class="mxmlString">http://www.yahoo.com</span>&quot; <span class="mxmlComponent">/&gt;</span>
+        <span class="mxmlComponent">&lt;/node&gt;</span>
+    <span class="mxmlTag">&lt;/mx:XMLList&gt;</span>
+
+<span class="mxmlComponent">&lt;/mx:Application&gt;</span></pre></body>
+</html>

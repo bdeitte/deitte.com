@@ -1,0 +1,941 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard">
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <meta name="generator" content="Movable Type Pro 4.31-en" />
+   <meta name="keywords" content="best practices flex html in flex ">
+   <meta name="description" content="The iframe solution to HTML in Flex has become a popular, unsupported way to embed HTML inside of a Flex application. I've written a lot about this, but I've never...">
+
+   <link rel="stylesheet" href="../../../old_home/styles-site.css" type="text/css" />
+   <link rel="alternate" type="application/atom+xml" title="Atom" href="../../../old_home/atom.xml" />
+   <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="https://deitte.com/old_home/index.xml" />
+
+   <title>Don't Use IFrames for HTML in Flex (Deitte.com)</title>
+
+   <link rel="start" href="../../../index.html" title="Home" />
+   <link rel="prev" href="flash_versions.htm" title="Flash Versions of Lua, Ruby, Perl, and Python?" />
+   <link rel="next" href="six_tools_for_f.htm" title="Six Tools for Flex and AS3 Development" />
+
+   
+
+   
+   <script type="text/javascript" src="../../../old_home/mt-site.js"></script>
+</head>
+<body class="layout-two-column-right individual-entry-archive" onload="individualArchivesOnLoad(commenter_name)">
+   <div id="container">
+      <div id="container-inner" class="pkg">
+
+         <div id="banner">
+            <div id="banner-inner" class="pkg">
+               <h1 id="banner-header"><a href="../../../index.html" accesskey="1">Deitte.com</a></h1>
+               <h2 id="banner-description">A Mix of Flex and Brightcove</h2>
+            </div>
+         </div>
+
+         <div id="pagebody">
+            <div id="pagebody-inner" class="pkg">
+               <div id="alpha">
+                  <div id="alpha-inner" class="pkg">
+
+                     <p class="content-nav">
+                        <a href="flash_versions.htm">&laquo; Flash Versions of Lua, Ruby, Perl, and Python?</a> |
+                        <a href="../../../index.html">Main</a>
+                        | <a href="six_tools_for_f.htm">Six Tools for Flex and AS3 Development &raquo;</a>
+                     </p>
+
+
+                     <h2 class="archive-title">Don't Use IFrames for HTML in Flex</h2>
+                     <div class="entry" id="entry-211">
+                        <div class="entry-content">
+                           
+                           <div class="entry-body">
+                              <p>The iframe solution to HTML in Flex has become a popular, unsupported way to embed HTML inside of a Flex application.   I've written <A HREF="https://deitte.com/archives/2006/08/finally_updated.htm">a lot about this</A>, but I've never been very comfortable with the solution.  I feel it's time to gather up all the information I've learned and start steering people away.  I'll provide some potential alternatives to iframes at the end of the post.</p>
+
+<p><b>About the IFrame Approach</b></p>
+
+<p>The use of iframes is very clever- by using a special windowing mode of the Flash Player as well as an iframe, you can layer HTML on top of a Flash application.  The HTML is completely separate, and so there's ExternalInterface communication that goes on between HTML and Flash.</p>
+
+<p>The iframe approach is something that Christophe Coenrats came up with, which I ported to Flex 2, and which others have run with to make more versions.  The other solutions include <A HREF="http://ccgi.arutherford.plus.com/blog/wordpress/?p=173">Alistair Rutherford's version</A> and the <A HREF="http://drumbeatinsight.com/htmlcomponent">commercial HTMLComponent</A>.</p>
+
+<p><b>What's Wrong with IFrames</b></p>
+
+<p>So why shouldn't you use the iframe approach, if you can help it?  Because of the setting of the wmode to opaque.</p>
+
+<p>Just Everett wrote <A HREF="http://justin.everett-church.com/index.php/2006/02/23/wmode-woes/">an excellent post</A> on this a few years ago where he outlined three problems:</p>
+
+<p>"1. Speed: There is no big surprise here, but when you force Flash to composite the HTML layers above and below, you are adding additional processor load.<br/>
+2. Accessibility: wmode makes your movie invisible to screen readers<br/>
+3. Inconsistent Performance"</p>
+
+<p>I've had some experiences with the transparent wmode myself, which is when I started looking into this more again.  I went back and looked at the comments about <A HREF="https://deitte.com/archives/2006/08/finally_updated.htm#comments">the iframe solution</A>, and I noticed a lot of problems with the opaque wmode:</p>
+
+<p>"Ctrl-Click" events are affected causing components such as the DataGrid to experience problems in FireFox. In this case, the DataGrid loses its ability to do a multiple selection of rows.</p>
+
+<p>"..using "wmode=opaque" on Firefox(Win)leads to trouble like not working mousewheel and not accepting of special characters like "@" of flex2 textinput component.</p>
+
+<p>"The content inside IFRAME gets a very annoying flicker effect which renders this approach into totally unusable under Mac OS 10.4 / Safari 2.0."</p>
+
+<p>"...but some of the iframe content disappears until one of the flex controls gets the focus, at which time it all comes back. Very strange."</p>
+
+<p>The many problems listed above, along with the troubling fact that they are browser-dependent, means that I don't feel comfortable recommending the iframe approach.  I can see using it in special circumstances when you understand all of the limitations.  But in general, I would use one of the alternatives below.</p>
+
+<p><b>More on the Opaque WMode</b></p>
+
+<p>The opaque wmode changes how the browser and the Flash player work together.  It's a fairly fundamental change which causes a number of browser-dependent problems.  You can read more general information about wmode in <A HREF="http://www.communitymx.com/content/article.cfm?cid=e5141">this communitymx article</A>.</p>
+
+<p>If you'd like more technical details on wmodes, you can read about it in <A HREF="http://www.kaourantin.net/2008/05/what-does-gpu-acceleration-mean.html">Tinic's article about the new gpu wmode</A>.  He writes: </p>
+
+<p>"opaque: Somewhat esoteric, but it is essentially like transparent, i.e. it is using DirectDraw in Internet Explorer. But instead of compositing the Flash Player just overwrites whatever is in the background. This mode behaves like normal on OSX and Linux."</p>
+
+<p>I'll given some potential solutions to the problem after a word from our sponsors.</p>
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-0625677791353122";
+/* 300x250, created 5/10/09 */
+google_ad_slot = "6227081369";
+google_ad_width = 300;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+<p><b>Solutions to the Problem</b></p>
+
+<p>If you don't want to use the iframe solution anymore, what's the alternative?  There's four different directions that you can go in:</p>
+
+<p>1. Translate HTML tags into Flash<br/>
+Alex Harui <A HREF="http://blogs.adobe.com/aharui/2008/01/html_and_flex_1.html">has a partial solution to this</A>, and OSFlash has a <A HREF="http://osflash.org/projects/wrapper">whole browser</A> in Flash.  I haven't tried either of these, but they look promising.</p>
+
+<p>2. Use AIR<br/>
+If you can switch to an AIR application, see <A HREF="an_air_version.htm">my post  on creating HTML in AIR</A>.</p>
+
+<p>3. Don't layer HTML and Flash<br/>
+Try to completely separate the HTML and Flash areas on the page or use a link instead of embedding HTML.  Most likely this is something that was already considered and discarded, due to non-technical constraints or ease of development.  But it's something to consider again.</p>
+
+<p>4. Get a solution from Adobe<br/>
+This isn't a short-term solution, but it may be possible to have a world where an opaque wmode doesn't cause any problems.  I doubt it, though, because it could be problems within the browser instead of problems inside of the Flash player.  See <A HREF="http://bugs.adobe.com/jira/browse/SDK-12291">this Flex bug</A> for a request for a supported iframe component and <A HREF="http://www.judahfrangipane.com/blog/?p=164">judah's post</A> for a list of wmode bugs.</p>
+
+                           </div>
+                           
+                                    
+                           
+                           <div class="entry-tags">Tags: <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=best%20practices&amp;limit=20" rel="tag">best practices</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=flex&amp;limit=20" rel="tag">flex</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=html%20in%20flex&amp;limit=20" rel="tag">html in flex</a>
+                           </div>
+                           
+                        </div>
+                        <p class="entry-footer">
+                           <span class="post-footers">
+                               
+                                   Posted on July 13, 2008  5:25 PM
+                               
+                           </span> 
+                           <span class="separator">|</span> <a class="permalink" href="dont_use_iframe.htm">Permalink</a>
+<span class="separator">|</span> <A HREF="http://digg.com/submit?url=https://deitte.com/archives/2008/07/dont_use_iframe.htm&title=Don't Use IFrames for HTML in Flex">digg</A>
+                           <span class="separator">|</span> <A HREF="http://del.icio.us/post?url=https://deitte.com/archives/2008/07/dont_use_iframe.htm">del.icio.us</A>
+                        </p>
+                     </div>
+
+                     
+
+                     
+                     <div id="comments" class="comments">
+                        
+                           
+                              <div class="comments-content">
+                                 <h3 class="comments-header">Comments (26)</h3>
+                           
+                                 <a id="c037068"></a>
+                                 <div class="comment" id="comment-37068">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          barry.b:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>none of those four options are particularly practical for everyone. Last year I used Judah's HTML component in a Flex 2 app to great effect.</p>
+
+<p>it was 100% a Flex (Flash) app, not a hybrid Flash/HTML "page". the HTML was a single document with anchors that the Flex app called to scroll to selected parts of the HTML doc. on another tab of the app the whole HTML doc was displayed.</p>
+
+<p>It had to be separate HTML content, a single doc with "bookmarks" that could be controlled via the Flex app. After fruitless attempts with the existing HTML control, Judah's IFrame HTML control gave me exactly what I needed.</p>
+
+<p>Lets face it, the existing Flex HTML control is just too limiting, especially now people are getting used to what AIR can do. But sometimes a "throw-away" web app (close browser and you've "uninstalled" it) is what is spec'ed.</p>
+
+<p><a href="http://tech.groups.yahoo.com/group/flexcoders/message/89804">http://tech.groups.yahoo.com/group/flexcoders/message/89804</a></p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          barry.b  |
+                                          <a href="dont_use_iframe.htm#comment-37068">July 13, 2008  8:58 PM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="dont_use_iframe.htm#comment-37068" title="Permalink to this comment">July 13, 2008 20:58</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c037071"></a>
+                                 <div class="comment" id="comment-37071">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          <a title="http://flex-flex" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=37071">Jove</a>:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>The most problems of HTML iFrame is caused by "Opaque WMode", but you can avoid using opaque for putting iFrame on top of the Flash. <br />
+Use two DIVs including iFrame for Flash and your html page by setting DIV z-index. However, in IE, there's something tricky for this solution...</p>
+
+<p>Also there're some special usages (like integration with Flash popup window) for the Opaque/Transparent Flash, check out information.ondemand.com</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          <a title="http://flex-flex" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=37071">Jove</a>  |
+                                          <a href="dont_use_iframe.htm#comment-37071">July 13, 2008 10:42 PM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="dont_use_iframe.htm#comment-37071" title="Permalink to this comment">July 13, 2008 22:42</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c037072"></a>
+                                 <div class="comment" id="comment-37072">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          <a title="https://deitte.com" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=37072">Brian Deitte</a>:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>barry.b, that's good to hear that things worked for you.  But I still think that there's a lot of issues that occur and that the iframe should be avoided if at all possible.  To be clear, though, if I had a contract where I was told that I had to have HTML in Flex and there was no budging on this, I'd definitely use it as a solution as well.  :)</p>
+
+<p>Jove, that's really interesting to hear.  Do you have any more information on the two DIV solution?  Does it use a different wmode?  I'd love to add info on this to the post.<br />
+</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          <a title="https://deitte.com" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=37072">Brian Deitte</a>  |
+                                          <a href="dont_use_iframe.htm#comment-37072">July 13, 2008 10:57 PM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="dont_use_iframe.htm#comment-37072" title="Permalink to this comment">July 13, 2008 22:57</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c037094"></a>
+                                 <div class="comment" id="comment-37094">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          Allen Manning:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>Brian,</p>
+
+<p>We have seen an issue where on some Macs the browser will spike to 99% using 'opaque wmode' and our Flex App.  It made the application unusable.</p>
+
+<p>Best,<br />
+al</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          Allen Manning  |
+                                          <a href="dont_use_iframe.htm#comment-37094">July 14, 2008 10:05 AM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="dont_use_iframe.htm#comment-37094" title="Permalink to this comment">July 14, 2008 10:05</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c037121"></a>
+                                 <div class="comment" id="comment-37121">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          <a title="http://judahfrangipane.com" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=37121">Judah</a>:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>Hi Brian,</p>
+
+<p>I think I started using Flash at around Flash Player 6. The was the first time I figured out that Flash couldn't display HTML markup or HTML pages. It lacked this among a myriad of other things. Not too much later I found out you could layer div's on top of Flash. This meant to me is that I could have all the benefits the Flash Player offered plus the benefits of the browser (advanced text layout, tables, etc). So fast forward to Flex. I left developing for Flash (for good/ somewhat bitter) and a few weeks later a friend emailed me about Flex 2. I fought him and the idea of giving the Flash Player any more attention but in my investigation I saw enough reasons to develop for it than not at all. It was actually fun to develop again. I wasn't reinventing everything from scratch or fighting with the development model. But still there was no Rich Text Editor (it was very poor text editor in my opinion) and no HTML markup support or improvements. </p>
+
+<p>So I want a way to display formatted rich text content in my Flex applications. Too bad... I want a way to create formatted rich text content in my Flex application. Too bad... I want a way to display PDF's in my Flex application... too bad. I want a way to display html pages in my Flex application... well, too bad on that too. </p>
+
+<p>So I would run into Flex developers that worked for companies that had millions of HTML documents already created. And other companies that had millions of records of data formatted in HTML markup and all of them had legacy systems build for the browser that couldn't be ported over but they still wanted to leverage Flex. So there is still no way to display HTML and if something is coming in the future there is nothing to help in the transition period.  This is where the HTML Component comes in.</p>
+
+<p>In my opinion if you want something for Adobe to do that would help us all it would be to create an real and advanced Rich Text Editor (base it on the Buzzword engine) with a complimentary Text component to display it. That is the foundation that needs to be laid to solve all the other problems we are all trying to solve. </p>
+
+<p>BTW A lot of the issues I mentioned in my post have been solved by the Flash Player team, Firefox team, Safari team and fixes I've worked on... anyone can contact me for the latest update.</p>
+
+<p>Having blabbed on about that, I really do hope and look forward to anything Adobe can do to solve these issues. </p>
+
+<p>Judah</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          <a title="http://judahfrangipane.com" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=37121">Judah</a>  |
+                                          <a href="dont_use_iframe.htm#comment-37121">July 15, 2008  2:03 AM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="dont_use_iframe.htm#comment-37121" title="Permalink to this comment">July 15, 2008 02:03</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c037282"></a>
+                                 <div class="comment" id="comment-37282">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          <a title="http://deitte.com" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=37282">Brian Deitte</a>:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>Hi Judah, thanks for the thoughtful response.  I had no idea, when I linked to your list of wmode bugs above, that you're the same person who wrote the HTMLComponent I also referenced above.  </p>
+
+<p>Perhaps the new text area in Flex 4 will become a Rich Text Editor?  I haven't looked into it.</p>
+
+<p>It's interesting to hear that the player team has solved many of the issues.  Is this in an unreleased version of the player?  I've certainly still seen a bunch of issues with transparent mode (which is what I think Al meant to say above, as we both saw the transparent mode problems), and people are still commenting about the problems in my blogs posts.</p>
+
+<p>It's great to see that you are thinking so much about these issues, which is excellent for the people who are using HTMLComponent.<br />
+</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          <a title="http://deitte.com" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=37282">Brian Deitte</a>  |
+                                          <a href="dont_use_iframe.htm#comment-37282">July 20, 2008  4:08 PM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="dont_use_iframe.htm#comment-37282" title="Permalink to this comment">July 20, 2008 16:08</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c037285"></a>
+                                 <div class="comment" id="comment-37285">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          <a title="http://deitte.com" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=37285">Brian Deitte</a>:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>Judah was kind enough to send me the latest version of HTMLComponent to check out, and while I only had time to glance at it today, I can see that he's put a lot of effort into it, and that it's trying to handle a lot of the peculiarities of the iframe.  I still can't say that I'd suggest people use the iframe approach, but if it's your only hope, check out his component.<br />
+</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          <a title="http://deitte.com" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=37285">Brian Deitte</a>  |
+                                          <a href="dont_use_iframe.htm#comment-37285">July 20, 2008  4:14 PM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="dont_use_iframe.htm#comment-37285" title="Permalink to this comment">July 20, 2008 16:14</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c038427"></a>
+                                 <div class="comment" id="comment-38427">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          Benjamin Boccara:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>I just tested the different examples showed on the HMTLComponent page. Though it's quite impressive to have a real HTML component in a Flex application, it still doesn't resolve one major bug Firefox users on PC encounter:<br />
+<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=347185">https://bugzilla.mozilla.org/show_bug.cgi?id=347185</a></p>
+
+<p>For my current project, I only need html and wmode to embed some google ads. Do any of you guys know a way to do so without using html and wmode?</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          Benjamin Boccara  |
+                                          <a href="dont_use_iframe.htm#comment-38427">August 17, 2008  5:36 AM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="dont_use_iframe.htm#comment-38427" title="Permalink to this comment">August 17, 2008 05:36</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c039073"></a>
+                                 <div class="comment" id="comment-39073">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          Dave Friesen:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>Through all of this, I'm curious if anyone come up with a simple, clean way to display PDFs "inside" Flex containers (i.e., Web/Flash, vs. AIR which has the issue handled through HTMLLoader(), etc.), consistently across browser types?  I've tried the IFrame solution for this but it's tricky and inconsistent.</p>
+
+<p>Thanks!</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          Dave Friesen  |
+                                          <a href="dont_use_iframe.htm#comment-39073">August 26, 2008  8:16 PM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="dont_use_iframe.htm#comment-39073" title="Permalink to this comment">August 26, 2008 20:16</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c040779"></a>
+                                 <div class="comment" id="comment-40779">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          Cedric:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>Hello Dave, I was going to take the same direction. What do you mean by tricky and inconsistent... ?<br />
+I'll post the result of my investigation.</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          Cedric  |
+                                          <a href="dont_use_iframe.htm#comment-40779">October  3, 2008  3:26 AM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="dont_use_iframe.htm#comment-40779" title="Permalink to this comment">October  3, 2008 03:26</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c041703"></a>
+                                 <div class="comment" id="comment-41703">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          <a title="https://deitte.com" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=41703">Brian Deitte</a>:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>If you've read all of this and are still going to use an iframe solution, this looks like an excellent one: <a href="http://code.google.com/p/flex-iframe/">http://code.google.com/p/flex-iframe/</a><br />
+</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          <a title="https://deitte.com" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=41703">Brian Deitte</a>  |
+                                          <a href="dont_use_iframe.htm#comment-41703">October 29, 2008  9:19 PM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="dont_use_iframe.htm#comment-41703" title="Permalink to this comment">October 29, 2008 21:19</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c042330"></a>
+                                 <div class="comment" id="comment-42330">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          abhishek:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>thello frnd,<br />
+i tried to show multiple images with titles in textarea in fle, but it not worked, but its working with iframe propelly,<br />
+wat is the exact solution to show images  properlly in flex without iframe ?<br />
+:)</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          abhishek  |
+                                          <a href="dont_use_iframe.htm#comment-42330">November 17, 2008  4:03 AM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="dont_use_iframe.htm#comment-42330" title="Permalink to this comment">November 17, 2008 04:03</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c043146"></a>
+                                 <div class="comment" id="comment-43146">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          guillaume:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>Brian</p>
+
+<p>I used the HTMLComponent as I thought it was a good idea to include editor like Xinha in Flex as a RichTextEditor.. But you're right : the wmode issue is too annoying (not only @ but also accent also for French users...) so I drop this idea.. and like yo, unfortunatly, I'm waiting for a clean solution...</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          guillaume  |
+                                          <a href="dont_use_iframe.htm#comment-43146">December  4, 2008  3:48 PM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="dont_use_iframe.htm#comment-43146" title="Permalink to this comment">December  4, 2008 15:48</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c043757"></a>
+                                 <div class="comment" id="comment-43757">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          adrian sule:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>There is an issue with IE (6.0):<br />
+If you open the demo project "IFrameCommTest" from google code, in IE the IFrame will display a white background. In FireFox the background is transparent.<br />
+I have uploaded the example:<br />
+IFrameCommTest/bin-debug/IFrameCommTest.html#</p>
+
+<p>And when I open the same page on localy, the html content disapears in IE, and I get only a white background.</p>
+
+<p>Solutions are welcome</p>
+
+<p>Thanks</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          adrian sule  |
+                                          <a href="dont_use_iframe.htm#comment-43757">December 16, 2008  4:57 AM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="dont_use_iframe.htm#comment-43757" title="Permalink to this comment">December 16, 2008 04:57</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c043772"></a>
+                                 <div class="comment" id="comment-43772">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          Anonymous:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>Here is the uploaded example:<br />
+<a href="http://adriansule.com/IFrameCommTest/bin-debug/IFrameCommTest.html#">http://adriansule.com/IFrameCommTest/bin-debug/IFrameCommTest.html#</a></p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          Anonymous  |
+                                          <a href="dont_use_iframe.htm#comment-43772">December 16, 2008  7:53 AM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="dont_use_iframe.htm#comment-43772" title="Permalink to this comment">December 16, 2008 07:53</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c046065"></a>
+                                 <div class="comment" id="comment-46065">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          kandasami raja:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>hi <br />
+     i run the latest version of fb3_1_3_2.zip  package iFrameDemo.mxml . the corresponding screen flawly displayed in mozilla firefox 3.0.6  but working fine in IE 6 . is there anything to change the javascript function code in iFrame.as </p>
+
+<p>            i need it very urgent can u kindly reply<br />
+tp my mail id kandaraja@gmail.com</p>
+
+<p>thanks & regards <br />
+kandasami raja.c</p>
+
+<p>kandaraja@gmail.com</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          kandasami raja  |
+                                          <a href="dont_use_iframe.htm#comment-46065">March  4, 2009  8:19 AM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="dont_use_iframe.htm#comment-46065" title="Permalink to this comment">March  4, 2009 08:19</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c046943"></a>
+                                 <div class="comment" id="comment-46943">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          shan:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>I want to show only the movie within the iframe<br />
+How can we find movies within the Iframe,<br />
+If any suggestions,</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          shan  |
+                                          <a href="dont_use_iframe.htm#comment-46943">April 17, 2009  5:17 AM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="dont_use_iframe.htm#comment-46943" title="Permalink to this comment">April 17, 2009 05:17</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c047020"></a>
+                                 <div class="comment" id="comment-47020">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          Steve Berube:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>We have written our own flex iFrame control with success so far and is currently use in our of our production products. All the issues outlined in this article are dead on. The ugly truth is its a giant hack to get around a severly lacking feature of flex.</p>
+
+<p>If you would like to see a fix from Adobe, we are pushing them hard on this but also your voice would help by voting on this bug/feature: <a href="http://bugs.adobe.com/jira/browse/SDK-13740">http://bugs.adobe.com/jira/browse/SDK-13740</a></p>
+
+<p>They do have options to solve this but none that are in the product right now. And flex 4 seems more focused on graphic capabilities than actual foundation features. I personally think Adobe is missing the mark with flex 4.</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          Steve Berube  |
+                                          <a href="dont_use_iframe.htm#comment-47020">April 20, 2009 11:10 AM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="dont_use_iframe.htm#comment-47020" title="Permalink to this comment">April 20, 2009 11:10</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c047572"></a>
+                                 <div class="comment" id="comment-47572">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          Mitesh panchal:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>Hi,I have an image and i want to remove white color from image.That removing color is same like its background color.If anybody have any idea of this problem please reply me on mitesh@clientdriveninnovation.com .And my application in Flex 3 so please send me action script code of this problem.Thank you</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          Mitesh panchal  |
+                                          <a href="dont_use_iframe.htm#comment-47572">May 21, 2009  9:27 AM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="dont_use_iframe.htm#comment-47572" title="Permalink to this comment">May 21, 2009 09:27</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c047902"></a>
+                                 <div class="comment" id="comment-47902">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          stevebossie:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>Regarding:<br />
+> 3. Don't layer HTML and Flash<br />
+> ... separate the HTML and Flash areas ...</p>
+
+<p>I'm not sure what you mean by this. Could you give a (simple) example?</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          stevebossie  |
+                                          <a href="dont_use_iframe.htm#comment-47902">June  5, 2009  1:08 PM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="dont_use_iframe.htm#comment-47902" title="Permalink to this comment">June  5, 2009 13:08</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c047931"></a>
+                                 <div class="comment" id="comment-47931">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          <a title="https://deitte.com" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=47931">Brian Deitte</a>:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>Steve Bossie, what I meant by that is to not put HTML inside of Flash but just have Flash inside of HTML.  If you can find a way to keep using Flash in the normal way (instead of using an iframe), you'll avoid all of the issues mentioned in this post.</p>
+
+<p>Steve Berube, thanks for the pointer to the SDK bug, as I hadn't seen it before.  I think this is something that needs to get fixed at the player level and not at the Flex level, and hopefully they are thinking about ways to make this better in the next release.<br />
+</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          <a title="https://deitte.com" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=47931">Brian Deitte</a>  |
+                                          <a href="dont_use_iframe.htm#comment-47931">June  6, 2009  9:26 PM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="dont_use_iframe.htm#comment-47931" title="Permalink to this comment">June  6, 2009 21:26</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c050700"></a>
+                                 <div class="comment" id="comment-50700">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          <a title="http://www.dgrigg.com" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=50700">Derrick</a>:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>As Jove mentioned above the 2 div layer method works quite well. I built a CMS in Flash 2 years ago that utilized this method and it worked beautifully. The CMS needed a WYSIWYG html editor and there was no way to pull it off in Flash. Instead we used javascript to communicate between Flash and the html WYSIWYG editor much like the IFrame method but much cleaner since it was div based. The was 'wrapped' with window panel in the flash app that allowed the html div to be repositioned and resized from the flash app. To the end user dragging/resizing and using the editing window in the flash app, they had no clue the WYSIWYG was actually a HTML/Javascript editor being controlled by flash. It was a very clean implementation.</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          <a title="http://www.dgrigg.com" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=50700">Derrick</a>  |
+                                          <a href="dont_use_iframe.htm#comment-50700">December 14, 2009  4:34 PM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="dont_use_iframe.htm#comment-50700" title="Permalink to this comment">December 14, 2009 16:34</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c051589"></a>
+                                 <div class="comment" id="comment-51589">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          Tanzeem:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>This helps me very much</p>
+
+<p>Thanks a lot</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          Tanzeem  |
+                                          <a href="dont_use_iframe.htm#comment-51589">March  4, 2010  7:42 AM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="dont_use_iframe.htm#comment-51589" title="Permalink to this comment">March  4, 2010 07:42</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c051859"></a>
+                                 <div class="comment" id="comment-51859">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          kira:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>is there any way to render html content other than iframe and  in flex3?</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          kira  |
+                                          <a href="dont_use_iframe.htm#comment-51859">April  5, 2010  6:23 AM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="dont_use_iframe.htm#comment-51859" title="Permalink to this comment">April  5, 2010 06:23</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c053310"></a>
+                                 <div class="comment" id="comment-53310">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          <a title="http://twitter.com/ylluminate" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=53310">ylluminate</a>:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>Everyone may want to vote for these issues so Adobe raises its lumbering head to our needs:</p>
+
+<p><a href="http://bugs.adobe.com/jira/browse/SDK-12291">http://bugs.adobe.com/jira/browse/SDK-12291</a><br />
+<a href="http://bugs.adobe.com/jira/browse/SDK-13740">http://bugs.adobe.com/jira/browse/SDK-13740</a></p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          <a title="http://twitter.com/ylluminate" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=53310">ylluminate</a>  |
+                                          <a href="dont_use_iframe.htm#comment-53310">August 27, 2010  2:14 PM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="dont_use_iframe.htm#comment-53310" title="Permalink to this comment">August 27, 2010 14:14</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                        
+                           
+                                 <a id="c054062"></a>
+                                 <div class="comment" id="comment-54062">
+                                    <div class="comment-inner">
+                                       <div class="comment-header">
+                                          <a title="http://alvijee.blogspot.com" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=54062">Tahir Alvi</a>:
+                                       </div>
+                                       <div class="comment-content">
+                                          <p>U say right</p>
+
+<p>i am use this and find that it is very difficult to manage when your swf embed in HTML page.</p>
+
+<p>So avoid to use of Iframe in Flex</p>
+
+<p>Tahir Alvi</p>
+                                       </div>
+                                       <p class="comment-footer">
+                                          Posted by
+                                          <a title="http://alvijee.blogspot.com" href="https://deitte.com/cgi-bin/mt/mt-comments.cgi?__mode=red;id=54062">Tahir Alvi</a>  |
+                                          <a href="dont_use_iframe.htm#comment-54062">November  5, 2010  1:28 PM</a>
+                                       </p>
+                                       <p class="comment-footer-experimental">
+                                          Posted on
+                                          <a href="dont_use_iframe.htm#comment-54062" title="Permalink to this comment">November  5, 2010 13:28</a>
+                                       </p>
+                                    </div>
+                                 </div>
+                           
+                              </div>
+                           
+                        
+                        
+                     </div>
+                     
+                  </div>
+               </div>
+<div id="beta">
+                  <div id="beta-inner" class="pkg">
+
+                     <div class="module-search module">
+                        <h2 class="module-header">Posts of Note</h2>
+                        <div class="module-content">
+                        <ul class="module-list">
+                              <li class="module-list-item"><a href="../../2006/12/about_this_blog.htm">About This Blog</a></li>
+                              <li class="module-list-item"><a href="../../2009/02/creating_a_vide.htm">Using BEML</a></li>
+                              <li class="module-list-item"><a href="../../2011/02/lessons_learned.htm">Lessons with StageVideo</a></li>
+                              <li class="module-list-item"><a href="../../2009/08/ten_brightcove.htm">Brightcove SDKs</a></li>
+                              <li class="module-list-item"><a href="../10/a_faster_flex_3.htm">A Faster Flex 3 SDK</a></li>
+                              <li class="module-list-item"><a href="six_tools_for_f.htm">Tools For Flex</a></li>
+                              <li class="module-list-item"><a href="dont_use_iframe.htm">HTML in Flex</a></li>
+                        </ul>
+                        </div>
+                     </div>
+                     <div class="module-search module">
+                        <h2 class="module-header">Tags</h2>
+                        <div class="module-content">
+
+        <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=flex&amp;limit=20">flex</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=brightcove&amp;limit=20">brightcove</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=flex%20compiler&amp;limit=20">flex compiler</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=flash&amp;limit=20">flash</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=brightcove%20news&amp;limit=20">brightcove news</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=advertising&amp;limit=20">advertising</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=flex%20sdk&amp;limit=20">flex sdk</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=as3&amp;limit=20">as3</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=blog%20to%20read&amp;limit=20">blog to read</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=brightcove%20dev&amp;limit=20">brightcove dev</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=html%20in%20flex&amp;limit=20">html in flex</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=adobe&amp;limit=20">adobe</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=boston%20flash%20user%20group&amp;limit=20">boston flash user group</a>
+
+                        </div>
+                     </div>
+                     <div class="module-search module">
+                        <h2 class="module-header">Ads</h2>
+<script type="text/javascript"><!--
+google_ad_client = "pub-0625677791353122";
+/* 200x200, created 5/10/09 */
+google_ad_slot = "0856043844";
+google_ad_width = 200;
+google_ad_height = 200;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<br/>
+<br/>
+</div>
+                     <div class="module-search module">
+                        <h2 class="module-header">Search this blog</h2>
+                        <div class="module-content">
+                           <form method="get" action="https://deitte.com/cgi-bin/mt/mt-search.cgi">
+                              <input type="hidden" name="IncludeBlogs" value="1" />
+                              <input id="search" name="search" size="20" />
+                              <input type="submit" value="Search" />
+                           </form>
+                        </div>
+                     </div>                   
+
+                     <div class="module-search module">
+                        <h2 class="module-header">Archive</h2>
+                        <div class="module-content">
+                        <ul class="module-list">
+                              <li class="module-list-item"><a href="https://deitte.com/archives.htm">All posts</a></li>
+                        </ul>
+                        </div>
+                     </div>
+
+                     <div class="module-rss-etc module">
+                        <h2 class="module-header">Feeds</h2>
+                        <div class="module-content">
+                        <ul class="module-list">
+                              <li class="module-list-item"><a href="https://deitte.com/old_home/index.xml">RSS 2.0</a></li>
+                              <li class="module-list-item"><a href="../../../old_home/index.rdf">RSS 1.0</a></li>
+                              <li class="module-list-item"><a href="../../../old_home/atom.xml">Atom</a></li>
+                        </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+
+            </div>
+         </div>
+      </div>
+   </div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-7910585-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+
+</body>
+</html>

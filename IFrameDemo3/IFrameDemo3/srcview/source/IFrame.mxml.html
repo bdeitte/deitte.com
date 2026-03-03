@@ -1,0 +1,82 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>IFrame.mxml</title>
+<link rel="stylesheet" type="text/css" href="../SourceStyles.css"/>
+</head>
+
+<body><pre><span class="mxmlCdata">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+
+<span class="mxmlComponent">&lt;mx:Canvas</span> xmlns:mx=&quot;<span class="mxmlString">http://www.adobe.com/2006/mxml</span>&quot;
+    resize=&quot;callLater<span class="asBracket">(</span>moveIFrame<span class="asBracket">)</span>&quot;
+    move=&quot;callLater<span class="asBracket">(</span>moveIFrame<span class="asBracket">)</span>&quot;<span class="mxmlComponent">&gt;</span>
+
+    <span class="mxmlTag">&lt;mx:Script&gt;</span>
+    <span class="asOperator">&lt;!</span><span class="asBracket">[</span>CDATA<span class="asBracket">[</span>
+
+        <span class="asReserved">import</span> flash.external.ExternalInterface;
+        <span class="asReserved">import</span> flash.geom.Point;
+        <span class="asReserved">import</span> flash.net.navigateToURL;
+
+        <span class="asReserved">private</span> <span class="asVar">var</span> __source<span class="asOperator">:</span> String;
+
+        <span class="asDoc">/**
+         * Move iframe through ExternalInterface.  The location is determined using localToGlobal()
+         * on a Point in the Canvas.
+         **/</span>
+        <span class="asReserved">private</span> <span class="asFunction">function</span> moveIFrame<span class="asBracket">()</span><span class="asOperator">:</span> <span class="asReserved">void</span>
+        <span class="asBracket">{</span>
+
+            <span class="asVar">var</span> localPt<span class="asOperator">:</span>Point <span class="asOperator">=</span> <span class="asReserved">new</span> Point<span class="asBracket">(</span>0, 0<span class="asBracket">)</span>;
+            <span class="asVar">var</span> globalPt<span class="asOperator">:</span>Point <span class="asOperator">=</span> <span class="asReserved">this</span>.localToGlobal<span class="asBracket">(</span>localPt<span class="asBracket">)</span>;
+
+            ExternalInterface.call<span class="asBracket">(</span><span class="asString">&quot;moveIFrame&quot;</span>, globalPt.x, globalPt.y, <span class="asReserved">this</span>.width, <span class="asReserved">this</span>.height<span class="asBracket">)</span>;
+        <span class="asBracket">}</span>
+
+        <span class="asDoc">/**
+         * The source URL for the IFrame.  When set, the URL is loaded through ExternalInterface.
+         **/</span>
+        <span class="asReserved">public</span> <span class="asFunction">function</span> <span class="asReserved">set</span> source<span class="asBracket">(</span>source<span class="asOperator">:</span> String<span class="asBracket">)</span><span class="asOperator">:</span> <span class="asReserved">void</span>
+        <span class="asBracket">{</span>
+            <span class="asReserved">if</span> <span class="asBracket">(</span>source<span class="asBracket">)</span>
+            <span class="asBracket">{</span>
+
+                <span class="asReserved">if</span> <span class="asBracket">(</span><span class="asOperator">!</span> ExternalInterface.available<span class="asBracket">)</span>
+                <span class="asBracket">{</span>
+                    <span class="asReserved">throw</span> <span class="asReserved">new</span> Error<span class="asBracket">(</span><span class="asString">&quot;ExternalInterface is not available in this container. Internet Explorer ActiveX, Firefox, Mozilla 1.7.5 and greater, or other browsers that support NPRuntime are required.&quot;</span><span class="asBracket">)</span>;
+                <span class="asBracket">}</span>
+                __source <span class="asOperator">=</span> source;
+                ExternalInterface.call<span class="asBracket">(</span><span class="asString">&quot;loadIFrame&quot;</span>, source<span class="asBracket">)</span>;
+                moveIFrame<span class="asBracket">()</span>;
+            <span class="asBracket">}</span>
+        <span class="asBracket">}</span>
+
+        <span class="asReserved">public</span> <span class="asFunction">function</span> <span class="asReserved">get</span> source<span class="asBracket">()</span><span class="asOperator">:</span> String
+        <span class="asBracket">{</span>
+            <span class="asReserved">return</span> __source;
+        <span class="asBracket">}</span>
+
+        <span class="asDoc">/**
+         * Whether the IFrame is visible.  
+         **/</span>
+        <span class="asReserved">override</span> <span class="asReserved">public</span> <span class="asFunction">function</span> <span class="asReserved">set</span> visible<span class="asBracket">(</span>visible<span class="asOperator">:</span> Boolean<span class="asBracket">)</span><span class="asOperator">:</span> <span class="asReserved">void</span>
+        <span class="asBracket">{</span>
+            <span class="asReserved">super</span>.visible<span class="asOperator">=</span>visible;
+
+            <span class="asReserved">if</span> <span class="asBracket">(</span>visible<span class="asBracket">)</span>
+            <span class="asBracket">{</span>
+                ExternalInterface.call<span class="asBracket">(</span><span class="asString">&quot;showIFrame&quot;</span><span class="asBracket">)</span>;
+            <span class="asBracket">}</span>
+            <span class="asReserved">else</span> 
+            <span class="asBracket">{</span>
+                ExternalInterface.call<span class="asBracket">(</span><span class="asString">&quot;hideIFrame&quot;</span><span class="asBracket">)</span>;
+            <span class="asBracket">}</span>
+        <span class="asBracket">}</span>
+
+    <span class="asBracket">]]</span><span class="asOperator">&gt;</span>
+    <span class="mxmlTag">&lt;/mx:Script&gt;</span>
+
+<span class="mxmlComponent">&lt;/mx:Canvas&gt;</span></pre></body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="http://www.movabletype.org/" />
+
+<title>Deitte.com: August 2008 Archives</title>
+
+<link rel="stylesheet" href="https://deitte.com/old_home/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/atom+xml" title="Atom" href="https://deitte.com/old_home/atom.xml" />
+<link rel="alternate" type="application/rss+xml" title="RSS 1.0" href="https://deitte.com/old_home/index.rdf" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="https://deitte.com/old_home/index.xml" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://deitte.com/old_home/rsd.xml" />
+
+<link rel="start" href="https://deitte.com/" title="Home" />
+
+<link rel="prev" href="https://deitte.com/archives/2008/07/" title="July 2008" />
+
+
+<link rel="next" href="https://deitte.com/archives/2008/09/" title="September 2008" />
+
+
+
+
+</head>
+
+<body>
+
+<div id="container">
+
+<div id="banner">
+<h1><a href="https://deitte.com/" accesskey="1">Deitte.com</a></h1>
+<div id="banner-description">
+A Mix of Flex and Brightcove
+</div>
+</div>
+
+<div id="center">
+<div id="main-top"><img src="https://deitte.com/old_home/mt-static/escape/main_column_top.gif" alt="" /></div>
+<div class="content">
+<br />
+
+<p align="right">
+
+<a href="https://deitte.com/archives/2008/07/">&laquo; July 2008</a> |
+
+<a href="https://deitte.com/">Main</a>
+
+| <a href="https://deitte.com/archives/2008/09/">September 2008 &raquo;</a>
+
+</p>
+
+
+
+
+
+<h2>August 25, 2008</h2>
+
+
+<h3 id="a000218">Using Flex SWCs within Flash CS3?</h3>
+
+<p>Can you use framework-less Flex 3 SWCs within Flash CS3?  I assumed that you could do this if the compatibility-version flag was used and you didn't use any of the Flex framework.  I haven't been able to get this to work, however, so I'm hoping someone else has had some luck with this.  I've also asked about this on <A HREF="http://tech.groups.yahoo.com/group/flexcoders/message/123314">flexcoders</A>, so I'll update this post with any information I learn there.</p>
+
+<p>There's little information out there on this subject.  Tim Walling has a <A HREF="http://timwalling.com/2007/10/22/compiling-flash-cs3-compatible-swcs-with-flex">post on this</A> which points to some problems, but there's nothing else that I've been able to google.  I'm surprised that there's not more people who are stuck on this.</p>
+
+<p>A colleague of mine, Crystal West, is the person who is really banging her head on this.  She created <A HREF="http://deitte.com/old_home/swc_test.zip">an example</A> to show the issue.  The example has two SWCs within it, one created using Flash Authoring and one created using Flex 3.  Try compiling swc_test.fla with just flash_bc_ads.swc in the same directory (that is, remove flex_bc_ads.swc). The fla should compile fine. Then try with just flex_bc_ads.swc. You should get a number of compile errors for the AdTranslator class.  </p>
+
+<p>She tried a lot of variations on compiling with flex_bc_ads.swc, and nothing has worked.  flex_bc_ads.swc was built using the compatibility flag and doesn't use any of the Flex framework.  She also tried compiling the Flex SWC using compute-digest=false (as recommended by the Tim Walling post mentioned above).  That didn't work either, and, according to some of the comments on this blog post, didn't work for others.</p>
+
+<p>Anybody have any experience here or any suggestions?</p>
+
+<p>Update: A minute after I posted, <A HREF="http://holaflex.com">Oscar</A> told me about a <A HREF="http://joshblog.net/2008/02/12/yahoo-actionscript-3-maps-api-in-flash-cs3/">Yahoo post on the subject</A>.  It doesn't seem like this is the same problem, however, since a <A HREF="http://blog.nobien.net/2008/05/15/to-google-yahoo-please-distribute-map-apis-for-developers-who-dont-use-flex/">related post</A> says the problem is "code SWCs".  So hopefully this isn't our problem, since we are trying to create a SWC which can be used as a Sprite.</p>
+
+<p><b>Solution:</b> There's a new post with an <A HREF="https://deitte.com/archives/2008/09/update_on_using.htm">update on the issue</A>.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2008/08/using_flex_swcs.htm"> 2:51 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+<h2>August 11, 2008</h2>
+
+
+<h3 id="a000217">New Flex Blog by Al Manning</h3>
+
+<p>Al Manning has an <A HREF="http://www.allenmanning.com/">excellent new Flex blog</A>.  Some of you may remember Al from his days working on Spectra at Allaire.  I've gotten to know him as a lead Flex developer at Brightcove.</p>
+
+<p>He already has some long posts on <A HREF="http://www.allenmanning.com/?p=7">unit testing</A> and <A HREF="http://www.allenmanning.com/?p=10">assertions</A>.  I know he'll have a lot more posts about Flex, so go check it out.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2008/08/new_flex_blog_b.htm">11:34 PM</a>
+
+
+</span>
+<br /><br />
+
+
+
+
+
+<h3 id="a000216">Improving the Flex Ant Tasks</h3>
+
+<p>I've been looking at ways to improve some Ant Flex builds, and in the process I've added "arg" support to the <A HREF="http://livedocs.adobe.com/flex/3/html/anttasks_1.html">Flex Ant tasks</A>.  I'll show how this can be done below, and I'll also share a bit about my investigation into speeding up Flex builds.</p>
+
+<p>I wanted to convert some Ant builds to use the Flex Ant tasks, but it's painful to convert Ant targets that use "java".  The problem is that all existing "java" calls will use <A HREF="http://ant.apache.org/manual/using.html#arg">command-line arguments</A>, aka the "arg" element.  The "arg" elements follow the command-line use of mxmlc and compc, and it's a different format than the Ant tasks.  </p>
+
+<p>In order to get the "arg" support, you'll have to do the building of the Ant tasks yourself.  I could have just provided the jars here, but I don't have a clean copy locally.  And it's good to have the source locally to know how to make more changes.  Here's the steps:</p>
+
+<p>1. Download the <A HREF="http://opensource.adobe.com/wiki/display/flexsdk/Get+Source+Code">Flex 3 source</A>.<br />
+2. Open the Ant tasks you want to alter.  They're found in "modules/antTasks/src/flex/ant/".<br />
+3. Add the following line somewhere within prepareCommandline():<br />
+	cmdl.addArguments(getCommandLine().getJavaCommand().getArguments());<br />
+4. Recompile the jar by running "ant" when in the directory "modules/antTasks".  You'll have a new version of the Ant tasks at "lib/flexTasks.jar".</p>
+
+<p>If anybody creates a version of the flexTasks.jar with just this change, I'll link to it here.</p>
+
+<p>Why would you want to convert existing targets to use the Flex Ant tasks?  I thought that the usual reason was to get wildcard support for compc arguments, but I don't see this feature in the documentation.  In any case, Brightcove already had this support through some complicated Ant work.  The reason I was looking into this was for some performance improvements.</p>
+
+<p>I thought I could get some speedup by keeping a bit of shared state between compilations, and doing this required some Flex Ant task and compiler changes.  I had forgotten, though, how much shared state is needed to really improve the performance.  So although I started to convert over some of the Ant targets, in the end I left them all as "java" calls.  </p>
+
+<p>A better approach to getting some faster Ant builds is to use the compiler API in a set of new Ant tasks.  If anybody has any Ant tasks out there for this, I'd be interested in using them.  I know about the <A HREF="http://blog.flex-mojos.info/">Maven support</A>, but it looks to me like I need to create some Ant tasks myself to take advantage of the compiler API.<br />
+</p>
+
+
+
+<span class="posted">
+Posted by Brian at <a href="https://deitte.com/archives/2008/08/improving_the_f.htm">11:22 PM</a>
+
+
+</span>
+<br /><br />
+
+
+<br />
+</div>
+
+</div>
+
+<div id="right">
+
+<div id="sidebar-top"><img src="https://deitte.com/old_home/mt-static/escape/side_column_top.gif" alt="" /></div>
+<div class="sidebar">
+
+<div class="sideBoxesTitle" style="background-color:#8299BC; border-bottom: 2px solid #4C6690;">&nbsp;&nbsp;&nbsp;Search</div>
+ 
+<div class="link-note">
+<form method="get" action="https://deitte.com/cgi-bin/mt/mt-search.cgi">
+<input type="hidden" name="Template" value="escape" />
+<input type="hidden" name="IncludeBlogs" value="1" />
+<label for="search" accesskey="4">Search this site:</label><br />
+<input id="search" name="search" size="15" /> <input type="submit" value="Search" />
+</form>
+</div>
+<!--
+<div id="categories">
+<div class="sideBoxesTitle" style="background-color:#8299BC; border-bottom: 2px solid #4C6690;">&nbsp;&nbsp;&nbsp;Categories</div>
+
+
+</div>
+-->
+<div class="sideBoxesTitle" style="background-color:#8299BC; border-bottom: 2px solid #4C6690;">&nbsp;&nbsp;&nbsp;Archives</div>
+
+<ul>
+
+<li><a href="https://deitte.com/archives/2011/02/">February 2011</a></li>
+
+<li><a href="https://deitte.com/archives/2010/10/">October 2010</a></li>
+
+<li><a href="https://deitte.com/archives/2010/04/">April 2010</a></li>
+
+<li><a href="https://deitte.com/archives/2010/03/">March 2010</a></li>
+
+<li><a href="https://deitte.com/archives/2010/02/">February 2010</a></li>
+
+<li><a href="https://deitte.com/archives/2009/12/">December 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/11/">November 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/10/">October 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/09/">September 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/08/">August 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/07/">July 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/06/">June 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/05/">May 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/04/">April 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/03/">March 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/02/">February 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2009/01/">January 2009</a></li>
+
+<li><a href="https://deitte.com/archives/2008/12/">December 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/11/">November 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/10/">October 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/09/">September 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/08/">August 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/07/">July 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/06/">June 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/05/">May 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/04/">April 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/03/">March 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/02/">February 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2008/01/">January 2008</a></li>
+
+<li><a href="https://deitte.com/archives/2007/12/">December 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/11/">November 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/10/">October 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/09/">September 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/08/">August 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/07/">July 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/06/">June 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/05/">May 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/04/">April 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/03/">March 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/02/">February 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2007/01/">January 2007</a></li>
+
+<li><a href="https://deitte.com/archives/2006/12/">December 2006</a></li>
+
+<li><a href="https://deitte.com/archives/2006/11/">November 2006</a></li>
+
+<li><a href="https://deitte.com/archives/2006/10/">October 2006</a></li>
+
+<li><a href="https://deitte.com/archives/2006/08/">August 2006</a></li>
+
+<li><a href="https://deitte.com/archives/2006/07/">July 2006</a></li>
+
+<li><a href="https://deitte.com/archives/2006/06/">June 2006</a></li>
+
+<li><a href="https://deitte.com/archives/2006/05/">May 2006</a></li>
+
+<li><a href="https://deitte.com/archives/2006/03/">March 2006</a></li>
+
+<li><a href="https://deitte.com/archives/2006/02/">February 2006</a></li>
+
+<li><a href="https://deitte.com/archives/2006/01/">January 2006</a></li>
+
+<li><a href="https://deitte.com/archives/2005/10/">October 2005</a></li>
+
+<li><a href="https://deitte.com/archives/2005/09/">September 2005</a></li>
+
+</ul>
+
+<div class="sideBoxesTitle" style="background-color:#8299BC; border-bottom: 2px solid #4C6690;">&nbsp;&nbsp;&nbsp;Recent Entries</div>
+
+<ul>
+
+<li><a href="https://deitte.com/archives/2008/08/using_flex_swcs.htm">Using Flex SWCs within Flash CS3?</a></li>
+
+<li><a href="https://deitte.com/archives/2008/08/new_flex_blog_b.htm">New Flex Blog by Al Manning</a></li>
+
+<li><a href="https://deitte.com/archives/2008/08/improving_the_f.htm">Improving the Flex Ant Tasks</a></li>
+
+</ul>
+
+<div class="sideBoxesTitle" style="background-color:#8299BC; border-bottom: 2px solid #4C6690;">&nbsp;&nbsp;&nbsp;Recent Diggs</div>
+
+<script language="JavaScript"
+src="http://digg.com/diggjs/user/dugg/bdeitte/1"
+type="text/javascript"></script>
+
+<div class="sideBoxesTitle" style="background-color:#8299BC; border-bottom: 2px solid #4C6690;">&nbsp;&nbsp;&nbsp;RSS, Etc</div>
+
+<div class="link-note">Pick some syndication happiness:<br/>
+<a href="https://deitte.com/old_home/index.xml">RSS 2.0</a><br/>
+<a href="https://deitte.com/old_home/index.rdf">RSS 1.0</a><br/>
+<a href="https://deitte.com/old_home/atom.xml">Atom</a>
+<p>You can email me at <IMG SRC="http://deitte.com/old_home/deitte-email.png" />
+<p>For more blog choices:
+<a href="http://www.flex.org"><img src="http://www.flex.org/images/flexorg.gif" alt="Flex.org - The Directory for Flex" border="0" /></a></p>
+
+</div>
+
+</div>
+</div>
+
+<div style="clear: both;">&#160;</div>
+
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-7910585-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+
+</body>
+</html>

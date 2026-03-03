@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard">
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <meta name="generator" content="Movable Type Pro 4.31-en" />
+   <meta name="keywords" content="adobe max alchemy catalyst rtmfp salesforce ">
+   <meta name="description" content="Here are my notes from my first day at MAX. It includes info on the keynote, using C/C++ libraries in Flash, Python in Flash, Thermo (aka Catalyst), RTMFP, and peer-to-peer...">
+
+   <link rel="stylesheet" href="../../../old_home/styles-site.css" type="text/css" />
+   <link rel="alternate" type="application/atom+xml" title="Atom" href="../../../old_home/atom.xml" />
+   <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="https://deitte.com/old_home/index.xml" />
+
+   <title>Day 1 at MAX (Deitte.com)</title>
+
+   <link rel="start" href="../../../index.html" title="Home" />
+   <link rel="prev" href="brightcove_ends.htm" title="Brightcove Ends Free Network Service" />
+   <link rel="next" href="day_2_at_max.htm" title="Day 2 at MAX" />
+
+   
+
+   
+   <script type="text/javascript" src="../../../old_home/mt-site.js"></script>
+</head>
+<body class="layout-two-column-right individual-entry-archive" onload="individualArchivesOnLoad(commenter_name)">
+   <div id="container">
+      <div id="container-inner" class="pkg">
+
+         <div id="banner">
+            <div id="banner-inner" class="pkg">
+               <h1 id="banner-header"><a href="../../../index.html" accesskey="1">Deitte.com</a></h1>
+               <h2 id="banner-description">A Mix of Flex and Brightcove</h2>
+            </div>
+         </div>
+
+         <div id="pagebody">
+            <div id="pagebody-inner" class="pkg">
+               <div id="alpha">
+                  <div id="alpha-inner" class="pkg">
+
+                     <p class="content-nav">
+                        <a href="brightcove_ends.htm">&laquo; Brightcove Ends Free Network Service</a> |
+                        <a href="../../../index.html">Main</a>
+                        | <a href="day_2_at_max.htm">Day 2 at MAX &raquo;</a>
+                     </p>
+
+
+                     <h2 class="archive-title">Day 1 at MAX</h2>
+                     <div class="entry" id="entry-230">
+                        <div class="entry-content">
+                           
+                           <div class="entry-body">
+                              <p>Here are my notes from my first day at MAX.  It includes info on the keynote, using C/C++ libraries in Flash, Python in Flash, Thermo (aka Catalyst), RTMFP, and peer-to-peer communications.</p>
+
+<p><b>Keynote</b></p>
+
+<p>The keynote presentation had a major focus on "The Flash Platform", which includes the Flash Player, Flex, etc.  It's was the main thing talked about by Shantanu Narayen.  Nearly everything that CTO Kevin Lynch talked about were in Flex, Flash player, AIR.  He also talked about "Mobile first", thinking of mobile design before thinking of desktop view.</p>
+
+<p>There was an amusing mention of MLB.com and a NY Times AIR app.  Both of these are conversions from Silverlight, two of the largest reference applications that I've heard about for Silverlight.</p>
+
+<p>My favorite part of the presentation was the Salesforce VP talking about "platform as a service".  A quote that got a big reaction: "For 20 years, enterprise software has been where innovation has gone to die."  The speaker thinks that Salesforce is changing this with cloud computing, Flex frontends, and their development platform.  They have a massive development platform- 87,000 custom applications on force.com, tons of apps on appexchange.com</p>
+
+<p><b>Lazy Innovation: Strategy for the Design of Innovation User Experiences</b></p>
+
+<p>This was a presentation by Adobe Consulting.  I didn't take any notes from this presentation.  I heard that at a different presentation at this time Ely Greensfield was going to mention me for <A HREF="../10/a_faster_flex_3.htm">my porting of compiler SDK work</A>.  But I was cut out of the talk, in the interest of time.  My 15 minutes of fame has been thwarted.</p>
+
+<p><b>Using C/C++ Libraries in Flash Player and Adobe AIR</B></p>
+
+<p>There was so many people just grinning with excitement at this talk, before and afterwards.  This is research project at Adobe, now known as Alchemy and <A HREF="http://labs.adobe.com/technologies/alchemy/">released on labs</A>.</p>
+
+<p>It's based on LLVM, has partial POSIX emulation later, full port of the BSD standard C library (which is about 140 KB), and partial autoconf support.  There's a C/AS3 bridge API athat llows access from one language to the other.  There's also experimental support for debugging the C code from Eclipse while the code is running in the Flash player.</p>
+
+<p>Surprisingly enough, and I'd like to learn a lot more about this, is that they see it run up to 25x faster than hand-written AS3.  This is due to <A HREF="http://www.mail-archive.com/flexcoders@yahoogroups.com/msg108024.html">the AS3 API added</A> and code optimization from LLVM.</p>
+
+<p>They showed examples of using C++ libraries, using libpng library to encode a PNG, tracking an item through a web cam, and a voice synthesizer. </p>
+
+<p>They have converted Perl, Python and Ruby interpreters, and they do run.  So you can have these languages hosted within a Flash player.  There's some work that still needs to be done to make this easier to use, but Python can now be interpreted at runtime within the Flash player?  Wow.</p>
+
+<p><b>Introduction to Thermo (aka Catalyst)</B></p>
+
+<p>Thermo, now knows as Catalyst, was the hot topic of the day.  This was a sold-out session, and they added a second session which sold out as well.  Two quotes which sum things up to me:  "Let designers design the entire interface, not just component skins." "Allow designers and developers to work in parallel."</p>
+
+<p>An important note from the middle of the presentation: at least a year away from releasing the product.</p>
+
+<p>Flex is spreading out from just being code-centric tool.  Extending out to designers through Flash Catalyst, Flash Pro CS4 support, and FXG.</p>
+
+<p>Create graphics in MXML (in FXG) format using Photoshop, Illustrator, and Fireworks.  Support for this is available today.  Skins can be visually designed through FXG.  Merge tool for conflict resolution within Flex Builder for dealing with Catalyst changes.  Obviously trying hard to deal with round-trip development, which is essential.</p>
+
+<p>They also went over Flex Builder improvements for Gumbo, a huge list of interesting things: network monitor, improved compiler speed, reduced memory consumption, move refactoring, ASDoc tooltips in code hints, file templates for new classes, event handler generation, debugger expression evaluator. FlexUnit support, and more.</p>
+
+<p><b>Future of Communication with RTMFP</B></p>
+
+<p>RTMFP is Secure Real-Time Media Flow Protocol.  It's a new alternative RTMP in the player.</p>
+
+<p>RTMFP is based on UDP, which allows it to do a number of things that RTMP can't, since it's based on TCP/IP.  It has a sophisticated protocol based on top of UDP: multiple parallel media flows of messages, variable congestion response, allows for peer-to-peer applications, fast recovery from brief outages, and IP address mobility.</p>
+
+<p>Developers just need to change the protocol in their URL to use RTMFP.  It requires port 1935 and multiple high UDP ports.  There's no tunneled counterpart as there is in RTMP.</p>
+
+<p>Peer to peer connections are a new use in RTMFP, which  allows media to bypass FMS and travel directly between Flash players.  FMS still used to introduce the peers and server still available if firewall blocks or RTMFP connection can't be made.  In order to use this feature, need to add one parameter in NetStream code to get and identify the publishing id.</p>
+
+<p>Stratus, <A HREF="http://labs.adobe.com/wiki/index.php/Stratus">available on labs</A>, makes RTMFP available for use today. </p>
+
+<p>Future possibility in RTMFP includes "groups", self-organizing overlay networks of peers.  This may work with a "Groupspect" instead of a publishing id. <br />
+</p>
+                           </div>
+                           
+                                    
+                           
+                           <div class="entry-tags">Tags: <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=adobe%20max&amp;limit=20" rel="tag">adobe max</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=alchemy&amp;limit=20" rel="tag">alchemy</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=catalyst&amp;limit=20" rel="tag">catalyst</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=rtmfp&amp;limit=20" rel="tag">rtmfp</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=salesforce&amp;limit=20" rel="tag">salesforce</a>
+                           </div>
+                           
+                        </div>
+                        <p class="entry-footer">
+                           <span class="post-footers">
+                               
+                                   Posted on November 18, 2008  3:07 AM
+                               
+                           </span> 
+                           <span class="separator">|</span> <a class="permalink" href="day_1_at_max.htm">Permalink</a>
+<span class="separator">|</span> <A HREF="http://digg.com/submit?url=https://deitte.com/archives/2008/11/day_1_at_max.htm&title=Day 1 at MAX">digg</A>
+                           <span class="separator">|</span> <A HREF="http://del.icio.us/post?url=https://deitte.com/archives/2008/11/day_1_at_max.htm">del.icio.us</A>
+                        </p>
+                     </div>
+
+                     
+
+                     
+                  </div>
+               </div>
+<div id="beta">
+                  <div id="beta-inner" class="pkg">
+
+                     <div class="module-search module">
+                        <h2 class="module-header">Posts of Note</h2>
+                        <div class="module-content">
+                        <ul class="module-list">
+                              <li class="module-list-item"><a href="../../2006/12/about_this_blog.htm">About This Blog</a></li>
+                              <li class="module-list-item"><a href="../../2009/02/creating_a_vide.htm">Using BEML</a></li>
+                              <li class="module-list-item"><a href="../../2011/02/lessons_learned.htm">Lessons with StageVideo</a></li>
+                              <li class="module-list-item"><a href="../../2009/08/ten_brightcove.htm">Brightcove SDKs</a></li>
+                              <li class="module-list-item"><a href="../10/a_faster_flex_3.htm">A Faster Flex 3 SDK</a></li>
+                              <li class="module-list-item"><a href="../07/six_tools_for_f.htm">Tools For Flex</a></li>
+                              <li class="module-list-item"><a href="../07/dont_use_iframe.htm">HTML in Flex</a></li>
+                        </ul>
+                        </div>
+                     </div>
+                     <div class="module-search module">
+                        <h2 class="module-header">Tags</h2>
+                        <div class="module-content">
+
+        <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=flex&amp;limit=20">flex</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=brightcove&amp;limit=20">brightcove</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=flex%20compiler&amp;limit=20">flex compiler</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=flash&amp;limit=20">flash</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=brightcove%20news&amp;limit=20">brightcove news</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=advertising&amp;limit=20">advertising</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=flex%20sdk&amp;limit=20">flex sdk</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=as3&amp;limit=20">as3</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=blog%20to%20read&amp;limit=20">blog to read</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=brightcove%20dev&amp;limit=20">brightcove dev</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=html%20in%20flex&amp;limit=20">html in flex</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=adobe&amp;limit=20">adobe</a>, <a href="https://deitte.com/cgi-bin/mt/mt-search.cgi?blog_id=1&amp;tag=boston%20flash%20user%20group&amp;limit=20">boston flash user group</a>
+
+                        </div>
+                     </div>
+                     <div class="module-search module">
+                        <h2 class="module-header">Ads</h2>
+<script type="text/javascript"><!--
+google_ad_client = "pub-0625677791353122";
+/* 200x200, created 5/10/09 */
+google_ad_slot = "0856043844";
+google_ad_width = 200;
+google_ad_height = 200;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<br/>
+<br/>
+</div>
+                     <div class="module-search module">
+                        <h2 class="module-header">Search this blog</h2>
+                        <div class="module-content">
+                           <form method="get" action="https://deitte.com/cgi-bin/mt/mt-search.cgi">
+                              <input type="hidden" name="IncludeBlogs" value="1" />
+                              <input id="search" name="search" size="20" />
+                              <input type="submit" value="Search" />
+                           </form>
+                        </div>
+                     </div>                   
+
+                     <div class="module-search module">
+                        <h2 class="module-header">Archive</h2>
+                        <div class="module-content">
+                        <ul class="module-list">
+                              <li class="module-list-item"><a href="https://deitte.com/archives.htm">All posts</a></li>
+                        </ul>
+                        </div>
+                     </div>
+
+                     <div class="module-rss-etc module">
+                        <h2 class="module-header">Feeds</h2>
+                        <div class="module-content">
+                        <ul class="module-list">
+                              <li class="module-list-item"><a href="https://deitte.com/old_home/index.xml">RSS 2.0</a></li>
+                              <li class="module-list-item"><a href="../../../old_home/index.rdf">RSS 1.0</a></li>
+                              <li class="module-list-item"><a href="../../../old_home/atom.xml">Atom</a></li>
+                        </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+
+            </div>
+         </div>
+      </div>
+   </div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-7910585-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+
+</body>
+</html>
