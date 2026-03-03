@@ -2,7 +2,7 @@
 
 > **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
 
-## Progress Status (as of 2026-03-01)
+## Progress Status (as of 2026-03-02) — **COMPLETE**
 
 - ✅ Phase 1.1 — Ghost content (DB + images) backed up to S3 `ghost-content/`
 - ✅ Phase 1.2 — All static dirs (old_home, archives, travel, IFrameDemo3, petitemama, helpingsiteignore, resume) backed up to S3
@@ -10,8 +10,8 @@
 - ✅ Phase 3.1 — GitHub repo `bdeitte/deitte.com` created (public); remote `origin` added; `CNAME` file written
 - ✅ Phase 4 — Static dirs + crawl output copied into repo; Ghost blog index saved at `blog/index.html`
 - ✅ Phase 5.1/5.2 — `index.html` written with computer image and nav links
-- ⏳ Phase 5.3 — **NOT YET DONE**: commit to main, create gh-pages branch, configure GitHub Pages
-- ⏳ Phase 6 — DNS cutover not yet done
+- ✅ Phase 5.3 — Committed to main, pushed; gh-pages orphan branch created with website files only, pushed; GitHub Pages configured and building at deitte.com
+- ✅ Phase 6 — Namecheap DNS cutover complete: 4 A records to GitHub Pages IPs, www CNAME → bdeitte.github.io
 
 ### Known fixes applied during crawl cleanup
 - `blog/index.html`: added `<base href="/">` so relative asset paths resolve from root
