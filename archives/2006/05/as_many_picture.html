@@ -153,12 +153,12 @@ function forgetMe (f) {
 
 <div id="thanks">
 <p>Thanks for signing in, 
-<script type="text/javascript" src="http://www.deitte.com/cgi-bin/mt/mcom.cgi?__mode=cmtr_name_js"></script><script>document.write(commenter_name);</script>.
-Now you can comment. (<a href="http://www.deitte.com/cgi-bin/mt/mcom.cgi?__mode=handle_sign_in&static=1&logout=1&entry_id=50">sign out</a>)</p>
+<script type="text/javascript" src=""></script><script>document.write(commenter_name);</script>.
+Now you can comment. (<a href="#">sign out</a>)</p>
 
 (If you haven't left a comment here before, you may need to be approved by the site owner before your comment will appear. Until then, it won't appear on the entry. Thanks for waiting.)
 
-<form method="post" action="http://www.deitte.com/cgi-bin/mt/mcom.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<form method="post" action="#" onsubmit="return false;" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
 <input type="hidden" name="static" value="1" />
 <input type="hidden" name="entry_id" value="50" />
 
@@ -185,7 +185,7 @@ Remember me?
 if (commenter_name) {
     document.getElementById('thanks').style.display = 'block';
 } else {
-    document.write('You are not signed in. You need to be registered to comment on this site. <a href="https://www.typekey.com/t/typekey/login?&lang=en&t=q0MXw64KyMasfcv6ruYC&v=1.1&_return=http://www.deitte.com/cgi-bin/mt/mcom.cgi%3f__mode=handle_sign_in%26static=1%26entry_id=50"> Sign in</a>');
+    document.write('You are not signed in. You need to be registered to comment on this site. <a href="https://www.typekey.com/t/typekey/login?&lang=en&t=q0MXw64KyMasfcv6ruYC&v=1.1&_return=#"> Sign in</a>');
     document.getElementById('thanks').style.display = 'none';
 }
 // -->
