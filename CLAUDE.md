@@ -50,5 +50,5 @@ Commit the changes, and then run `npx serve public` so that the changes can be s
 
 ## Deploying
 
-If asked to deploy, copy all changes other that CLAUDE.md, README.md, and .gitignore to gh-pages,
+If asked to deploy, copy all changes other than CLAUDE.md, README.md, and .gitignore to gh-pages,
 commit, then push.
