@@ -46,7 +46,7 @@ separate HTML files, not just `index.html` — there is no shared header/templat
 
 ## After making changes
 
-Commit the changes, and then run `npx serve public` so that the changes can be seen.
+Commit the changes, and then run `npx serve .` so that the changes can be seen.
 
 ## Deploying
 
