@@ -44,3 +44,11 @@ separate HTML files, not just `index.html` — there is no shared header/templat
   already excludes `.env*`, `*.pem`, `*.key`, `credentials.json`). Server IPs/keys are provided
   at runtime, never committed.
 
+## After making changes
+
+Commit the changes, and then run `npx serve public` so that the changes can be seen.
+
+## Deploying
+
+If asked to deploy, copy all changes other that CLAUDE.md, README.md, and .gitignore to gh-pages,
+commit, then push.
