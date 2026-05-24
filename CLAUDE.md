@@ -3,8 +3,9 @@
 ## What this is
 
 Brian Deitte's personal website, served as static files via GitHub Pages at deitte.com.
-There is no build step, no package manager, and no test suite — files are HTML/CSS/JS served
-as-is. `index.html` is a single self-contained homepage (inline `<style>`, no external CSS).
+There is no build step and no test suite — files are HTML/CSS/JS served as-is. `package.json`
+exists only to host npm scripts (`serve`, `deploy`); there are no runtime dependencies.
+`index.html` is a single self-contained homepage (inline `<style>`, no external CSS).
 
 ## Deployment model (important)
 
@@ -46,9 +47,14 @@ separate HTML files, not just `index.html` — there is no shared header/templat
 
 ## After making changes
 
-Commit the changes, and then run `npx serve .` so that the changes can be seen.
+Commit the changes, then run `npm run serve` so they can be previewed locally.
 
 ## Deploying
 
-If asked to deploy, copy all changes other than CLAUDE.md, README.md, and .gitignore to gh-pages,
-commit, then push.
+Run `npm run deploy`. The script (`scripts/deploy.js`) syncs `main`'s tree into a temporary
+`gh-pages` git worktree at `../deitte.com-gh-pages` via `rsync`, excluding `CLAUDE.md`,
+`README.md`, `.gitignore`, `package.json`, `package-lock.json`, `scripts/`, `docs/`, `plan/`,
+and anything in `.gitignore`. It shows a diff stat, prompts for confirmation, then commits
+and pushes to `origin/gh-pages`. The worktree is torn down on exit (success or failure).
+
+Preflight requires being on `main` with a clean working tree.
