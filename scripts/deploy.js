@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const { execFileSync, spawnSync } = require('child_process');
+const { spawnSync } = require('child_process');
 const readline = require('readline');
 const path = require('path');
 const fs = require('fs');
