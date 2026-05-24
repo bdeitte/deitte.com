@@ -1,0 +1,11 @@
+{
+  "name": "deitte-com",
+  "version": "1.0.0",
+  "private": true,
+  "description": "deitte.com static site (served from gh-pages)",
+  "scripts": {
+    "serve": "npx serve .",
+    "start": "npm run serve",
+    "deploy": "node scripts/deploy.js"
+  }
+}
